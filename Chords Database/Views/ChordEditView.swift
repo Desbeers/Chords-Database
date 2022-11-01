@@ -170,7 +170,7 @@ struct ChordEditView: View {
                 }, label: {
                     Text(status.rawValue)
                 })
-                .disabled(chord.define() == result.define())
+                .disabled(chord.define == result.define)
                 Button(action: {
                     dismiss()
                 }, label: {

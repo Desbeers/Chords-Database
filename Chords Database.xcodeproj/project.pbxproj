@@ -33,7 +33,6 @@
 		D72286BF290ACC8600937256 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		D72286C3290AD28B00937256 /* ImportExportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportExportView.swift; sourceTree = "<group>"; };
 		D72286C5290ADCA600937256 /* KeyDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyDetailsView.swift; sourceTree = "<group>"; };
-		D72286C7290AF50900937256 /* SwiftyGuitarChords */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = SwiftyGuitarChords; path = ../../SwiftyGuitarChords; sourceTree = "<group>"; };
 		D72286C8290B03FE00937256 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		D72286C9290BC24100937256 /* ChordEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChordEditView.swift; sourceTree = "<group>"; };
 		D72286CB290C0DAD00937256 /* Midi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Midi.swift; sourceTree = "<group>"; };
@@ -93,7 +92,6 @@
 			isa = PBXGroup;
 			children = (
 				D72286C8290B03FE00937256 /* README.md */,
-				D72286C7290AF50900937256 /* SwiftyGuitarChords */,
 				D751B837290AC40A0002AAFF /* Chords Database */,
 				D751B836290AC40A0002AAFF /* Products */,
 			);

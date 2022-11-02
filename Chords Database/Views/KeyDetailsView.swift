@@ -38,7 +38,7 @@ struct KeyDetailsView: View {
     func filterSuffixes() {
         var allSuffixes = model.allChords.filter({$0.key == model.selectedKey})
         if midiFilter {
-            allSuffixes = allSuffixes.filter({$0.midi != MidiNotes.values(values: $0)})
+            allSuffixes = allSuffixes.filter({$0.midi != Midi.values(values: $0)})
         }
         suffixes = allSuffixes.unique { $0.suffix }
     }

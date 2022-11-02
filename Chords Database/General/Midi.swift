@@ -8,13 +8,8 @@
 import Foundation
 import SwiftyChords
 
-struct MidiNote: Identifiable {
-    var id = UUID()
-    let note: Int
-    let sting: String
-}
-
-enum MidiNotes: Int {
+/// Convert `fret` positions to MIDI notes
+enum Midi: Int {
     // swiftlint:disable identifier_name
     case e
     case f
@@ -31,9 +26,22 @@ enum MidiNotes: Int {
     // swiftlint:enable identifier_name
 }
 
-extension MidiNotes {
+extension Midi {
     
-    /// Base MIDI valies
+    /// The struct for a MIDI note
+    struct Note: Identifiable {
+        /// The unique ID
+        var id = UUID()
+        /// The MIDI note number
+        let note: Int
+        /// The MIDI note name
+        let name: String
+    }
+}
+
+extension Midi {
+    
+    /// The base MIDI values for a guitar
     var value: Int {
         switch self {
         case .e:
@@ -63,6 +71,7 @@ extension MidiNotes {
         }
     }
     
+    /// Name display for a MIDI note
     var display: (accessible: String, symbol: String) {
         switch self {
         case .c:
@@ -93,20 +102,27 @@ extension MidiNotes {
     }
 }
 
-extension MidiNotes {
+extension Midi {
     
-// MARK: Fret positions to MIDI values
+    // MARK: Fret positions to MIDI values
     
-    static func values(values: Chord) -> [Int] {
-        return calculateValues(frets: values.frets, baseFret: values.baseFret)
+    /// Calculate the MIDI values for a Chord struct
+    /// - Parameter values: The `Chord` values
+    /// - Returns: An array of ``Midi/Note``'s
+    static func values(values: Chord) -> [Midi.Note] {
+        return calculate(frets: values.frets, baseFret: values.baseFret)
     }
     
+    /// Calculate the MIDI values for a ChordPosition struct
+    /// - Parameter values: The `ChordPosition` values
+    /// - Returns: An array of `Int`'s
     static func values(values: ChordPosition) -> [Int] {
-        return calculateValues(frets: values.frets, baseFret: values.baseFret)
+        return calculate(frets: values.frets, baseFret: values.baseFret).map({ $0.note })
     }
     
-    static private func calculateValues(frets: [Int], baseFret: Int) -> [Int] {
-        var midiNotes: [Int] = []
+    /// Calculate the MIDI values
+    private static func calculate(frets: [Int], baseFret: Int) -> [Midi.Note] {
+        var midiNotes: [Midi.Note] = []
         for string in Strings.allCases {
             var fret = frets[string.rawValue]
             /// Don't bother with ignored frets
@@ -114,9 +130,11 @@ extension MidiNotes {
                 /// Add base fret and the offset
                 fret += baseFret + string.offset
                 /// Find the base midi value
-                if let midiNote = MidiNotes(rawValue: (fret) % 12) {
+                if let midiNote = Midi(rawValue: (fret) % 12) {
                     let midi = midiNote.value + ((fret / 12) * 12)
-                    midiNotes.append(midi)
+                    midiNotes.append(.init(note: midi,
+                                           name: midiName(note: midi))
+                    )
                 }
             }
             
@@ -124,37 +142,13 @@ extension MidiNotes {
         return midiNotes
     }
     
-    static func calculate(values: ChordPosition) -> [MidiNote] {
-        var midiNotes: [MidiNote] = []
-        for string in Strings.allCases {
-            var fret = values.frets[string.rawValue]
-            /// Don't bother with ignored frets
-            if fret != -1 {
-                /// Add base fret and the offset
-                fret += values.baseFret + string.offset
-                /// Find the base midi value
-                if let midiNote = MidiNotes(rawValue: (fret) % 12) {
-                    let midi = midiNote.value + ((fret / 12) * 12)
-                    midiNotes.append(.init(note: (midi),
-                                           sting: String(describing: midiNote)))
-                }
-            }
-
-        }
-        return midiNotes
-    }
-}
-
-extension MidiNotes {
-    
-    // MARK: MIDI note to Key String
-    
-    static func keyString(note: Int) -> String {
-        if let midiNote = MidiNotes(rawValue: ((note - 40) % 12)) {
+    /// Convert a MIDI note to a name
+    private static func midiName(note: Int) -> String {
+        if let midiNote = Midi(rawValue: ((note - 40) % 12)) {
             let number = (note - 40) / 12 + 2
-            return midiNote.display.symbol + number.description
+            return "\(midiNote.display.symbol)\(number.description)"
         }
-        
+        /// It cannot find a name
         return "?"
     }
 }

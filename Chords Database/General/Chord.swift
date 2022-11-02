@@ -15,8 +15,8 @@ struct Chord: Equatable {
     public var baseFret: Int
     public var barres: Int
     public var capo: Bool?
-    public var midi: [Int] {
-        return MidiNotes.values(values: self)
+    public var midi: [Midi.Note] {
+        return Midi.values(values: self)
     }
     public var key: Chords.Key
     public var suffix: Chords.Suffix

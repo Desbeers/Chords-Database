@@ -50,7 +50,7 @@ class ChordsDatabaseModel: ObservableObject {
             .sorted { $0.key == $1.key ? $0.suffix < $1.suffix : $0.key < $1.key }
     }
     @ViewBuilder func diagram(chord: ChordPosition, frame: CGRect = CGRect(x: 0, y: 0, width: 100, height: 150)) -> some View {
-        let layer = chord.chordLayer(rect: frame, showFingers: true)
+        let layer = chord.chordLayer(rect: frame, showFingers: true, chordName: .init(show: true, key: .symbol, suffix: .symbolized))
         if let image = layer.image() {
 #if os(macOS)
             Image(nsImage: image)

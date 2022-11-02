@@ -28,6 +28,33 @@ extension Sequence {
 }
 
 extension ChordPosition {
+    init(id: UUID = UUID(),
+         frets: [Int],
+         fingers: [Int],
+         baseFret: Int,
+         barres: [Int],
+         capo: Bool? = nil,
+         midi: [Int],
+         key: Chords.Key,
+         suffix: Chords.Suffix) throws {
+        let data = """
+    {
+        "key": "\(key.rawValue)",
+        "suffix": "\(suffix.rawValue)",
+        "midi": \(midi),
+        "baseFret": \(baseFret),
+        "frets": \(frets),
+        "fingers": \(fingers),
+        "barres": \(barres)
+    }
+"""
+        let decoder = JSONDecoder()
+        self = try decoder.decode(ChordPosition.self, from: data.data(using: .utf8)!)
+    }
+    
+}
+
+extension ChordPosition {
     
     var define: String {
         var define = "{define: "

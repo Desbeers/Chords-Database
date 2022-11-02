@@ -185,15 +185,19 @@ struct ChordEditView: View {
             }
         }
         .task(id: values) {
-            result = ChordPosition(id: values.id,
-                                   frets: values.frets,
-                                   fingers: values.fingers,
-                                   baseFret: values.baseFret,
-                                   barres: values.barres != 0 ? [values.barres] : [],
-                                   midi: values.midi.map({ $0.note }),
-                                   key: values.key,
-                                   suffix: values.suffix
-            )
+            do {
+                result = try ChordPosition(id: values.id,
+                                           frets: values.frets,
+                                           fingers: values.fingers,
+                                           baseFret: values.baseFret,
+                                           barres: values.barres != 0 ? [values.barres] : [],
+                                           midi: values.midi.map({$0.note}),
+                                           key: values.key,
+                                           suffix: values.suffix
+                )
+            } catch {
+                print(error)
+            }
         }
     }
     

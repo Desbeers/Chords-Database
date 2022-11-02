@@ -29,30 +29,20 @@ struct MainView: View {
             Toggle("Hide good MIDI", isOn: $midiFilter)
             /// New Chord Button
             Button(action: {
-                let newChord = ChordPosition(id: UUID(),
-                                             frets: [0, 0, 0, 0, 0, 0],
-                                             fingers: [0, 0, 0, 0, 0, 0],
-                                             baseFret: 1,
-                                             barres: [],
-                                             midi: [48, 52, 55, 60, 64],
-                                             key: .c,
-                                             suffix: .major
-                )
-                model.editChord = newChord
-//                do {
-//                let newChord = try ChordPosition(id: UUID(),
-//                                             frets: [0, 0, 0, 0, 0, 0],
-//                                             fingers: [0, 0, 0, 0, 0, 0],
-//                                             baseFret: 1,
-//                                             barres: [],
-//                                             midi: [48, 52, 55, 60, 64],
-//                                             key: .c,
-//                                             suffix: .major
-//                                             )
-//                    model.editChord = newChord
-//                } catch {
-//                    /// ignore
-//                }
+                do {
+                    let newChord = try ChordPosition(id: UUID(),
+                                                     frets: [0, 0, 0, 0, 0, 0],
+                                                     fingers: [0, 0, 0, 0, 0, 0],
+                                                     baseFret: 1,
+                                                     barres: [],
+                                                     midi: [48, 52, 55, 60, 64],
+                                                     key: .c,
+                                                     suffix: .major
+                    )
+                    model.editChord = newChord
+                } catch {
+                    /// ignore
+                }
             }, label: {
                 Label("New Chord", systemImage: "plus")
             })

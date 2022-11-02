@@ -2,7 +2,7 @@
 //  ChordEditView.swift
 //  Chords Database
 //
-//  Created by Nick Berendsen on 28/10/2022.
+//  © 2022 Nick Berendsen
 //
 
 import SwiftUI

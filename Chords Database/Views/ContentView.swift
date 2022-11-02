@@ -2,7 +2,7 @@
 //  ContentView.swift
 //  Chords Database
 //
-//  Created by Nick Berendsen on 30/10/2022.
+//  © 2022 Nick Berendsen
 //
 
 import SwiftUI
@@ -21,7 +21,7 @@ struct ContentView: View {
                     /// Update the document
                     model.updateDocument.toggle()
                 } else {
-                    /// Load the content of the document
+                    /// Load the content of the database
                     model.importDB(database: document.text)
                 }
             }

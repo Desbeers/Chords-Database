@@ -78,17 +78,16 @@ struct ChordEditView: View {
             HStack {
                 VStack {
                     model.diagram(chord: result, frame: CGRect(x: 0, y: 0, width: 200, height: 300))
-                    Text("Calculated MIDI")
+                    Text("MIDI Values")
                         .font(.headline)
-                    
                     HStack {
                         Divider()
                             .frame(height: 20)
-                        ForEach(values.midi, id: \.self) { midi in
+                        ForEach(values.midi) { midi in
                             VStack {
-                                Text(midi.description)
-                                Text(MidiNotes.keyString(note: midi))
-                                
+                                Text(midi.note.description)
+                                /// Init the name to enable markdown
+                                Text(.init(midi.name))
                             }
                             Divider()
                                 .frame(height: 20)
@@ -179,7 +178,6 @@ struct ChordEditView: View {
             }
         }
         .padding()
-        .animation(.default, value: values)
         .task {
             if let index = model.allChords.firstIndex(where: {$0.id == values.id}) {
                 status = .update
@@ -187,19 +185,15 @@ struct ChordEditView: View {
             }
         }
         .task(id: values) {
-            do {
-                result = try ChordPosition(id: values.id,
-                                           frets: values.frets,
-                                           fingers: values.fingers,
-                                           baseFret: values.baseFret,
-                                           barres: values.barres != 0 ? [values.barres] : [],
-                                           midi: values.midi,
-                                           key: values.key,
-                                           suffix: values.suffix
-                )
-            } catch {
-                print(error)
-            }
+            result = ChordPosition(id: values.id,
+                                   frets: values.frets,
+                                   fingers: values.fingers,
+                                   baseFret: values.baseFret,
+                                   barres: values.barres != 0 ? [values.barres] : [],
+                                   midi: values.midi.map({ $0.note }),
+                                   key: values.key,
+                                   suffix: values.suffix
+            )
         }
     }
     

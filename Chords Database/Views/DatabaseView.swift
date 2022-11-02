@@ -30,7 +30,7 @@ struct DatabaseView: View {
                 Text(chord.baseFret.description)
             }
             TableColumn("Midi") { chord in
-                Text(chord.midi == MidiNotes.values(values: chord) ? "Correct" : "Wrong")
+                Text(chord.midi == Midi.values(values: chord) ? "Correct" : "Wrong")
                     .font(.headline)
             }
             TableColumn("Action") { chord in
@@ -64,7 +64,7 @@ struct DatabaseView: View {
         }
         
         if midiFilter {
-            allChords = allChords.filter({$0.midi != MidiNotes.values(values: $0)})
+            allChords = allChords.filter({$0.midi != Midi.values(values: $0)})
         }
         
         chords = allChords

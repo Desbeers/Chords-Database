@@ -18,6 +18,8 @@ struct ContentView: View {
                 if document.text == "default" {
                     /// Load the default database
                     model.allChords = ChordsDatabaseModel.getChords()
+                    /// Update the document
+                    model.updateDocument.toggle()
                 } else {
                     /// Load the content of the document
                     model.importDB(database: document.text)

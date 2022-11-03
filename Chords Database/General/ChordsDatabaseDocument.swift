@@ -8,32 +8,40 @@
 import SwiftUI
 import UniformTypeIdentifiers
 
+// MARK: The Chord Databse document
+
 extension UTType {
+    
+    /// Add the UIType for the Chord Databse document
     static var cdb: UTType {
         UTType(importedAs: "nl.desbeers.cdb")
     }
 }
 
+/// The Chords database document
 struct ChordsDatabaseDocument: FileDocument {
-    var text: String
-
-    init(text: String = "default") {
-        self.text = text
-    }
-
+    /// The type of the document
     static var readableContentTypes: [UTType] { [.cdb] }
-
+    /// The content of the document
+    var chords: String
+    /// Init the document
+    init(chords: String = "default") {
+        self.chords = chords
+    }
+    /// Init for an existing document
     init(configuration: ReadConfiguration) throws {
         guard let data = configuration.file.regularFileContents,
               let string = String(data: data, encoding: .utf8)
         else {
             throw CocoaError(.fileReadCorruptFile)
         }
-        text = string
+        chords = string
     }
-    
+    /// Write the document
+    /// - Parameter configuration: The `WriteConfiguration`
+    /// - Returns: A `FileWrapper`
     func fileWrapper(configuration: WriteConfiguration) throws -> FileWrapper {
-        let data = text.data(using: .utf8)!
+        let data = chords.data(using: .utf8)!
         return .init(regularFileWithContents: data)
     }
 }

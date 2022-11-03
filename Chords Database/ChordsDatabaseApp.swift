@@ -7,9 +7,9 @@
 
 import SwiftUI
 
-@main
-
-struct ChordsDatabaseApp: App {
+/// The `Chords Database` App Scene
+@main struct ChordsDatabaseApp: App {
+    /// The body of the Scene
     var body: some Scene {
         DocumentGroup(newDocument: ChordsDatabaseDocument()) { file in
             ContentView(document: file.$document)

@@ -8,10 +8,15 @@
 import SwiftUI
 import SwiftyChords
 
+/// The  Main View
 struct MainView: View {
+    /// The SwiftUI model for the Chords Database
     @EnvironmentObject var model: ChordsDatabaseModel
+    /// Visibility for the NavigationSpliView
     @State private var columnVisibility = NavigationSplitViewVisibility.automatic
+    /// Filter MIDI toggle
     @AppStorage("Bad MIDI filter") private var midiFilter = false
+    /// The body of the View
     var body: some View {
         NavigationSplitView(
             columnVisibility: $columnVisibility,
@@ -47,12 +52,6 @@ struct MainView: View {
                 Label("New Chord", systemImage: "plus")
             })
             .labelStyle(.iconOnly)
-//            ImportButtonView()
-//                .labelStyle(.iconOnly)
-//                .help("Import your database")
-//            ExportButtonView()
-//                .labelStyle(.iconOnly)
-//                .help("Export your database")
         }
         .sheet(item: $model.editChord) { chord in
             ChordEditView(chord: chord)

@@ -27,6 +27,8 @@ extension Sequence {
     }
 }
 
+// MARK: Swifty Chords extensions
+
 extension ChordPosition {
     init(id: UUID = UUID(),
          frets: [Int],

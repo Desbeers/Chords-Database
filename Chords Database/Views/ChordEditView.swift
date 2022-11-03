@@ -8,21 +8,23 @@
 import SwiftUI
 import SwiftyChords
 
+/// The  Chord Edit View
 struct ChordEditView: View {
-    
+    /// The SwiftUI model for the Chords Database
     @EnvironmentObject var model: ChordsDatabaseModel
-    
+    /// Dismiss for the sheet
     @Environment(\.dismiss) var dismiss
-    
+    /// The chord to add or change
     let chord: ChordPosition
+    /// The values in the form
     @State private var values: Chord
-    
+    /// The resulting chord
     @State private var result: ChordPosition
-    
+    /// Status of the chord, new or altered
     @State private var status: Status = .new
-    
+    /// The ID of an existsing chord
     @State private var chordID: Int?
-    
+    /// Init the form
     init(chord: ChordPosition) {
         self.chord = chord
         _result = State(wrappedValue: chord)
@@ -36,7 +38,7 @@ struct ChordEditView: View {
                                             suffix: chord.suffix)
         )
     }
-    
+    /// The body of the View
     var body: some View {
         VStack {
             Text("\(values.key.rawValue) \(values.suffix.rawValue)")
@@ -124,7 +126,6 @@ struct ChordEditView: View {
                         }, header: {
                             header(text: "Frets")
                         })
-                    
                     Section(
                         content: {
                             HStack {
@@ -149,7 +150,6 @@ struct ChordEditView: View {
                         }, header: {
                             header(text: "Fingers")
                         })
-                    
                 }
             }
             Divider()

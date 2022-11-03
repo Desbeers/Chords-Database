@@ -8,6 +8,8 @@
 import Foundation
 import SwiftyChords
 
+// MARK: Midi
+
 /// Convert `fret` positions to MIDI notes
 enum Midi: Int {
     // swiftlint:disable identifier_name

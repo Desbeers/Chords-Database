@@ -8,6 +8,9 @@
 import Foundation
 import SwiftyChords
 
+// MARK: Custom Chords
+
+/// A custom chord in 'Chord Provider`
 struct Chord: Equatable {
     public var id: UUID
     public var frets: [Int]

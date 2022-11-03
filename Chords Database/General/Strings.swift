@@ -7,6 +7,8 @@
 
 import Foundation
 
+// MARK: Guitar Strings
+
 /// The strings on the guitar
 enum Strings: Int, CaseIterable {
     // swiftlint:disable identifier_name
@@ -17,8 +19,9 @@ enum Strings: Int, CaseIterable {
     case B
     case e
     // swiftlint:enable identifier_name
+    
     /// The offset for each string from the base 'E'
-    ///  - Note: -1, because of the BaseFret value in `ChordPosition`
+    ///  - Note: Start with -1, because of the BaseFret value in `ChordPosition`
     var offset: Int {
         switch self {
         case .E:

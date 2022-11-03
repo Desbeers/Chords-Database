@@ -14,6 +14,8 @@ struct DatabaseView: View {
     @EnvironmentObject var model: ChordsDatabaseModel
     /// Filter MIDI toggle
     @AppStorage("Bad MIDI filter") private var midiFilter = false
+    /// The conformation dialog to delete a chord
+    @State private var confirmationShown = false
     /// The Chords to show in this View
     @State var chords: [SwiftyChords.ChordPosition] = []
     /// The body of the View
@@ -38,8 +40,22 @@ struct DatabaseView: View {
             TableColumn("Action") { chord in
                 VStack {
                     editButton(chord: chord)
-                    deleteButton(chord: chord)
                     duplicateButton(chord: chord)
+                    Button(action: {
+                        confirmationShown = true
+                    }, label: {
+                        Text("Delete")
+                    })
+                    .confirmationDialog(
+                        "Delete \(chord.key.display.accessible + chord.suffix.display.accessible)?",
+                        isPresented: $confirmationShown,
+                        titleVisibility: .visible
+                    ) {
+                        deleteButton(chord: chord)
+                    } message: {
+                        model.diagram(chord: chord)
+                        Text("With base fret \(chord.baseFret)")
+                    }
                 }
                 .buttonStyle(.bordered)
             }
@@ -84,6 +100,7 @@ struct DatabaseView: View {
         Button(action: {
             if let chordIndex = model.allChords.firstIndex(where: {$0.id == chord.id}) {
                 model.allChords.remove(at: chordIndex)
+                model.updateDocument.toggle()
             }
         }, label: {
             Text("Delete")

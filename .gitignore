@@ -6,7 +6,7 @@ Icon?
 *.pxm
 export/
 archive/
-08-calibre/
+Icon/
 
 ## Xcode
 # User settings

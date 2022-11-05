@@ -30,16 +30,19 @@ extension Sequence {
 // MARK: Swifty Chords extensions
 
 extension ChordPosition {
-    init(id: UUID = UUID(),
-         frets: [Int],
-         fingers: [Int],
-         baseFret: Int,
-         barres: [Int],
-         capo: Bool? = nil,
-         midi: [Int],
-         key: Chords.Key,
-         suffix: Chords.Suffix) throws {
-        let data = """
+
+    // swiftlint:disable multiline_parameters_brackets
+    init(
+        id: UUID = UUID(),
+        frets: [Int],
+        fingers: [Int],
+        baseFret: Int,
+        barres: [Int],
+        capo: Bool? = nil,
+        midi: [Int],
+        key: Chords.Key,
+        suffix: Chords.Suffix) throws {
+            let data = """
     {
         "key": "\(key.rawValue)",
         "suffix": "\(suffix.rawValue)",
@@ -50,14 +53,14 @@ extension ChordPosition {
         "barres": \(barres)
     }
 """
-        let decoder = JSONDecoder()
-        self = try decoder.decode(ChordPosition.self, from: data.data(using: .utf8)!)
-    }
-    
+            let decoder = JSONDecoder()
+            self = try decoder.decode(ChordPosition.self, from: data.data(using: .utf8)!)
+        }
+    // swiftlint:enable multiline_parameters_brackets
 }
 
 extension ChordPosition {
-    
+
     var define: String {
         var define = "{define: "
         define += key.rawValue + suffix.rawValue
@@ -76,14 +79,23 @@ extension ChordPosition {
     }
 }
 
-extension Chords.Key : Comparable {
+extension ChordPosition {
+
+    func play(instrument: MidiPlayer.Instrument = .acousticNylonGuitar) {
+        Task {
+            await MidiPlayer.shared.playNotes(notes: self.midi, instument: instrument)
+        }
+    }
+}
+
+extension Chords.Key: Comparable {
     /// Implement Comparable
     public static func < (lhs: Self, rhs: Self) -> Bool {
         return allCases.firstIndex(of: lhs)! < allCases.firstIndex(of: rhs)!
     }
 }
 
-extension Chords.Suffix : Comparable {
+extension Chords.Suffix: Comparable {
     /// Implement Comparable
     public static func < (lhs: Self, rhs: Self) -> Bool {
         return allCases.firstIndex(of: lhs)! < allCases.firstIndex(of: rhs)!

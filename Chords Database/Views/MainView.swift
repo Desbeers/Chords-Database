@@ -16,6 +16,8 @@ struct MainView: View {
     @State private var columnVisibility = NavigationSplitViewVisibility.automatic
     /// Filter MIDI toggle
     @AppStorage("Bad MIDI filter") private var midiFilter = false
+    /// MIDI instrument
+    @AppStorage("MIDI instrument") private var midiInstrument: MidiPlayer.Instrument = .acousticNylonGuitar
     /// The body of the View
     var body: some View {
         NavigationSplitView(
@@ -30,6 +32,7 @@ struct MainView: View {
         })
         .animation(.default, value: midiFilter)
         .toolbar {
+            MidiPlayer.InstrumentPicker()
             /// Filter MIDI toggle
             Toggle("Hide good MIDI", isOn: $midiFilter)
             /// New Chord Button

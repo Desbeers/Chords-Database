@@ -11,7 +11,6 @@ import UniformTypeIdentifiers
 // MARK: The Chord Databse document
 
 extension UTType {
-    
     /// Add the UIType for the Chord Databse document
     static var cdb: UTType {
         UTType(importedAs: "nl.desbeers.cdb")

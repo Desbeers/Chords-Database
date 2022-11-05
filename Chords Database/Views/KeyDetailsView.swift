@@ -36,7 +36,7 @@ struct KeyDetailsView: View {
             filterSuffixes()
         }
     }
-    
+
     func filterSuffixes() {
         var allSuffixes = model.allChords.filter({$0.key == model.selectedKey})
         if midiFilter {

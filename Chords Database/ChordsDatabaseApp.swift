@@ -13,7 +13,6 @@ import SwiftUI
     var body: some Scene {
         DocumentGroup(newDocument: ChordsDatabaseDocument()) { file in
             ContentView(document: file.$document)
-            
         }
     }
 }

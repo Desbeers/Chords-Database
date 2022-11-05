@@ -21,6 +21,7 @@
 		D751B83D290AC40A0002AAFF /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D751B83C290AC40A0002AAFF /* MainView.swift */; };
 		D751B83F290AC40A0002AAFF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D751B83E290AC40A0002AAFF /* Assets.xcassets */; };
 		D751B842290AC40A0002AAFF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D751B841290AC40A0002AAFF /* Preview Assets.xcassets */; };
+		D794EA1429169CE500ACA62E /* MidiPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D794EA1329169CE500ACA62E /* MidiPlayer.swift */; };
 		D7A95EB4290EB56C00DC41F8 /* Chord.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A95EB3290EB56C00DC41F8 /* Chord.swift */; };
 		D7A95EB6290EB57B00DC41F8 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A95EB5290EB57B00DC41F8 /* Strings.swift */; };
 /* End PBXBuildFile section */
@@ -43,6 +44,7 @@
 		D751B841290AC40A0002AAFF /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		D751B843290AC40A0002AAFF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D751B844290AC40A0002AAFF /* ChordsDatabase.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ChordsDatabase.entitlements; sourceTree = "<group>"; };
+		D794EA1329169CE500ACA62E /* MidiPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MidiPlayer.swift; sourceTree = "<group>"; };
 		D7A95EB3290EB56C00DC41F8 /* Chord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chord.swift; sourceTree = "<group>"; };
 		D7A95EB5290EB57B00DC41F8 /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -66,6 +68,7 @@
 				D72286BD290ACA3500937256 /* ChordsDatabaseModel.swift */,
 				D72286BF290ACC8600937256 /* Extensions.swift */,
 				D72286CB290C0DAD00937256 /* Midi.swift */,
+				D794EA1329169CE500ACA62E /* MidiPlayer.swift */,
 				D7A95EB3290EB56C00DC41F8 /* Chord.swift */,
 				D7A95EB5290EB57B00DC41F8 /* Strings.swift */,
 			);
@@ -134,6 +137,7 @@
 				D751B831290AC40A0002AAFF /* Sources */,
 				D751B832290AC40A0002AAFF /* Frameworks */,
 				D751B833290AC40A0002AAFF /* Resources */,
+				D7B72DFB2916D2EF00CA8D65 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -195,12 +199,34 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		D7B72DFB2916D2EF00CA8D65 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which /opt/homebrew/bin/swiftlint >/dev/null; then\n  # swiftlint --enable-all-rules\n  # swiftlint autocorrect\n  /opt/homebrew/bin/swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		D751B831290AC40A0002AAFF /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				D72286CC290C0DAD00937256 /* Midi.swift in Sources */,
+				D794EA1429169CE500ACA62E /* MidiPlayer.swift in Sources */,
 				D72286CE290E9B8F00937256 /* ContentView.swift in Sources */,
 				D751B839290AC40A0002AAFF /* ChordsDatabaseApp.swift in Sources */,
 				D72286BE290ACA3500937256 /* ChordsDatabaseModel.swift in Sources */,

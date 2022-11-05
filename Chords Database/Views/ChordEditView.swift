@@ -12,6 +12,8 @@ import SwiftyChords
 struct ChordEditView: View {
     /// The SwiftUI model for the Chords Database
     @EnvironmentObject var model: ChordsDatabaseModel
+    /// MIDI instrument
+    @AppStorage("MIDI instrument") private var midiInstrument: MidiPlayer.Instrument = .acousticNylonGuitar
     /// Dismiss for the sheet
     @Environment(\.dismiss) var dismiss
     /// The chord to add or change
@@ -93,8 +95,13 @@ struct ChordEditView: View {
                             }
                             Divider()
                                 .frame(height: 20)
-                            
                         }
+                    }
+                    HStack {
+                        MidiPlayer.InstrumentPicker()
+                        .frame(width: 180)
+                        .labelsHidden()
+                        MidiPlayer.PlayButton(chord: result)
                     }
                 }
                 .frame(width: 400)
@@ -200,7 +207,7 @@ struct ChordEditView: View {
             }
         }
     }
-    
+
     func header(text: String) -> some View {
         VStack {
             Text(text)
@@ -209,7 +216,7 @@ struct ChordEditView: View {
             Divider()
         }
     }
-    
+
     enum Status: String {
         case new = "Save New Chord"
         case update = "Update Chord"

@@ -29,7 +29,7 @@ enum Midi: Int {
 }
 
 extension Midi {
-    
+
     /// The struct for a MIDI note
     struct Note: Identifiable {
         /// The unique ID
@@ -42,7 +42,7 @@ extension Midi {
 }
 
 extension Midi {
-    
+
     /// The base MIDI values for a guitar
     var value: Int {
         switch self {
@@ -72,7 +72,7 @@ extension Midi {
             return 51
         }
     }
-    
+
     /// Name display for a MIDI note
     var display: (accessible: String, symbol: String) {
         switch self {
@@ -105,23 +105,23 @@ extension Midi {
 }
 
 extension Midi {
-    
+
     // MARK: Fret positions to MIDI values
-    
+
     /// Calculate the MIDI values for a Chord struct
     /// - Parameter values: The `Chord` values
     /// - Returns: An array of ``Midi/Note``'s
     static func values(values: Chord) -> [Midi.Note] {
         return calculate(frets: values.frets, baseFret: values.baseFret)
     }
-    
+
     /// Calculate the MIDI values for a ChordPosition struct
     /// - Parameter values: The `ChordPosition` values
     /// - Returns: An array of `Int`'s
     static func values(values: ChordPosition) -> [Int] {
         return calculate(frets: values.frets, baseFret: values.baseFret).map({ $0.note })
     }
-    
+
     /// Calculate the MIDI values
     private static func calculate(frets: [Int], baseFret: Int) -> [Midi.Note] {
         var midiNotes: [Midi.Note] = []
@@ -139,11 +139,10 @@ extension Midi {
                     )
                 }
             }
-            
         }
         return midiNotes
     }
-    
+
     /// Convert a MIDI note to a name
     private static func midiName(note: Int) -> String {
         if let midiNote = Midi(rawValue: ((note - 40) % 12)) {

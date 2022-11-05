@@ -12,7 +12,6 @@ import SwiftyChords
 
 /// The SwiftUI model for the Chords Database
 class ChordsDatabaseModel: ObservableObject {
-    
     /// All chords in the current database
     @Published var allChords: [ChordPosition] = []
     /// The selected Key in the ``SidebarView``
@@ -24,7 +23,6 @@ class ChordsDatabaseModel: ObservableObject {
     /// The *update document* toggle
     /// - Note: Toggled when a chord is new or changed
     @Published var updateDocument: Bool = false
-    
     /// Export  ``allChords`` to a `String`
     var exportDB: String {
         let encoder = JSONEncoder()
@@ -38,7 +36,6 @@ class ChordsDatabaseModel: ObservableObject {
             return "error"
         }
     }
-    
     /// Import a database String as a [ChordPosition] array
     func importDB(database: String) {
         do {
@@ -55,7 +52,6 @@ class ChordsDatabaseModel: ObservableObject {
         SwiftyChords.Chords.guitar
             .sorted { $0.key == $1.key ? $0.suffix < $1.suffix : $0.key < $1.key }
     }
-    
     /// Build a SwiftUI Image diagram fom a `ChordPosition`
     @ViewBuilder func diagram(chord: ChordPosition, frame: CGRect = CGRect(x: 0, y: 0, width: 100, height: 150)) -> some View {
         let layer = chord.chordLayer(rect: frame, showFingers: true, chordName: .init(show: true, key: .symbol, suffix: .symbolized))

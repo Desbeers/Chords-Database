@@ -19,7 +19,7 @@ enum Strings: Int, CaseIterable {
     case B
     case e
     // swiftlint:enable identifier_name
-    
+
     /// The offset for each string from the base 'E'
     ///  - Note: Start with -1, because of the BaseFret value in `ChordPosition`
     var offset: Int {

@@ -146,8 +146,8 @@ extension Midi {
     /// Convert a MIDI note to a name
     private static func midiName(note: Int) -> String {
         if let midiNote = Midi(rawValue: ((note - 40) % 12)) {
-            let number = (note - 40) / 12 + 2
-            return "\(midiNote.display.symbol)\(number.description)"
+            let octave = Double(note - 17) / 12
+            return "\(midiNote.display.symbol)\(Int(round(octave)))"
         }
         /// It cannot find a name
         return "?"

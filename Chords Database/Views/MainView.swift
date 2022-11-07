@@ -37,20 +37,16 @@ struct MainView: View {
             Toggle("Hide good MIDI", isOn: $midiFilter)
             /// New Chord Button
             Button(action: {
-                do {
-                    let newChord = try ChordPosition(id: UUID(),
-                                                     frets: [0, 0, 0, 0, 0, 0],
-                                                     fingers: [0, 0, 0, 0, 0, 0],
-                                                     baseFret: 1,
-                                                     barres: [],
-                                                     midi: [48, 52, 55, 60, 64],
-                                                     key: .c,
-                                                     suffix: .major
-                    )
-                    model.editChord = newChord
-                } catch {
-                    /// ignore
-                }
+                let newChord = ChordPosition(id: UUID(),
+                                             frets: [0, 0, 0, 0, 0, 0],
+                                             fingers: [0, 0, 0, 0, 0, 0],
+                                             baseFret: 1,
+                                             barres: [],
+                                             midi: [48, 52, 55, 60, 64],
+                                             key: .c,
+                                             suffix: .major
+                )
+                model.editChord = newChord
             }, label: {
                 Label("New Chord", systemImage: "plus")
             })

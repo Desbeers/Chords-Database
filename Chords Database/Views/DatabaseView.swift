@@ -20,11 +20,22 @@ struct DatabaseView: View {
     @State private var confirmationShown = false
     /// The Chords to show in this View
     @State var chords: [ChordPosition] = []
+    /// Bool if we have chords or not
+    @State var haveChords = true
+    /// The selection in the table
+    @State private var selection: ChordPosition.ID?
     /// The body of the View
     var body: some View {
-        Table(chords) {
+        if !haveChords && chords.isEmpty {
+            Text("No chords in the key of \(model.selectedKey.display.symbol) found in the datadase")
+                .font(.title)
+                .padding(.top)
+        }
+        Table(chords, selection: $selection) {
             TableColumn("Diagram") { chord in
                 model.diagram(chord: chord)
+                    .background(Color(nsColor: .textBackgroundColor))
+                    .cornerRadius(4)
             }
             TableColumn("Chord") { chord in
                 Text("\(chord.key.display.accessible)\(chord.suffix.display.accessible)")
@@ -45,6 +56,7 @@ struct DatabaseView: View {
             }
         }
         .buttonStyle(.bordered)
+        .animation(.default, value: haveChords)
         .id(model.selectedKey)
         .task(id: model.allChords) {
             filterChords()
@@ -72,6 +84,7 @@ struct DatabaseView: View {
         allChords.sort(using: KeyPathComparator(\.suffix))
         allChords.sort(using: KeyPathComparator(\.baseFret))
         chords = allChords
+        haveChords = chords.isEmpty ? false : true
     }
 
     func actions(chord: ChordPosition) -> some View {
@@ -118,20 +131,16 @@ struct DatabaseView: View {
 
     func duplicateButton(chord: ChordPosition) -> some View {
         Button(action: {
-            do {
-            let newChord = try ChordPosition(id: UUID(),
-                                             frets: chord.frets,
-                                             fingers: chord.fingers,
-                                             baseFret: chord.baseFret,
-                                             barres: chord.barres,
-                                             midi: chord.midi,
-                                             key: chord.key,
-                                             suffix: chord.suffix
-                                         )
-                model.editChord = newChord
-            } catch {
-                /// ignore
-            }
+            let newChord = ChordPosition(id: UUID(),
+                                         frets: chord.frets,
+                                         fingers: chord.fingers,
+                                         baseFret: chord.baseFret,
+                                         barres: chord.barres,
+                                         midi: chord.midi,
+                                         key: chord.key,
+                                         suffix: chord.suffix
+            )
+            model.editChord = newChord
         }, label: {
             Label("Duplicate", systemImage: "doc.on.doc")
         })

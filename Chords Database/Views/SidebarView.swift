@@ -17,9 +17,9 @@ struct SidebarView: View {
     /// The body of the View
     var body: some View {
         List(selection: $model.selectedKey) {
-            ForEach(model.allChords.unique { $0.key }) { key in
-                Text(key.key.display.symbol)
-                    .tag(key.key)
+            ForEach(Chords.Key.allCases, id: \.rawValue) { key in
+                Text(key.display.symbol)
+                    .tag(key)
             }
         }
         .onChange(of: model.selectedKey) { _ in

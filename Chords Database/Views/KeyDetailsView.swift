@@ -29,6 +29,9 @@ struct KeyDetailsView: View {
             }
         }
         .listStyle(.inset(alternatesRowBackgrounds: true))
+        .task(id: model.allChords) {
+            filterSuffixes()
+        }
         .task(id: model.selectedKey) {
             filterSuffixes()
         }

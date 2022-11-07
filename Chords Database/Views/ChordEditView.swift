@@ -89,9 +89,8 @@ struct ChordEditView: View {
                             .frame(height: 20)
                         ForEach(values.midi) { midi in
                             VStack {
-                                Text(midi.note.description)
-                                /// Init the name to enable markdown
-                                Text(.init(midi.name))
+                                Text("\(midi.note)")
+                                Text("\(midi.key.display.symbol)\(midi.octave)")
                             }
                             Divider()
                                 .frame(height: 20)

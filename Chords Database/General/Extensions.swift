@@ -31,6 +31,7 @@ extension Sequence {
 
 extension ChordPosition {
 
+    /// Convert a `ChordPosition` into a ChordPro `{define}`
     var define: String {
         var define = "{define: "
         define += key.rawValue + suffix.rawValue
@@ -51,6 +52,8 @@ extension ChordPosition {
 
 extension ChordPosition {
 
+    /// Play a chord with MIDI
+    /// - Parameter instrument: The `instrument` to use
     func play(instrument: MidiPlayer.Instrument = .acousticNylonGuitar) {
         Task {
             await MidiPlayer.shared.playNotes(notes: self.midi, instument: instrument)

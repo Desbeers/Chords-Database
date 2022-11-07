@@ -29,22 +29,50 @@ enum Midi: Int {
 }
 
 extension Midi {
-
-    /// The struct for a MIDI note
-    struct Note: Identifiable {
-        /// The unique ID
-        var id = UUID()
-        /// The MIDI note number
-        let note: Int
-        /// The MIDI note name
-        let name: String
+    
+    /// The Key of the MIDI note
+    var key: Chords.Key {
+        Chords.Key(rawValue: name) ?? .c
     }
 }
 
 extension Midi {
+    
+    /// The name of the MIDI note
+    var name: String {
+        switch self {
+        case .e:
+            return "E"
+        case .f:
+            return "F"
+        case .fSharp:
+            return "F#"
+        case .g:
+            return "G"
+        case .gSharp:
+            return "G#"
+        case .a:
+            return "A"
+        case .aSharp:
+            return "A#"
+        case .b:
+            return "B"
+        case .c:
+            return "C"
+        case .cSharp:
+            return "C#"
+        case .d:
+            return "D"
+        case .dSharp:
+            return "D#"
+        }
+    }
+}
 
+extension Midi {
+    
     /// The base MIDI values for a guitar
-    var value: Int {
+    var baseValue: Int {
         switch self {
         case .e:
             return 40
@@ -72,56 +100,43 @@ extension Midi {
             return 51
         }
     }
+}
 
-    /// Name display for a MIDI note
-    var display: (accessible: String, symbol: String) {
-        switch self {
-        case .c:
-            return ("C", "C")
-        case .cSharp:
-            return ("C sharp", "C♯")
-        case .d:
-            return ("D", "D")
-        case .dSharp:
-            return ("D sharp", "D♯")
-        case .e:
-            return ("E", "E")
-        case .f:
-            return ("F", "F")
-        case .fSharp:
-            return ("F sharp", "F♯")
-        case .g:
-            return ("G", "G")
-        case .gSharp:
-            return ("G sharp", "G♯")
-        case .a:
-            return ("A", "A")
-        case .aSharp:
-            return ("A sharp", "A♯")
-        case .b:
-            return ("B", "B")
+extension Midi {
+
+    /// The struct for a MIDI note
+    struct Note: Identifiable {
+        /// The unique ID
+        var id = UUID()
+        /// The MIDI note number
+        let note: Int
+        /// The key of the MIDI note
+        let key: Chords.Key
+        /// The octave of the MIDI note
+        var octave: Int {
+            Int(round(Double(note - 17) / 12))
         }
     }
 }
 
 extension Midi {
-
+    
     // MARK: Fret positions to MIDI values
-
+    
     /// Calculate the MIDI values for a Chord struct
     /// - Parameter values: The `Chord` values
     /// - Returns: An array of ``Midi/Note``'s
     static func values(values: Chord) -> [Midi.Note] {
         return calculate(frets: values.frets, baseFret: values.baseFret)
     }
-
+    
     /// Calculate the MIDI values for a ChordPosition struct
     /// - Parameter values: The `ChordPosition` values
     /// - Returns: An array of `Int`'s
     static func values(values: ChordPosition) -> [Int] {
         return calculate(frets: values.frets, baseFret: values.baseFret).map({ $0.note })
     }
-
+    
     /// Calculate the MIDI values
     private static func calculate(frets: [Int], baseFret: Int) -> [Midi.Note] {
         var midiNotes: [Midi.Note] = []
@@ -132,24 +147,13 @@ extension Midi {
                 /// Add base fret and the offset
                 fret += baseFret + string.offset
                 /// Find the base midi value
-                if let midiNote = Midi(rawValue: (fret) % 12) {
-                    let midi = midiNote.value + ((fret / 12) * 12)
-                    midiNotes.append(.init(note: midi,
-                                           name: midiName(note: midi))
-                    )
+                if let midiNote = Midi(rawValue: (fret) % 12), let key = Chords.Key(rawValue: midiNote.name) {
+                    let midiValue = midiNote.baseValue + ((fret / 12) * 12)
+                    midiNotes.append(Midi.Note(note: midiValue, key: key))
+                    
                 }
             }
         }
         return midiNotes
-    }
-
-    /// Convert a MIDI note to a name
-    private static func midiName(note: Int) -> String {
-        if let midiNote = Midi(rawValue: ((note - 40) % 12)) {
-            let octave = Double(note - 17) / 12
-            return "\(midiNote.display.symbol)\(Int(round(octave)))"
-        }
-        /// It cannot find a name
-        return "?"
     }
 }

@@ -46,7 +46,7 @@ struct DatabaseView: View {
             TableColumn("Midi") { chord in
                 VStack(alignment: .leading) {
                     MidiPlayer.PlayButton(chord: chord)
-                    Text(chord.midi == Midi.values(values: chord) ? "MIDI values are correct" : "MIDI values are wrong")
+                    Text(chord.midi == Midi.values(values: chord) ? "" : "MIDI values are not correct")
                         .font(.caption)
                         .padding(.top)
                 }

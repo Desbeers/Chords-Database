@@ -33,8 +33,7 @@ struct MainView: View {
         .animation(.default, value: midiFilter)
         .toolbar {
             MidiPlayer.InstrumentPicker()
-            /// Filter MIDI toggle
-            Toggle("Hide good MIDI", isOn: $midiFilter)
+
             /// New Chord Button
             Button(action: {
                 let newChord = ChordPosition(id: UUID(),

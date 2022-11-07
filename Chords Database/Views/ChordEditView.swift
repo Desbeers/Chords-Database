@@ -82,20 +82,6 @@ struct ChordEditView: View {
             HStack {
                 VStack {
                     model.diagram(chord: result, frame: CGRect(x: 0, y: 0, width: 200, height: 300))
-                    Text("MIDI Values")
-                        .font(.headline)
-                    HStack {
-                        Divider()
-                            .frame(height: 20)
-                        ForEach(values.midi) { midi in
-                            VStack {
-                                Text("\(midi.note)")
-                                Text("\(midi.key.display.symbol)\(midi.octave)")
-                            }
-                            Divider()
-                                .frame(height: 20)
-                        }
-                    }
                     HStack {
                         MidiPlayer.InstrumentPicker()
                         .frame(width: 180)

@@ -43,8 +43,8 @@ struct MainView: View {
                                              baseFret: 1,
                                              barres: [],
                                              midi: [48, 52, 55, 60, 64],
-                                             key: .c,
-                                             suffix: .major
+                                             key: model.selectedKey,
+                                             suffix: model.selectedSuffix ?? .major
                 )
                 model.editChord = newChord
             }, label: {

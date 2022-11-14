@@ -144,8 +144,8 @@ extension Midi {
             var fret = frets[string.rawValue]
             /// Don't bother with ignored frets
             if fret != -1 {
-                /// Add base fret and the offset
-                fret += baseFret + string.offset
+                /// Add base fret if the fret is not 0 and the offset
+                fret += string.offset + (fret == 0 ? 1 : baseFret)
                 /// Find the base midi value
                 if let midiNote = Midi(rawValue: (fret) % 12), let key = Chords.Key(rawValue: midiNote.name) {
                     let midiValue = midiNote.baseValue + ((fret / 12) * 12)

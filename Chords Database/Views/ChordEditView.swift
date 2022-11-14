@@ -19,18 +19,21 @@ struct ChordEditView: View {
     /// The chord to add or change
     let chord: ChordPosition
     /// The values in the form
-    @State private var values: Chord
+    @State private var values: CustomChord
     /// The resulting chord
     @State private var result: ChordPosition
     /// Status of the chord, new or altered
     @State private var status: Status = .new
     /// The ID of an existsing chord
     @State private var chordID: Int?
+    /// The chord guess result
+    @State private var chordGuess: ChordUtilities.Chord?
+    
     /// Init the form
     init(chord: ChordPosition) {
         self.chord = chord
         _result = State(wrappedValue: chord)
-        _values = State(wrappedValue: Chord(id: chord.id,
+        _values = State(wrappedValue: CustomChord(id: chord.id,
                                             frets: chord.frets,
                                             fingers: chord.fingers,
                                             baseFret: chord.baseFret,
@@ -45,6 +48,7 @@ struct ChordEditView: View {
         VStack {
             Text("\(values.key.rawValue) \(values.suffix.rawValue)")
                 .font(.title)
+            chordFinder(chord: result)
             Text(result.define)
                 .textSelection(.enabled)
                 .font(.headline)
@@ -83,10 +87,28 @@ struct ChordEditView: View {
                 VStack {
                     model.diagram(chord: result, frame: CGRect(x: 0, y: 0, width: 200, height: 300))
                     HStack {
+                        Divider()
+                            .frame(height: 20)
+                        ForEach(values.midi) { midi in
+                            Text("\(midi.key.display.symbol)")
+                                .frame(width: 18)
+                            Divider()
+                                .frame(height: 20)
+                        }
+                    }
+                    HStack {
                         MidiPlayer.InstrumentPicker()
                         .frame(width: 180)
                         .labelsHidden()
                         MidiPlayer.PlayButton(chord: result)
+                    }
+                    if let chordGuess {
+                        HStack {
+                            Text("**\(result.lookup)** contains")
+                            ForEach(chordGuess.components(), id: \.self) { component in
+                                Text(component)
+                            }
+                        }
                     }
                 }
                 .frame(width: 400)
@@ -176,6 +198,8 @@ struct ChordEditView: View {
                 chordID = index
             }
         }
+        .animation(.default, value: chordGuess?.root)
+        .animation(.default, value: chordGuess?.quality.quality)
         .task(id: values) {
             result = ChordPosition(id: values.id,
                                        frets: values.frets,
@@ -186,6 +210,7 @@ struct ChordEditView: View {
                                        key: values.key,
                                        suffix: values.suffix
             )
+            chordGuess = ChordUtilities.Chord(chord: result.lookup)
         }
     }
 
@@ -195,6 +220,16 @@ struct ChordEditView: View {
                 .font(.title2)
                 .padding(.top)
             Divider()
+        }
+    }
+    
+    func chordFinder(chord: ChordPosition) -> some View {
+        HStack {
+            Text(chord.chordFinder.isEmpty ? "Found nothing" : "Found")
+            ForEach(chord.chordFinder) { result in
+                Text(result.chord)
+                    .foregroundColor(chord.lookup == result.chord ? .green : .primary)
+            }
         }
     }
 

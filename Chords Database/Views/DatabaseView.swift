@@ -38,7 +38,11 @@ struct DatabaseView: View {
                     .cornerRadius(4)
             }
             TableColumn("Chord") { chord in
-                Text("\(chord.key.display.accessible)\(chord.suffix.display.accessible)")
+                VStack(alignment: .leading) {
+                    Text("\(chord.key.display.accessible)\(chord.suffix.display.accessible)")
+                        .font(.title2)
+                    chordFinder(chord: chord)
+                }
             }
             TableColumn("Base Fret") { chord in
                 Text("\(chord.baseFret)")
@@ -86,7 +90,24 @@ struct DatabaseView: View {
         chords = allChords
         haveChords = chords.isEmpty ? false : true
     }
-
+    
+    func chordFinder(chord: ChordPosition) -> some View {
+        VStack(alignment: .leading) {
+            HStack {
+                ForEach(chord.chordNotes.unique(by: {$0}), id: \.self) { result in
+                    Text(result)
+                }
+            }
+            HStack {
+                Text(chord.chordFinder.isEmpty ? "Found nothing" : "Found")
+                ForEach(chord.chordFinder) { result in
+                    Text(result.chord)
+                        .foregroundColor(chord.lookup == result.chord ? .green : .primary)
+                }
+            }
+        }
+    }
+    
     func actions(chord: ChordPosition) -> some View {
         VStack(alignment: .leading) {
             editButton(chord: chord)

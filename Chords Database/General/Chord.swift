@@ -1,5 +1,5 @@
 //
-//  Chord.swift
+//  CustomChord.swift
 //  Chords Database
 //
 //  © 2022 Nick Berendsen
@@ -11,7 +11,7 @@ import SwiftyChords
 // MARK: Custom Chords
 
 /// A custom chord in 'Chord Provider`
-struct Chord: Equatable {
+struct CustomChord: Equatable {
     public var id: UUID
     public var frets: [Int]
     public var fingers: [Int]

@@ -124,9 +124,9 @@ extension Midi {
     // MARK: Fret positions to MIDI values
     
     /// Calculate the MIDI values for a Chord struct
-    /// - Parameter values: The `Chord` values
+    /// - Parameter values: The `CustomChord` values
     /// - Returns: An array of ``Midi/Note``'s
-    static func values(values: Chord) -> [Midi.Note] {
+    static func values(values: CustomChord) -> [Midi.Note] {
         return calculate(frets: values.frets, baseFret: values.baseFret)
     }
     

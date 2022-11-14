@@ -16,11 +16,22 @@
 		D72286CA290BC24100937256 /* ChordEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72286C9290BC24100937256 /* ChordEditView.swift */; };
 		D72286CC290C0DAD00937256 /* Midi.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72286CB290C0DAD00937256 /* Midi.swift */; };
 		D72286CE290E9B8F00937256 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72286CD290E9B8F00937256 /* ContentView.swift */; };
+		D72294E3291E5B17000C87AB /* ChordUtilities+Scales.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72294E2291E5B17000C87AB /* ChordUtilities+Scales.swift */; };
+		D72294E6291E648F000C87AB /* ChordUtilities+Qualities.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72294E5291E648F000C87AB /* ChordUtilities+Qualities.swift */; };
+		D72294E8291E671C000C87AB /* ChordUtilities+Chord.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72294E7291E671C000C87AB /* ChordUtilities+Chord.swift */; };
+		D72294EA291E6B99000C87AB /* ChordUtilities+parse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72294E9291E6B99000C87AB /* ChordUtilities+parse.swift */; };
+		D72294ED291E6C58000C87AB /* ChordUtilities+Quality.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72294EC291E6C58000C87AB /* ChordUtilities+Quality.swift */; };
+		D72294EF291E7739000C87AB /* ChordUtilities+Regex.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72294EE291E7739000C87AB /* ChordUtilities+Regex.swift */; };
+		D72294F1291FC916000C87AB /* ChordUtilities+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72294F0291FC916000C87AB /* ChordUtilities+Utils.swift */; };
+		D72294F329206732000C87AB /* ChordUtilites+Analizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72294F229206732000C87AB /* ChordUtilites+Analizer.swift */; };
 		D751B839290AC40A0002AAFF /* ChordsDatabaseApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D751B838290AC40A0002AAFF /* ChordsDatabaseApp.swift */; };
 		D751B83B290AC40A0002AAFF /* ChordsDatabaseDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = D751B83A290AC40A0002AAFF /* ChordsDatabaseDocument.swift */; };
 		D751B83D290AC40A0002AAFF /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D751B83C290AC40A0002AAFF /* MainView.swift */; };
 		D751B83F290AC40A0002AAFF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D751B83E290AC40A0002AAFF /* Assets.xcassets */; };
 		D751B842290AC40A0002AAFF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D751B841290AC40A0002AAFF /* Preview Assets.xcassets */; };
+		D76B7654291A33A800B3AB93 /* ChordUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76B7653291A33A800B3AB93 /* ChordUtilities.swift */; };
+		D76B7656291D21D400B3AB93 /* Chords+Suffix+pattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76B7655291D21D400B3AB93 /* Chords+Suffix+pattern.swift */; };
+		D7925A3A2922429A00EA54B0 /* Algorithms in Frameworks */ = {isa = PBXBuildFile; productRef = D7925A392922429A00EA54B0 /* Algorithms */; };
 		D794EA1429169CE500ACA62E /* MidiPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D794EA1329169CE500ACA62E /* MidiPlayer.swift */; };
 		D7A95EB4290EB56C00DC41F8 /* Chord.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A95EB3290EB56C00DC41F8 /* Chord.swift */; };
 		D7A95EB6290EB57B00DC41F8 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A95EB5290EB57B00DC41F8 /* Strings.swift */; };
@@ -36,6 +47,14 @@
 		D72286C9290BC24100937256 /* ChordEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChordEditView.swift; sourceTree = "<group>"; };
 		D72286CB290C0DAD00937256 /* Midi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Midi.swift; sourceTree = "<group>"; };
 		D72286CD290E9B8F00937256 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		D72294E2291E5B17000C87AB /* ChordUtilities+Scales.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ChordUtilities+Scales.swift"; sourceTree = "<group>"; };
+		D72294E5291E648F000C87AB /* ChordUtilities+Qualities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ChordUtilities+Qualities.swift"; sourceTree = "<group>"; };
+		D72294E7291E671C000C87AB /* ChordUtilities+Chord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ChordUtilities+Chord.swift"; sourceTree = "<group>"; };
+		D72294E9291E6B99000C87AB /* ChordUtilities+parse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ChordUtilities+parse.swift"; sourceTree = "<group>"; };
+		D72294EC291E6C58000C87AB /* ChordUtilities+Quality.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ChordUtilities+Quality.swift"; sourceTree = "<group>"; };
+		D72294EE291E7739000C87AB /* ChordUtilities+Regex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ChordUtilities+Regex.swift"; sourceTree = "<group>"; };
+		D72294F0291FC916000C87AB /* ChordUtilities+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ChordUtilities+Utils.swift"; sourceTree = "<group>"; };
+		D72294F229206732000C87AB /* ChordUtilites+Analizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ChordUtilites+Analizer.swift"; sourceTree = "<group>"; };
 		D751B835290AC40A0002AAFF /* Chords Database.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Chords Database.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D751B838290AC40A0002AAFF /* ChordsDatabaseApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChordsDatabaseApp.swift; sourceTree = "<group>"; };
 		D751B83A290AC40A0002AAFF /* ChordsDatabaseDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChordsDatabaseDocument.swift; sourceTree = "<group>"; };
@@ -44,6 +63,8 @@
 		D751B841290AC40A0002AAFF /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		D751B843290AC40A0002AAFF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D751B844290AC40A0002AAFF /* ChordsDatabase.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ChordsDatabase.entitlements; sourceTree = "<group>"; };
+		D76B7653291A33A800B3AB93 /* ChordUtilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChordUtilities.swift; sourceTree = "<group>"; };
+		D76B7655291D21D400B3AB93 /* Chords+Suffix+pattern.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Chords+Suffix+pattern.swift"; sourceTree = "<group>"; };
 		D794EA1329169CE500ACA62E /* MidiPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MidiPlayer.swift; sourceTree = "<group>"; };
 		D7A95EB3290EB56C00DC41F8 /* Chord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chord.swift; sourceTree = "<group>"; };
 		D7A95EB5290EB57B00DC41F8 /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
@@ -54,6 +75,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D7925A3A2922429A00EA54B0 /* Algorithms in Frameworks */,
 				D72286B8290AC78400937256 /* SwiftyChords in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -71,6 +93,7 @@
 				D794EA1329169CE500ACA62E /* MidiPlayer.swift */,
 				D7A95EB3290EB56C00DC41F8 /* Chord.swift */,
 				D7A95EB5290EB57B00DC41F8 /* Strings.swift */,
+				D76B7655291D21D400B3AB93 /* Chords+Suffix+pattern.swift */,
 			);
 			path = General;
 			sourceTree = "<group>";
@@ -86,6 +109,30 @@
 				D72286C9290BC24100937256 /* ChordEditView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		D72294E4291E6418000C87AB /* ChordUtilities */ = {
+			isa = PBXGroup;
+			children = (
+				D72294EB291E6C28000C87AB /* Constants */,
+				D76B7653291A33A800B3AB93 /* ChordUtilities.swift */,
+				D72294E7291E671C000C87AB /* ChordUtilities+Chord.swift */,
+				D72294E9291E6B99000C87AB /* ChordUtilities+parse.swift */,
+				D72294EC291E6C58000C87AB /* ChordUtilities+Quality.swift */,
+				D72294EE291E7739000C87AB /* ChordUtilities+Regex.swift */,
+				D72294F0291FC916000C87AB /* ChordUtilities+Utils.swift */,
+				D72294F229206732000C87AB /* ChordUtilites+Analizer.swift */,
+			);
+			path = ChordUtilities;
+			sourceTree = "<group>";
+		};
+		D72294EB291E6C28000C87AB /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				D72294E2291E5B17000C87AB /* ChordUtilities+Scales.swift */,
+				D72294E5291E648F000C87AB /* ChordUtilities+Qualities.swift */,
+			);
+			path = Constants;
 			sourceTree = "<group>";
 		};
 		D751B82C290AC40A0002AAFF = {
@@ -108,6 +155,7 @@
 		D751B837290AC40A0002AAFF /* Chords Database */ = {
 			isa = PBXGroup;
 			children = (
+				D72294E4291E6418000C87AB /* ChordUtilities */,
 				D72286C1290ACC9200937256 /* General */,
 				D72286C2290ACCA300937256 /* Views */,
 				D751B838290AC40A0002AAFF /* ChordsDatabaseApp.swift */,
@@ -146,6 +194,7 @@
 			name = "Chords Database";
 			packageProductDependencies = (
 				D72286B7290AC78400937256 /* SwiftyChords */,
+				D7925A392922429A00EA54B0 /* Algorithms */,
 			);
 			productName = DocApp;
 			productReference = D751B835290AC40A0002AAFF /* Chords Database.app */;
@@ -177,6 +226,7 @@
 			mainGroup = D751B82C290AC40A0002AAFF;
 			packageReferences = (
 				D72286B6290AC78400937256 /* XCRemoteSwiftPackageReference "SwiftyGuitarChords" */,
+				D7925A382922429A00EA54B0 /* XCRemoteSwiftPackageReference "swift-algorithms" */,
 			);
 			productRefGroup = D751B836290AC40A0002AAFF /* Products */;
 			projectDirPath = "";
@@ -227,16 +277,26 @@
 			files = (
 				D72286CC290C0DAD00937256 /* Midi.swift in Sources */,
 				D794EA1429169CE500ACA62E /* MidiPlayer.swift in Sources */,
+				D72294EF291E7739000C87AB /* ChordUtilities+Regex.swift in Sources */,
+				D72294F329206732000C87AB /* ChordUtilites+Analizer.swift in Sources */,
+				D76B7656291D21D400B3AB93 /* Chords+Suffix+pattern.swift in Sources */,
 				D72286CE290E9B8F00937256 /* ContentView.swift in Sources */,
+				D72294E3291E5B17000C87AB /* ChordUtilities+Scales.swift in Sources */,
 				D751B839290AC40A0002AAFF /* ChordsDatabaseApp.swift in Sources */,
 				D72286BE290ACA3500937256 /* ChordsDatabaseModel.swift in Sources */,
 				D72286C6290ADCA600937256 /* KeyDetailsView.swift in Sources */,
 				D7A95EB6290EB57B00DC41F8 /* Strings.swift in Sources */,
 				D72286BA290AC94700937256 /* DatabaseView.swift in Sources */,
 				D72286BC290AC95A00937256 /* SidebarView.swift in Sources */,
+				D72294F1291FC916000C87AB /* ChordUtilities+Utils.swift in Sources */,
+				D72294E8291E671C000C87AB /* ChordUtilities+Chord.swift in Sources */,
 				D751B83B290AC40A0002AAFF /* ChordsDatabaseDocument.swift in Sources */,
+				D72294E6291E648F000C87AB /* ChordUtilities+Qualities.swift in Sources */,
+				D72294ED291E6C58000C87AB /* ChordUtilities+Quality.swift in Sources */,
 				D72286CA290BC24100937256 /* ChordEditView.swift in Sources */,
 				D751B83D290AC40A0002AAFF /* MainView.swift in Sources */,
+				D72294EA291E6B99000C87AB /* ChordUtilities+parse.swift in Sources */,
+				D76B7654291A33A800B3AB93 /* ChordUtilities.swift in Sources */,
 				D72286C0290ACC8600937256 /* Extensions.swift in Sources */,
 				D7A95EB4290EB56C00DC41F8 /* Chord.swift in Sources */,
 			);
@@ -446,6 +506,14 @@
 				kind = branch;
 			};
 		};
+		D7925A382922429A00EA54B0 /* XCRemoteSwiftPackageReference "swift-algorithms" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-algorithms.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -453,6 +521,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = D72286B6290AC78400937256 /* XCRemoteSwiftPackageReference "SwiftyGuitarChords" */;
 			productName = SwiftyChords;
+		};
+		D7925A392922429A00EA54B0 /* Algorithms */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D7925A382922429A00EA54B0 /* XCRemoteSwiftPackageReference "swift-algorithms" */;
+			productName = Algorithms;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

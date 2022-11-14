@@ -32,6 +32,19 @@ struct MainView: View {
         })
         .animation(.default, value: midiFilter)
         .toolbar {
+            
+            /// Test button
+            Button(action: {
+                ChordUtilities.QualityManager.shared.loadQualities()
+                let chord = ChordUtilities.Chord(chord: "A11")
+                dump(chord.components())
+//                dump(ChordUtilities.findChordsFromNotes(notes: ["A", "E", "C#"]))
+//                dump(ChordUtilities.findChordsFromNotes(notes: ["A", "C#", "E"]))
+//                dump(ChordUtilities.findChordsFromNotes(notes: ["A", "C", "E"]))
+            }, label: {
+                Text("Test")
+            })
+            
             MidiPlayer.InstrumentPicker()
 
             /// New Chord Button

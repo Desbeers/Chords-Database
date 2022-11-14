@@ -51,6 +51,48 @@ extension ChordPosition {
 }
 
 extension ChordPosition {
+    
+    var chordNotes: [String] {
+        var notes: [String] = []
+        for note in self.midi {
+            if let midiNote = Midi(rawValue: ((note - 40) % 12)) {
+                notes.append(midiNote.key.rawValue)
+            }
+        }
+        return notes
+    }
+}
+
+extension ChordPosition {
+    
+    var chordFinder: [ChordUtilities.Chord] {
+        ChordUtilities.findChordsFromNotes(notes: chordNotes.unique(by: {$0}))
+    }
+}
+
+extension ChordPosition {
+    
+    var lookup: String {
+        
+        var name = key.rawValue
+        
+        switch suffix {
+        case .major:
+            name += "maj"
+        case .minor:
+            name += "m"
+        default:
+            if suffix.rawValue.contains("/") {
+                name += suffix.rawValue
+            } else {
+                name += suffix.display.short.lowercased()
+            }
+        }
+        return name
+    }
+}
+
+extension ChordPosition {
 
     /// Play a chord with MIDI
     /// - Parameter instrument: The `instrument` to use

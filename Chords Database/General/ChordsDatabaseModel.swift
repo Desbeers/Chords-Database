@@ -15,7 +15,7 @@ class ChordsDatabaseModel: ObservableObject {
     /// All chords in the current database
     @Published var allChords: [ChordPosition] = []
     /// The selected Key in the ``SidebarView``
-    @Published var selectedKey: Chords.Key = .c
+    @Published var selectedKey: Chords.Key = .a
     /// The selected Suffix in the ``KeyDetailsView``
     @Published var selectedSuffix: Chords.Suffix?
     /// Edit a chord

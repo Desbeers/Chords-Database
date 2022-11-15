@@ -24,6 +24,8 @@ struct DatabaseView: View {
     @State var haveChords = true
     /// The selection in the table
     @State private var selection: ChordPosition.ID?
+    /// The chord for the 'delete' action
+    @State private var actionButton: ChordPosition?
     /// The body of the View
     var body: some View {
         if !haveChords && chords.isEmpty {
@@ -113,22 +115,22 @@ struct DatabaseView: View {
             editButton(chord: chord)
             duplicateButton(chord: chord)
             Button(action: {
+                actionButton = chord
                 confirmationShown = true
             }, label: {
                 Label("Delete", systemImage: "trash")
             })
-            .confirmationDialog(
-                "Delete \(chord.key.display.accessible + chord.suffix.display.accessible)?",
-                isPresented: $confirmationShown,
-                titleVisibility: .visible
-            ) {
-                deleteButton(chord: chord)
-            } message: {
-                model.diagram(chord: chord)
-                Text("With base fret \(chord.baseFret)")
-            }
         }
         .labelStyle(ActionLabelStyle())
+        .confirmationDialog(
+            "Delete \(actionButton?.key.display.accessible ?? "") \(actionButton?.suffix.display.accessible ?? "")?",
+            isPresented: $confirmationShown,
+            titleVisibility: .visible
+        ) {
+            deleteButton(chord: actionButton)
+        } message: {
+            Text("With base fret \(actionButton?.baseFret ?? 1000)")
+        }
     }
 
     func editButton(chord: ChordPosition) -> some View {
@@ -139,9 +141,9 @@ struct DatabaseView: View {
         })
     }
 
-    func deleteButton(chord: ChordPosition) -> some View {
+    func deleteButton(chord: ChordPosition?) -> some View {
         Button(action: {
-            if let chordIndex = model.allChords.firstIndex(where: {$0.id == chord.id}) {
+            if let chord, let chordIndex = model.allChords.firstIndex(where: {$0.id == chord.id}) {
                 model.allChords.remove(at: chordIndex)
                 model.updateDocument.toggle()
             }

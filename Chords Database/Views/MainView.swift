@@ -35,7 +35,6 @@ struct MainView: View {
             
             /// Test button
             Button(action: {
-                ChordUtilities.QualityManager.shared.loadQualities()
                 let chord = ChordUtilities.Chord(chord: "A11")
                 dump(chord.components())
 //                dump(ChordUtilities.findChordsFromNotes(notes: ["A", "E", "C#"]))

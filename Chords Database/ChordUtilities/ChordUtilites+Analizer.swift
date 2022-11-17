@@ -29,7 +29,6 @@ extension ChordUtilities {
         
         for (tempRoot, positions) in rootAndPositions {
             let quality = QualityManager.shared.findQualityFromComponents(components: positions)
-            //print(positions)
             var chord: String = ""
             
             if quality.isEmpty {
@@ -56,15 +55,14 @@ extension ChordUtilities {
     static func getAllRotatedNotes(notes: [String]) -> [[String]] {
         var notesList: [[String]] = []
         
-        for perm in notes.permutations() {
-            notesList.append(perm)
+//        for perm in notes.permutations() {
+//            notesList.append(perm)
+//        }
+
+        for index in 0..<notes.count {
+            notesList.append(Array(notes[index...] + notes[..<index]))
         }
 
-        
-//        for index in 0..<notes.count {
-//            notesList.append(Array(notes[index...] + notes[..<index]))
-//        }
-        //dump(notesList)
         print("----")
         return notesList
     }
@@ -93,8 +91,6 @@ extension ChordUtilities {
             positions.append(notePostion - rootPosition)
             currentPosition = notePostion
         }
-        //print(positions)
         return positions
-        //return positions.sorted()
     }
 }

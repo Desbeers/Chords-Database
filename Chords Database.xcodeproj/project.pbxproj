@@ -65,6 +65,7 @@
 		D751B844290AC40A0002AAFF /* ChordsDatabase.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ChordsDatabase.entitlements; sourceTree = "<group>"; };
 		D76B7653291A33A800B3AB93 /* ChordUtilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChordUtilities.swift; sourceTree = "<group>"; };
 		D76B7655291D21D400B3AB93 /* Chords+Suffix+pattern.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Chords+Suffix+pattern.swift"; sourceTree = "<group>"; };
+		D7925A3B2923D8F700EA54B0 /* SwiftyGuitarChords */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = SwiftyGuitarChords; path = ../SwiftyGuitarChords; sourceTree = "<group>"; };
 		D794EA1329169CE500ACA62E /* MidiPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MidiPlayer.swift; sourceTree = "<group>"; };
 		D7A95EB3290EB56C00DC41F8 /* Chord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chord.swift; sourceTree = "<group>"; };
 		D7A95EB5290EB57B00DC41F8 /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
@@ -138,6 +139,7 @@
 		D751B82C290AC40A0002AAFF = {
 			isa = PBXGroup;
 			children = (
+				D7925A3B2923D8F700EA54B0 /* SwiftyGuitarChords */,
 				D72286C8290B03FE00937256 /* README.md */,
 				D751B837290AC40A0002AAFF /* Chords Database */,
 				D751B836290AC40A0002AAFF /* Products */,

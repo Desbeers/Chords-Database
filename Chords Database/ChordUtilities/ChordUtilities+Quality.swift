@@ -77,40 +77,40 @@ extension ChordUtilities {
     class QualityManager {
         static let shared = QualityManager()
         
-        var qualities: [String: Quality]
+        //  var qualities: [String: Quality]
         
         private init() {
-            var qualities: [String: Quality] = [:]
-            for (key, value) in defaultQualities {
-                qualities[key] = Quality(key, value)
-            }
-            self.qualities = qualities
+//            var qualities: [String: Quality] = [:]
+//            for (key, value) in defaultQualities {
+//                qualities[key] = Quality(key, value)
+//            }
+//            self.qualities = qualities
         }
         
-        func loadQualities() {
-            var qualities: [String: Quality] = [:]
-            for (key, value) in defaultQualities {
-                qualities[key] = Quality(key, value)
-            }
-            self.qualities = qualities
-            print("Qualities: \(qualities.count)")
-        }
+//        func loadQualities() {
+//            var qualities: [String: Quality] = [:]
+//            for (key, value) in defaultQualities {
+//                qualities[key] = Quality(key, value)
+//            }
+//            self.qualities = qualities
+//            print("Qualities: \(qualities.count)")
+//        }
         
         func getQuality(_ name: String, _ inversion: Int) -> Quality {
             
-            guard var quality = qualities[name] else {
-                return qualities["maj"]!
+            guard var quality = defaultQualities.first(where: {$0.key == name}) else {
+                return Quality(name, [])
             }
 
             /// Apply the requested inversion
             for _ in 0..<inversion {
-                var component = quality.components[0]
-                while component < quality.components.count - 1 {
+                var component = quality.value[0]
+                while component < quality.value.count - 1 {
                     component += 12
                 }
-                quality.components.append(component)
+                quality.value.append(component)
             }
-            return quality
+            return Quality(name, quality.value)
         }
         
         /// Find a quality from components
@@ -118,15 +118,15 @@ extension ChordUtilities {
         /// - Returns: The quality
         func findQualityFromComponents(components: [Int]) -> String {
             
-            for quality in defaultQualities2 where quality.value == components {
-                print(quality.key)
+            for quality in defaultQualities where quality.value == components {
+                return quality.key
             }
-            
-            //for quality in qualities.values where quality.components == components {
-            for quality in qualities.values where quality.components == components {
-                //print(quality.quality)
-                return quality.quality
-            }
+            print(components)
+            //  for quality in qualities.values where quality.components == components {
+//            for quality in qualities.values where quality.components == components {
+//                //print(quality.quality)
+//                return quality.quality
+//            }
             return ""
         }
     }

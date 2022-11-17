@@ -77,7 +77,7 @@ struct ChordEditView: View {
                 Picker("Barres:", selection: $values.barres) {
                     Text("None")
                         .tag(0)
-                    ForEach(1...4, id: \.self) { value in
+                    ForEach(1...5, id: \.self) { value in
                         Text(value.description)
                             .tag(value)
                     }
@@ -183,7 +183,7 @@ struct ChordEditView: View {
                 }, label: {
                     Text(status.rawValue)
                 })
-                .disabled(chord.define == result.define)
+                .disabled(chord == result)
                 Button(action: {
                     dismiss()
                 }, label: {

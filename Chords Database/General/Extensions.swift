@@ -78,9 +78,11 @@ extension ChordPosition {
         
         switch suffix {
         case .major:
-            name += "maj"
+            name += "major"
         case .minor:
-            name += "m"
+            name += "minor"
+        case .sixNine:
+            name += "69"
         default:
             if suffix.rawValue.contains("/") {
                 name += suffix.rawValue

@@ -9,24 +9,9 @@ import Foundation
 import SwiftyChords
 
 extension ChordUtilities {
-    static var defaultQualities2: KeyValuePairs<Chords.Suffix, [Int]> {
-        [
-            .major: [0, 4, 7],
-            .major: [0, 7, 16],
-            .minor: [0, 3, 7],
-            .dim: [0, 3, 6],
-            .dimSeven: [0, 3, 6, 9],
-            .susTwo: [0, 2, 7],
-            .susFour: [0, 5, 7],
-            .sevenSusFour: [0, 5, 7, 10]
-        ]
-    }
-}
 
-extension ChordUtilities {
-
-    //static var defaultQualities: [String: [Int]] {
     static var defaultQualities: KeyValuePairs<String, [Int]> {
+        // swiftlint:disable duplicated_key_in_dictionary_literal
         [
             /// chords consist of 2 notes
             "5": [0, 7],
@@ -34,28 +19,74 @@ extension ChordUtilities {
             "omit5": [0, 4],
             "m[no5)": [0, 3],
             "m[omit5)": [0, 3],
-            /// 3 notes
-            //"": [0, 4, 7],
-            "maj": [0, 4, 7],
-            "majV2": [0, 7, 16],
-            "m": [0, 3, 7],
-            //"min": [0, 3, 7],
-            //"-": [0, 3, 7],
-            "dim": [0, 3, 6],
+            
+            /// # 'major' chords
+            "major": [0, 4, 7],
+            "major": [0, 7, 16],
+            
+            /// # 'minor' chords
+            "minor": [0, 3, 7],
+            "minor": [0, 7, 15],
+            
             /// Not to confuse Ab5 with A[b5)
             "[b5)": [0, 4, 6],
+            
+            /// # 'aug' chords
             "aug": [0, 4, 8],
+            "aug": [0, 8, 16],
+            
+            /// # 'sus2' chords
             "sus2": [0, 2, 7],
+            "sus2": [0, 7, 14],
+            
+            /// # 'sus4' chords
             "sus4": [0, 5, 7],
-            //"sus": [0, 5, 7],
-            /// 4 notes
+            "sus4": [0, 7, 17],
+            
+            /// # '6' chords
             "6": [0, 4, 7, 9],
+            "6": [0, 4, 9, 19],
+            "6": [0, 7, 9, 16],
+            "6": [0, 7, 16, 21],
+            "6": [0, 9, 16, 19],
+            "6": [0, 4, 9],
+            
+            /// # '69' chords
+            "69": [0, 4, 7, 9, 14],
+            "69": [0, 4, 9, 14],
+            "69": [0, 2, 9, 16],
+            "69": [0, 9, 14, 16],
+            "69": [0, 4, 9, 14, 19],
+            "69": [0, 2, 7, 16, 21],
+            "69": [0, 7, 14, 16, 21],
+            
+            /// # '7' chords
             "7": [0, 4, 7, 10],
+            "7": [0, 4, 10],
+            "7": [0, 4, 10, 19],
+            "7": [0, 7, 10, 16],
+            "7": [0, 7, 16, 22],
+            
+            /// # 'dim' chords
+            
+            "dim": [0, 3, 6],
+            "dim": [0, 6, 15],
+            "dim": [0, 15, 18],
+            
+            /// # 'dim7' chords
+            
+            "dim7": [0, 3, 6, 9],
+            "dim7": [0, 3, 9, 18],
+            "dim7": [0, 6, 15, 21],
+            "dim7": [0, 6, 9, 15],
+            "dim7": [0, 9, 15, 18],
+            
             "7-5": [0, 4, 6, 10],
             "7b5": [0, 4, 6, 10],
             "7+5": [0, 4, 8, 10],
             "7#5": [0, 4, 8, 10],
             "7sus4": [0, 5, 7, 10],
+            "7sus4": [0, 7, 10, 17],
             "m6": [0, 3, 7, 9],
             "m7": [0, 3, 7, 10],
             "m7-5": [0, 3, 6, 10],
@@ -63,7 +94,6 @@ extension ChordUtilities {
             "m7+5": [0, 3, 8, 10],
             "m7#5": [0, 3, 8, 10],
             "dim6": [0, 3, 6, 8],
-            "dim7": [0, 3, 6, 9],
             "M7": [0, 4, 7, 11],
             "maj7": [0, 4, 7, 11],
             "M7+5": [0, 4, 8, 11],
@@ -81,7 +111,7 @@ extension ChordUtilities {
             "4": [0, 4, 7, 17],
             /// 5 notes
             "m69": [0, 3, 7, 9, 14],
-            "69": [0, 4, 7, 9, 14],
+            
             "9": [0, 4, 7, 10, 14],
             "m9": [0, 3, 7, 10, 14],
             "M9": [0, 4, 7, 11, 14],
@@ -126,5 +156,6 @@ extension ChordUtilities {
             "13#11": [0, 4, 7, 10, 18, 21],
             "M7add13": [0, 4, 7, 9, 11, 14]
         ]
+        // swiftlint:enable duplicated_key_in_dictionary_literal
     }
 }

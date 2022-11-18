@@ -52,21 +52,28 @@ extension ChordPosition {
 
 extension ChordPosition {
     
-    var chordNotes: [String] {
-        var notes: [String] = []
+    var chordNotes: [ChordNote] {
+        var notes: [ChordNote] = []
         for note in self.midi {
             if let midiNote = Midi(rawValue: ((note - 40) % 12)) {
-                notes.append(midiNote.key.rawValue)
+                // -TODO: +4 because MIDI starts with E
+                let test = ChordUtilities.valueToNote(value: (midiNote.rawValue + 4), scale: self.key.rawValue)
+                notes.append(ChordNote(note: test))
             }
         }
         return notes
+    }
+    
+    struct ChordNote: Identifiable, Hashable {
+        let id = UUID()
+        var note: String
     }
 }
 
 extension ChordPosition {
     
     var chordFinder: [ChordUtilities.Chord] {
-        ChordUtilities.findChordsFromNotes(notes: chordNotes.unique(by: {$0}))
+        ChordUtilities.findChordsFromNotes(notes: chordNotes.map({$0.note}).unique(by: {$0}))
     }
 }
 

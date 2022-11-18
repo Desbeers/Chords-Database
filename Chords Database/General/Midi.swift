@@ -150,7 +150,6 @@ extension Midi {
                 if let midiNote = Midi(rawValue: (fret) % 12), let key = Chords.Key(rawValue: midiNote.name) {
                     let midiValue = midiNote.baseValue + ((fret / 12) * 12)
                     midiNotes.append(Midi.Note(note: midiValue, key: key))
-                    
                 }
             }
         }

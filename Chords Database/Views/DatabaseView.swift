@@ -95,11 +95,11 @@ struct DatabaseView: View {
     
     func chordFinder(chord: ChordPosition) -> some View {
         VStack(alignment: .leading) {
-            HStack {
-                ForEach(chord.chordNotes.unique(by: {$0}), id: \.self) { result in
-                    Text(result)
-                }
-            }
+//            HStack {
+//                ForEach(chord.chordNotes) { result in
+//                    Text(result.note)
+//                }
+//            }
             HStack {
                 Text(chord.chordFinder.isEmpty ? "Found nothing" : "Found")
                 ForEach(chord.chordFinder) { result in

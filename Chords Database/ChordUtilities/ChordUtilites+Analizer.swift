@@ -34,7 +34,7 @@ extension ChordUtilities {
         var chords: [Chord] = []
         
         for (tempRoot, positions) in rootAndPositions {
-            let quality = QualityManager.shared.findQualityFromComponents(components: positions)
+            let quality = QualityManager.getQualityFromComponents(components: positions)
             var chord: String = ""
             print(positions)
             if quality.isEmpty {

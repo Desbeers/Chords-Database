@@ -52,7 +52,7 @@ extension ChordUtilities {
             checkNote(note: on)
         }
 
-        let quality = QualityManager.shared.getQuality(rest, inversion)
+        let quality = QualityManager.getQualityFromChord(chord: rest, inversion: inversion)
         
         return (root, quality, appended, on)
     }

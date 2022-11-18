@@ -73,33 +73,18 @@ extension ChordUtilities {
         }
     }
     
-    /// Singleton class to manage the qualities
-    class QualityManager {
-        static let shared = QualityManager()
-        
-        //  var qualities: [String: Quality]
-        
-        private init() {
-//            var qualities: [String: Quality] = [:]
-//            for (key, value) in defaultQualities {
-//                qualities[key] = Quality(key, value)
-//            }
-//            self.qualities = qualities
-        }
-        
-//        func loadQualities() {
-//            var qualities: [String: Quality] = [:]
-//            for (key, value) in defaultQualities {
-//                qualities[key] = Quality(key, value)
-//            }
-//            self.qualities = qualities
-//            print("Qualities: \(qualities.count)")
-//        }
-        
-        func getQuality(_ name: String, _ inversion: Int) -> Quality {
+    /// Enum with functions to manage the qualities
+    enum QualityManager {
+
+        /// Get the quality of a chord
+        /// - Parameters:
+        ///   - name: The name of the chotds
+        ///   - inversion: The inversion
+        /// - Returns: A ``ChordUtilities/Quality``
+        static func getQualityFromChord(chord: String, inversion: Int) -> Quality {
             
-            guard var quality = defaultQualities.first(where: {$0.key == name}) else {
-                return Quality(name, [])
+            guard var quality = defaultQualities.first(where: {$0.key == chord}) else {
+                return Quality(chord, [])
             }
 
             /// Apply the requested inversion
@@ -110,13 +95,13 @@ extension ChordUtilities {
                 }
                 quality.value.append(component)
             }
-            return Quality(name, quality.value)
+            return Quality(chord, quality.value)
         }
         
-        /// Find a quality from components
+        /// Get a quality from chord components
         /// - Parameter components: Components of quality
         /// - Returns: The quality
-        func findQualityFromComponents(components: [Int]) -> String {
+        static func getQualityFromComponents(components: [Int]) -> String {
             for quality in defaultQualities where quality.value == components {
                 return quality.key
             }

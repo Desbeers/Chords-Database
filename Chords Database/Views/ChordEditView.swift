@@ -89,12 +89,18 @@ struct ChordEditView: View {
                     HStack {
                         Divider()
                             .frame(height: 20)
-                        ForEach(values.midi) { midi in
-                            Text("\(midi.key.display.symbol)")
+                        ForEach(result.chordNotes) { note in
+                            Text(note.note)
                                 .frame(width: 18)
                             Divider()
                                 .frame(height: 20)
                         }
+//                        ForEach(values.midi) { midi in
+//                            Text("\(midi.key.display.symbol)")
+//                                .frame(width: 18)
+//                            Divider()
+//                                .frame(height: 20)
+//                        }
                     }
                     HStack {
                         MidiPlayer.InstrumentPicker()

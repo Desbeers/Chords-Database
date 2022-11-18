@@ -117,16 +117,9 @@ extension ChordUtilities {
         /// - Parameter components: Components of quality
         /// - Returns: The quality
         func findQualityFromComponents(components: [Int]) -> String {
-            
             for quality in defaultQualities where quality.value == components {
                 return quality.key
             }
-            print(components)
-            //  for quality in qualities.values where quality.components == components {
-//            for quality in qualities.values where quality.components == components {
-//                //print(quality.quality)
-//                return quality.quality
-//            }
             return ""
         }
     }

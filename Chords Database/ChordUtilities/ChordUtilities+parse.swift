@@ -31,7 +31,7 @@ extension ChordUtilities {
         }
         
         func checkNote(note: String) {
-            guard noterValueDict[note] != nil else {
+            guard noterValueDict[Chords.Key(rawValue: note) ?? .c] != nil else {
                 return
             }
         }

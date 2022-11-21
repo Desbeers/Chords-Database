@@ -21,6 +21,6 @@ struct CustomChord: Equatable {
     public var midi: [Midi.Note] {
         return Midi.values(values: self)
     }
-    public var key: Chords.Key
-    public var suffix: Chords.Suffix
+    public var root: Chords.Root
+    public var quality: Chords.Quality
 }

@@ -57,7 +57,7 @@ extension ChordPosition {
         for note in self.midi {
             if let midiNote = Midi(rawValue: ((note - 40) % 12)) {
                 // -TODO: +4 because MIDI starts with E
-                let test = ChordUtilities.valueToNote(value: (midiNote.rawValue + 4), scale: self.key.rawValue)
+                let test = ChordUtilities.valueToNote(value: (midiNote.rawValue + 4), scale: self.key)
                 notes.append(ChordNote(note: test))
             }
         }
@@ -66,38 +66,21 @@ extension ChordPosition {
     
     struct ChordNote: Identifiable, Hashable {
         let id = UUID()
-        var note: String
+        var note: Chords.Key
     }
 }
 
 extension ChordPosition {
-    
     var chordFinder: [ChordUtilities.Chord] {
         ChordUtilities.findChordsFromNotes(notes: chordNotes.map({$0.note}).unique(by: {$0}))
     }
 }
 
 extension ChordPosition {
-    
-    var lookup: String {
-        
-        var name = key.rawValue
-        
-        switch suffix {
-        case .major:
-            name += "major"
-        case .minor:
-            name += "minor"
-        case .sixNine:
-            name += "69"
-        default:
-            if suffix.rawValue.contains("/") {
-                name += suffix.rawValue
-            } else {
-                name += suffix.display.short.lowercased()
-            }
-        }
-        return name
+
+    /// The full name of the chord
+    var name: String {
+        return "\(key.rawValue)\(suffix.rawValue)"
     }
 }
 

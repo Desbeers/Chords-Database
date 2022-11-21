@@ -12,15 +12,15 @@ extension ChordUtilities {
     
     /// The regex for a `chord` string
     ///
-    /// It will parse the chord to find the `kay` and optional `suffix`
+    /// It will parse the chord to find the `root` and optional `quality`
     ///
     ///     /// ## Examples
     ///
-    ///     Am -> key: Am, suffix: nil
-    ///     Dsus4 -> key: D, suffix: sus4
+    ///     Am -> root: Am, quality: nil
+    ///     Dsus4 -> root: D, quality: sus4
     ///
     static let chordRegex = Regex {
-        /// The Key
+        /// The root
         Capture {
             OneOrMore {
                 CharacterClass(
@@ -28,7 +28,7 @@ extension ChordUtilities {
                 )
             }
         }
-        /// The optional Suffix
+        /// The optional quality
         Optionally {
             Capture {
                 OneOrMore(.any)

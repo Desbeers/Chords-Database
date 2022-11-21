@@ -31,8 +31,8 @@ enum Midi: Int {
 extension Midi {
     
     /// The Key of the MIDI note
-    var key: Chords.Key {
-        Chords.Key(rawValue: name) ?? .c
+    var key: Chords.Root {
+        Chords.Root(rawValue: name) ?? .c
     }
 }
 
@@ -111,7 +111,7 @@ extension Midi {
         /// The MIDI note number
         let note: Int
         /// The key of the MIDI note
-        let key: Chords.Key
+        let key: Chords.Root
         /// The octave of the MIDI note
         var octave: Int {
             Int(round(Double(note - 17) / 12))
@@ -147,7 +147,7 @@ extension Midi {
                 /// Add base fret if the fret is not 0 and the offset
                 fret += string.offset + (fret == 0 ? 1 : baseFret)
                 /// Find the base midi value
-                if let midiNote = Midi(rawValue: (fret) % 12), let key = Chords.Key(rawValue: midiNote.name) {
+                if let midiNote = Midi(rawValue: (fret) % 12), let key = Chords.Root(rawValue: midiNote.name) {
                     let midiValue = midiNote.baseValue + ((fret / 12) * 12)
                     midiNotes.append(Midi.Note(note: midiValue, key: key))
                 }

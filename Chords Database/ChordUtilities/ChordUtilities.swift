@@ -7,9 +7,13 @@
 
 import Foundation
 import SwiftyChords
-import SwiftUI
 
 /// Chord utilities
 enum ChordUtilities {
     /// Just a placeholder
+}
+
+extension Chords {
+    typealias Root = Key
+    typealias Quality = Suffix
 }

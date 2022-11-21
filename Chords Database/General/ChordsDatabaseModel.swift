@@ -14,10 +14,10 @@ import SwiftyChords
 class ChordsDatabaseModel: ObservableObject {
     /// All chords in the current database
     @Published var allChords: [ChordPosition] = []
-    /// The selected Key in the ``SidebarView``
-    @Published var selectedKey: Chords.Key = .a
-    /// The selected Suffix in the ``KeyDetailsView``
-    @Published var selectedSuffix: Chords.Suffix?
+    /// The selected root in the ``SidebarView``
+    @Published var selectedRoot: Chords.Root = .a
+    /// The selected Suffix in the ``RootDetailsView``
+    @Published var selectedQuality: Chords.Quality?
     /// Edit a chord
     @Published var editChord: ChordPosition?
     /// The *update document* toggle

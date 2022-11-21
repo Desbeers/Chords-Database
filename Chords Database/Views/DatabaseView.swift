@@ -29,7 +29,7 @@ struct DatabaseView: View {
     /// The body of the View
     var body: some View {
         if !haveChords && chords.isEmpty {
-            Text("No chords in the key of \(model.selectedKey.display.symbol) found in the datadase")
+            Text("No chords in the key of \(model.selectedRoot.display.symbol) found in the datadase")
                 .font(.title)
                 .padding(.top)
         }
@@ -63,14 +63,14 @@ struct DatabaseView: View {
         }
         .buttonStyle(.bordered)
         .animation(.default, value: haveChords)
-        .id(model.selectedKey)
+        .id(model.selectedRoot)
         .task(id: model.allChords) {
             filterChords()
         }
-        .task(id: model.selectedKey) {
+        .task(id: model.selectedRoot) {
             filterChords()
         }
-        .task(id: model.selectedSuffix) {
+        .task(id: model.selectedQuality) {
             filterChords()
         }
         .task(id: midiFilter) {
@@ -79,8 +79,8 @@ struct DatabaseView: View {
     }
 
     func filterChords() {
-        var allChords = model.allChords.filter({$0.key == model.selectedKey})
-        if let suffix = model.selectedSuffix {
+        var allChords = model.allChords.filter({$0.key == model.selectedRoot})
+        if let suffix = model.selectedQuality {
             allChords = allChords.filter({$0.suffix == suffix})
         }
         if midiFilter {
@@ -95,16 +95,11 @@ struct DatabaseView: View {
     
     func chordFinder(chord: ChordPosition) -> some View {
         VStack(alignment: .leading) {
-//            HStack {
-//                ForEach(chord.chordNotes) { result in
-//                    Text(result.note)
-//                }
-//            }
             HStack {
                 Text(chord.chordFinder.isEmpty ? "Found nothing" : "Found")
                 ForEach(chord.chordFinder) { result in
-                    Text(result.chord)
-                        .foregroundColor(chord.lookup == result.chord ? .green : .primary)
+                    Text(result.display)
+                        .foregroundColor(chord.name == result.name ? .accentColor : .primary)
                 }
             }
         }

@@ -25,7 +25,7 @@ struct MainView: View {
             sidebar: {
             SidebarView()
         }, content: {
-            KeyDetailsView()
+            RootDetailsView()
                 .navigationSplitViewColumnWidth(200)
         }, detail: {
             DatabaseView()
@@ -35,11 +35,17 @@ struct MainView: View {
             
             /// Test button
             Button(action: {
-                let chord = ChordUtilities.Chord(chord: "A11")
-                dump(chord.components())
-//                dump(ChordUtilities.findChordsFromNotes(notes: ["A", "E", "C#"]))
+//                let chord = ChordUtilities.Chord(chord: "A/G")
+//                dump(chord)
+                
+                let chord = ChordUtilities.getChordInfo(root: .a, quality: .slashFSharp)
+                dump(chord)
+                print(chord.components())
+
+                
+                //                dump(ChordUtilities.findChordsFromNotes(notes: ["A", "E", "C#"]))
 //                dump(ChordUtilities.findChordsFromNotes(notes: ["A", "C#", "E"]))
-//                dump(ChordUtilities.findChordsFromNotes(notes: ["A", "C", "E"]))
+//                let chord2 = ChordUtilities.findChordsFromNotes(notes: ["F", "A", "C#", "E"])
             }, label: {
                 Text("Test")
             })
@@ -54,8 +60,8 @@ struct MainView: View {
                                              baseFret: 1,
                                              barres: [],
                                              midi: [48, 52, 55, 60, 64],
-                                             key: model.selectedKey,
-                                             suffix: model.selectedSuffix ?? .major
+                                             key: model.selectedRoot,
+                                             suffix: model.selectedQuality ?? .major
                 )
                 model.editChord = newChord
             }, label: {

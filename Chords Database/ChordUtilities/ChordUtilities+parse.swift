@@ -10,16 +10,17 @@ import SwiftyChords
 
 extension ChordUtilities {
     
-    /// Parse a string to get chord component
+    /// Parse a chord string to get chord components
     /// - Parameter chord: Expression of a chord
     /// - Returns: (root, quality, appended, on)
-    static func parse(chord: String) -> (root: String, quality: Quality, appended: [String], on: String) {
+    static func parse(chord: String) -> (root: Chords.Root, quality: Quality, appended: [String], on: Chords.Root?) {
         
         var root: String = ""
         let appended: [String] = []
-        var on: String = ""
+        var on: Chords.Root?
         
         var rest: String = ""
+        var inversion = 0
         
         if let chordMatch = chord.wholeMatch(of: chordRegex) {
             /// Set the root
@@ -29,17 +30,7 @@ extension ChordUtilities {
                 rest = String(matchSuffix)
             }
         }
-        
-        func checkNote(note: String) {
-            guard noterValueDict[Chords.Key(rawValue: note) ?? .c] != nil else {
-                return
-            }
-        }
-        
-        checkNote(note: root)
-        
-        var inversion = 0
-        
+
         if let inversionMatch = rest.wholeMatch(of: inversionRegex) {
             inversion = Int(inversionMatch.1) ?? 0
             rest = String(inversionMatch.2)
@@ -48,12 +39,19 @@ extension ChordUtilities {
         if rest.firstIndex(of: "/") != nil {
             let split = rest.split(separator: "/", omittingEmptySubsequences: false)
             rest = String(split.first ?? "")
-            on = String(split.last ?? "")
-            checkNote(note: on)
+            on = Chords.Root(rawValue: String(split.last ?? ""))
         }
-
-        let quality = QualityManager.getQualityFromChord(chord: rest, inversion: inversion)
         
-        return (root, quality, appended, on)
+        rest = rest.isEmpty ? "major" : rest
+        
+        let lookup = Chords.Quality.stringToEnum(string: rest)
+
+        let quality = getQualityFromChord(name: lookup, inversion: inversion)
+        
+        return (Chords.Root.stringToEnum(string: root),
+                quality,
+                appended,
+                on
+        )
     }
 }

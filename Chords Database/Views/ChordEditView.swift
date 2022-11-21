@@ -26,35 +26,35 @@ struct ChordEditView: View {
     @State private var status: Status = .new
     /// The ID of an existsing chord
     @State private var chordID: Int?
-    /// The chord guess result
-    @State private var chordGuess: ChordUtilities.Chord?
+    /// The chord info result
+    @State private var chordInfo: ChordUtilities.Chord?
     
     /// Init the form
     init(chord: ChordPosition) {
         self.chord = chord
         _result = State(wrappedValue: chord)
         _values = State(wrappedValue: CustomChord(id: chord.id,
-                                            frets: chord.frets,
-                                            fingers: chord.fingers,
-                                            baseFret: chord.baseFret,
-                                            barres: chord.barres.first ?? 0,
-                                            capo: chord.capo,
-                                            key: chord.key,
-                                            suffix: chord.suffix)
+                                                  frets: chord.frets,
+                                                  fingers: chord.fingers,
+                                                  baseFret: chord.baseFret,
+                                                  barres: chord.barres.first ?? 0,
+                                                  capo: chord.capo,
+                                                  root: chord.key,
+                                                  quality: chord.suffix)
         )
     }
     /// The body of the View
     var body: some View {
         VStack {
-            Text("\(values.key.rawValue) \(values.suffix.rawValue)")
+            Text("\(values.root.rawValue) \(values.quality.rawValue)")
                 .font(.title)
             chordFinder(chord: result)
             Text(result.define)
                 .textSelection(.enabled)
                 .font(.headline)
                 .padding()
-            Picker("Key:", selection: $values.key) {
-                ForEach(Chords.Key.allCases, id: \.rawValue) { value in
+            Picker("Key:", selection: $values.root) {
+                ForEach(Chords.Root.allCases, id: \.rawValue) { value in
                     Text(value.rawValue)
                         .tag(value)
                 }
@@ -62,8 +62,8 @@ struct ChordEditView: View {
             .pickerStyle(.segmented)
             .padding(.bottom)
             HStack {
-                Picker("Suffix:", selection: $values.suffix) {
-                    ForEach(Chords.Suffix.allCases, id: \.rawValue) { value in
+                Picker("Suffix:", selection: $values.quality) {
+                    ForEach(Chords.Quality.allCases, id: \.rawValue) { value in
                         Text(value.rawValue)
                             .tag(value)
                     }
@@ -90,7 +90,7 @@ struct ChordEditView: View {
                         Divider()
                             .frame(height: 20)
                         ForEach(result.chordNotes) { note in
-                            Text(note.note)
+                            Text(note.note.display.symbol)
                                 .frame(width: 18)
                             Divider()
                                 .frame(height: 20)
@@ -108,11 +108,11 @@ struct ChordEditView: View {
                         .labelsHidden()
                         MidiPlayer.PlayButton(chord: result)
                     }
-                    if let chordGuess {
+                    if let chordInfo {
                         HStack {
-                            Text("**\(result.lookup)** contains")
-                            ForEach(chordGuess.components(), id: \.self) { component in
-                                Text(component)
+                            Text("**\(chordInfo.display)** contains")
+                            ForEach(chordInfo.components(), id: \.self) { component in
+                                Text(component.display.symbol)
                             }
                         }
                     }
@@ -204,8 +204,7 @@ struct ChordEditView: View {
                 chordID = index
             }
         }
-        .animation(.default, value: chordGuess?.root)
-        .animation(.default, value: chordGuess?.quality.quality)
+        .animation(.default, value: chordInfo?.name)
         .task(id: values) {
             result = ChordPosition(id: values.id,
                                        frets: values.frets,
@@ -213,10 +212,10 @@ struct ChordEditView: View {
                                        baseFret: values.baseFret,
                                        barres: values.barres != 0 ? [values.barres] : [],
                                        midi: values.midi.map({$0.note}),
-                                       key: values.key,
-                                       suffix: values.suffix
+                                       key: values.root,
+                                       suffix: values.quality
             )
-            chordGuess = ChordUtilities.Chord(chord: result.lookup)
+            chordInfo = ChordUtilities.getChordInfo(root: values.root, quality: values.quality)
         }
     }
 
@@ -233,8 +232,8 @@ struct ChordEditView: View {
         HStack {
             Text(chord.chordFinder.isEmpty ? "Found nothing" : "Found")
             ForEach(chord.chordFinder) { result in
-                Text(result.chord)
-                    .foregroundColor(chord.lookup == result.chord ? .green : .primary)
+                Text(result.display)
+                    .foregroundColor(chord.name == result.name ? .accentColor : .primary)
             }
         }
     }

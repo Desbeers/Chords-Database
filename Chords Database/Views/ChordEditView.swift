@@ -89,18 +89,22 @@ struct ChordEditView: View {
                     HStack {
                         Divider()
                             .frame(height: 20)
-                        ForEach(result.chordNotes) { note in
+                        ForEach(result.notes) { note in
                             Text(note.note.display.symbol)
                                 .frame(width: 18)
                             Divider()
                                 .frame(height: 20)
                         }
-//                        ForEach(values.midi) { midi in
-//                            Text("\(midi.key.display.symbol)")
-//                                .frame(width: 18)
-//                            Divider()
-//                                .frame(height: 20)
-//                        }
+                    }
+                    HStack {
+                        Divider()
+                            .frame(height: 20)
+                        ForEach(chord.midi, id: \.self) { note in
+                            Text("\(note)")
+                                .frame(width: 18)
+                            Divider()
+                                .frame(height: 20)
+                        }
                     }
                     HStack {
                         MidiPlayer.InstrumentPicker()
@@ -122,7 +126,7 @@ struct ChordEditView: View {
                     Section(
                         content: {
                             HStack {
-                                ForEach(Strings.allCases, id: \.rawValue) { fret in
+                                ForEach(GuitarTuning.allCases, id: \.rawValue) { fret in
                                     Picker(
                                         selection: $values.frets[fret.rawValue],
                                         content: {
@@ -149,7 +153,7 @@ struct ChordEditView: View {
                     Section(
                         content: {
                             HStack {
-                                ForEach(Strings.allCases, id: \.rawValue) { finger in
+                                ForEach(GuitarTuning.allCases, id: \.rawValue) { finger in
                                     Picker(
                                         selection: $values.fingers[finger.rawValue],
                                         content: {

@@ -33,7 +33,7 @@
 		D76B7656291D21D400B3AB93 /* ChordUtilities+Extensions+SwiftyChords.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76B7655291D21D400B3AB93 /* ChordUtilities+Extensions+SwiftyChords.swift */; };
 		D794EA1429169CE500ACA62E /* MidiPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D794EA1329169CE500ACA62E /* MidiPlayer.swift */; };
 		D7A95EB4290EB56C00DC41F8 /* CustomChord.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A95EB3290EB56C00DC41F8 /* CustomChord.swift */; };
-		D7A95EB6290EB57B00DC41F8 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A95EB5290EB57B00DC41F8 /* Strings.swift */; };
+		D7A95EB6290EB57B00DC41F8 /* GuitarTuning.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A95EB5290EB57B00DC41F8 /* GuitarTuning.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -64,10 +64,9 @@
 		D751B844290AC40A0002AAFF /* ChordsDatabase.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ChordsDatabase.entitlements; sourceTree = "<group>"; };
 		D76B7653291A33A800B3AB93 /* ChordUtilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChordUtilities.swift; sourceTree = "<group>"; };
 		D76B7655291D21D400B3AB93 /* ChordUtilities+Extensions+SwiftyChords.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ChordUtilities+Extensions+SwiftyChords.swift"; sourceTree = "<group>"; };
-		D7925A3E2929CDFE00EA54B0 /* SwiftyGuitarChords */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = SwiftyGuitarChords; path = ../SwiftyGuitarChords; sourceTree = "<group>"; };
 		D794EA1329169CE500ACA62E /* MidiPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MidiPlayer.swift; sourceTree = "<group>"; };
 		D7A95EB3290EB56C00DC41F8 /* CustomChord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomChord.swift; sourceTree = "<group>"; };
-		D7A95EB5290EB57B00DC41F8 /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
+		D7A95EB5290EB57B00DC41F8 /* GuitarTuning.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuitarTuning.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,7 +90,7 @@
 				D72286CB290C0DAD00937256 /* Midi.swift */,
 				D794EA1329169CE500ACA62E /* MidiPlayer.swift */,
 				D7A95EB3290EB56C00DC41F8 /* CustomChord.swift */,
-				D7A95EB5290EB57B00DC41F8 /* Strings.swift */,
+				D7A95EB5290EB57B00DC41F8 /* GuitarTuning.swift */,
 			);
 			path = General;
 			sourceTree = "<group>";
@@ -137,7 +136,6 @@
 		D751B82C290AC40A0002AAFF = {
 			isa = PBXGroup;
 			children = (
-				D7925A3E2929CDFE00EA54B0 /* SwiftyGuitarChords */,
 				D72286C8290B03FE00937256 /* README.md */,
 				D751B837290AC40A0002AAFF /* Chords Database */,
 				D751B836290AC40A0002AAFF /* Products */,
@@ -283,7 +281,7 @@
 				D751B839290AC40A0002AAFF /* ChordsDatabaseApp.swift in Sources */,
 				D72286BE290ACA3500937256 /* ChordsDatabaseModel.swift in Sources */,
 				D72286C6290ADCA600937256 /* RootDetailsView.swift in Sources */,
-				D7A95EB6290EB57B00DC41F8 /* Strings.swift in Sources */,
+				D7A95EB6290EB57B00DC41F8 /* GuitarTuning.swift in Sources */,
 				D72286BA290AC94700937256 /* DatabaseView.swift in Sources */,
 				D72286BC290AC95A00937256 /* SidebarView.swift in Sources */,
 				D72294F1291FC916000C87AB /* ChordUtilities+Utils.swift in Sources */,

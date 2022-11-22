@@ -39,6 +39,7 @@ struct DatabaseView: View {
                     .background(Color(nsColor: .textBackgroundColor))
                     .cornerRadius(4)
             }
+            .width(120)
             TableColumn("Chord") { chord in
                 VStack(alignment: .leading) {
                     Text("\(chord.key.display.accessible)\(chord.suffix.display.accessible)")
@@ -49,6 +50,7 @@ struct DatabaseView: View {
             TableColumn("Base Fret") { chord in
                 Text("\(chord.baseFret)")
             }
+            .width(80)
             TableColumn("Midi") { chord in
                 VStack(alignment: .leading) {
                     MidiPlayer.PlayButton(chord: chord)
@@ -57,6 +59,7 @@ struct DatabaseView: View {
                         .padding(.top)
                 }
             }
+            .width(140)
             TableColumn("Action") { chord in
                 actions(chord: chord)
             }
@@ -95,13 +98,16 @@ struct DatabaseView: View {
     
     func chordFinder(chord: ChordPosition) -> some View {
         VStack(alignment: .leading) {
+            Label(chord.chordFinder.isEmpty ? "Found no matching chord" : "Found:", systemImage: "waveform.and.magnifyingglass")
+                .padding(.vertical, 3)
             HStack {
-                Text(chord.chordFinder.isEmpty ? "Found nothing" : "Found")
+                //Text(chord.chordFinder.isEmpty ? "Found nothing" : "Found")
                 ForEach(chord.chordFinder) { result in
                     Text(result.display)
-                        .foregroundColor(chord.name == result.name ? .accentColor : .primary)
+                        .foregroundColor(chord.name == result.name ? .accentColor : .secondary)
                 }
             }
+            .font(.title3)
         }
     }
     

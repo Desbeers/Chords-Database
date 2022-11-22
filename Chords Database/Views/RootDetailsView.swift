@@ -46,6 +46,6 @@ struct RootDetailsView: View {
             allSuffixes = allSuffixes.filter({$0.midi != Midi.values(values: $0)})
         }
         suffixes = allSuffixes.unique { $0.suffix }
-        model.selectedQuality = .majorSeven
+        model.selectedQuality = .major
     }
 }

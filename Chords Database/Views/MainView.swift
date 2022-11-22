@@ -38,7 +38,7 @@ struct MainView: View {
 //                let chord = ChordUtilities.Chord(chord: "A/G")
 //                dump(chord)
                 
-                let chord = ChordUtilities.getChordInfo(root: .a, quality: .slashFSharp)
+                let chord = ChordUtilities.getChordInfo(root: .a, quality: .slashE)
                 dump(chord)
                 print(chord.components())
 

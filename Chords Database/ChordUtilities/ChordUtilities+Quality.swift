@@ -54,11 +54,10 @@ extension ChordUtilities {
             let rootValue = noteToValue(note: root)
             /// Get the value of the 'on' note
             var onChordValue = noteToValue(note: onChord) - rootValue
-            dump(onChordValue)
             /// Start with the current components
             var components = self.components
             /// Remove the 'on' note from the components, if it is included
-            for (index, value) in self.components.enumerated() where (value % 12) == onChordValue {
+            for (index, value) in self.components.enumerated() where (value % 12) == (onChordValue + 12) {
                 components.remove(at: index)
                 break
             }

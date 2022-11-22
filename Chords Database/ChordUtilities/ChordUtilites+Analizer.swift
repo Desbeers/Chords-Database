@@ -30,20 +30,20 @@ extension ChordUtilities {
         let root = notes[0]
         var rootAndPositions: [Chords.Root: [Int]] = [:]
         
-        for rotatedNotes in getAllRotatedNotes(notes: notes) {
-            let rotatedRoot = rotatedNotes[0]
-            rootAndPositions[rotatedRoot] = notesToPositions(notes: rotatedNotes, root: rotatedRoot)
-        }
-        
 //        for rotatedNotes in getAllRotatedNotes(notes: notes) {
 //            let rotatedRoot = rotatedNotes[0]
-//            var notes: [Int] = []
-//            let notePositions = notesToPositions(notes: rotatedNotes, root: Chords.Root(rawValue: rotatedRoot) ?? .c)
-//            for note in notePositions {
-//                notes.append(note % 12)
-//            }
-//            rootAndPositions[rotatedRoot] = notes.sorted()
+//            rootAndPositions[rotatedRoot] = notesToPositions(notes: rotatedNotes, root: rotatedRoot)
 //        }
+        
+        for rotatedNotes in getAllRotatedNotes(notes: notes) {
+            let rotatedRoot = rotatedNotes[0]
+            var notes: [Int] = []
+            let notePositions = notesToPositions(notes: rotatedNotes, root: rotatedRoot)
+            for note in notePositions {
+                notes.append(note % 12)
+            }
+            rootAndPositions[rotatedRoot] = notes.sorted()
+        }
         
         
         //dump(rootAndPositions)
@@ -62,7 +62,7 @@ extension ChordUtilities {
                 chords.append(Chord(chord: chord, root: tempRoot, quality: quality, on: on))
             }
         }
-        return chords
+        return chords.sorted(using: KeyPathComparator(\.name))
     }
 
     /// Get all rotated notes

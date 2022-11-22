@@ -7,10 +7,10 @@
 
 import Foundation
 
-// MARK: Guitar Strings
+// MARK: Guitar Tuning
 
-/// The strings on the guitar
-enum Strings: Int, CaseIterable {
+/// The tuning the guitar
+enum GuitarTuning: Int, CaseIterable {
     // swiftlint:disable identifier_name
     case E
     case A
@@ -38,4 +38,20 @@ enum Strings: Int, CaseIterable {
             return 23
         }
     }
+//    var offset: Int {
+//        switch self {
+//        case .E:
+//            return 3
+//        case .A:
+//            return 8
+//        case .D:
+//            return 13
+//        case .G:
+//            return 18
+//        case .B:
+//            return 22
+//        case .e:
+//            return 27
+//        }
+//    }
 }

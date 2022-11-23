@@ -96,13 +96,14 @@ extension ChordUtilities {
         return Quality(quality: name, components: quality.value)
     }
     
-    /// Find a quality from chord components
+    /// Find qualities from chord components
     /// - Parameter components: Components of quality
-    /// - Returns: The ``ChordUtilities/Quality`` if found
-    static func findQualityFromComponents(components: [Int]) -> Quality? {
+    /// - Returns: The `qualities`, if found
+    static func findQualitiesFromComponents(components: [Int]) -> [Quality]? {
+        var result: [Quality] = []
         for quality in qualities where quality.value == components {
-            return Quality(quality: quality.key, components: quality.value)
+            result.append(Quality(quality: quality.key, components: quality.value))
         }
-        return nil
+        return result.isEmpty ? nil : result
     }
 }

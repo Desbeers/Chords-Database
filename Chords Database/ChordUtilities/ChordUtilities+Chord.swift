@@ -26,7 +26,7 @@ extension ChordUtilities {
                 display += " \(quality.name.display.symbolized)"
             }
             if let on {
-                display += Chords.Suffix(rawValue: "/\(on.rawValue)")?.display.symbolized ?? ""
+                display += Chords.Suffix(rawValue: "/\(on.rawValue)")?.display.symbolized ?? "/?"
             }
             return display
         }

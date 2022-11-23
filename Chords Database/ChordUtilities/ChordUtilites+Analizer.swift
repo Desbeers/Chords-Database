@@ -46,20 +46,22 @@ extension ChordUtilities {
         }
         
         
-        //dump(rootAndPositions)
+        dump(rootAndPositions)
         var chords: [Chord] = []
         for (tempRoot, positions) in rootAndPositions {
-            if let quality = findQualityFromComponents(components: positions) {
-                var chord: String = ""
-                var on: Chords.Key?
-                if tempRoot == root {
-                    chord = "\(root)\(quality.name.enumToString)"
-                } else {
-                    on = root
-                    chord = "\(tempRoot)\(quality.name.enumToString)/\(root)"
+            if let qualities = findQualitiesFromComponents(components: positions) {
+                
+                for quality in qualities {
+                    var chord: String = ""
+                    var on: Chords.Key?
+                    if tempRoot == root {
+                        chord = "\(root)\(quality.name.enumToString)"
+                    } else {
+                        on = root
+                        chord = "\(tempRoot)\(quality.name.enumToString)/\(root)"
+                    }
+                    chords.append(Chord(chord: chord, root: tempRoot, quality: quality, on: on))
                 }
-                //chords.append(Chord(chord: chord))
-                chords.append(Chord(chord: chord, root: tempRoot, quality: quality, on: on))
             }
         }
         return chords.sorted(using: KeyPathComparator(\.name))

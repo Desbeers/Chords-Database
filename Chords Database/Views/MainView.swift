@@ -7,6 +7,7 @@
 
 import SwiftUI
 import SwiftyChords
+import SwiftlyChordUtilities
 
 /// The  Main View
 struct MainView: View {
@@ -33,25 +34,18 @@ struct MainView: View {
         .animation(.default, value: midiFilter)
         .toolbar {
             
-            /// Test button
-            Button(action: {
-//                let chord = ChordUtilities.Chord(chord: "A/G")
+//            /// Test button
+//            Button(action: {
+//                let chord = getChordInfo(root: .a, quality: .slashE)
 //                dump(chord)
-                
-                let chord = ChordUtilities.getChordInfo(root: .a, quality: .slashE)
-                dump(chord)
-                print(chord.components())
-
-                
-                //                dump(ChordUtilities.findChordsFromNotes(notes: ["A", "E", "C#"]))
-//                dump(ChordUtilities.findChordsFromNotes(notes: ["A", "C#", "E"]))
-//                let chord2 = ChordUtilities.findChordsFromNotes(notes: ["F", "A", "C#", "E"])
-            }, label: {
-                Text("Test")
-            })
+//                print(chord.components())
+//            }, label: {
+//                Text("Test")
+//            })
+//            /// Filter MIDI toggle
+//                         Toggle("Hide good MIDI", isOn: $midiFilter)
             
             MidiPlayer.InstrumentPicker()
-
             /// New Chord Button
             Button(action: {
                 let newChord = ChordPosition(id: UUID(),

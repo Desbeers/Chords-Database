@@ -7,6 +7,7 @@
 
 import SwiftUI
 import SwiftyChords
+import SwiftlyChordUtilities
 
 /// The  Chord Edit View
 struct ChordEditView: View {
@@ -27,7 +28,7 @@ struct ChordEditView: View {
     /// The ID of an existsing chord
     @State private var chordID: Int?
     /// The chord info result
-    @State private var chordInfo: ChordUtilities.Chord?
+    @State private var chordInfo: Chord?
     
     /// Init the form
     init(chord: ChordPosition) {
@@ -219,7 +220,7 @@ struct ChordEditView: View {
                                        key: values.root,
                                        suffix: values.quality
             )
-            chordInfo = ChordUtilities.getChordInfo(root: values.root, quality: values.quality)
+            chordInfo = getChordInfo(root: values.root, quality: values.quality)
         }
     }
 

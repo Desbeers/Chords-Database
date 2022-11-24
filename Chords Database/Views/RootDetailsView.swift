@@ -7,6 +7,7 @@
 
 import SwiftUI
 import SwiftyChords
+import SwiftlyChordUtilities
 
 /// The  Details View for a selected `key`
 struct RootDetailsView: View {
@@ -46,6 +47,6 @@ struct RootDetailsView: View {
             allSuffixes = allSuffixes.filter({$0.midi != Midi.values(values: $0)})
         }
         suffixes = allSuffixes.unique { $0.suffix }
-        model.selectedQuality = .major
+        // model.selectedQuality = .five
     }
 }

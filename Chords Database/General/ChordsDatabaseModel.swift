@@ -15,7 +15,7 @@ class ChordsDatabaseModel: ObservableObject {
     /// All chords in the current database
     @Published var allChords: [ChordPosition] = []
     /// The selected root in the ``SidebarView``
-    @Published var selectedRoot: Chords.Root = .a
+    @Published var selectedRoot: Chords.Root = .c
     /// The selected Suffix in the ``RootDetailsView``
     @Published var selectedQuality: Chords.Quality?
     /// Edit a chord

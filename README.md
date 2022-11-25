@@ -13,6 +13,11 @@ This macOS Ventura application shows all those chords.
 - You can save your altered database in the *SwiftyGuitarChords* format.
 - And you can open it again.
 
+## Limitations
+
+- It will not find all chords
+- It has some dificulties with 'slash' chords like 'C/E' especialy when the 'slash' is not part of the chord.
+
 ## Known issues with the database
 
 - Some chords are missing or not correct. It is not easy to add them to a JSON file. This application has a form for that.
@@ -25,5 +30,3 @@ This application is ment to alter the database in an easy way and written to hel
 See [This issue on SwiftyGuitarChords](https://github.com/BeauNouvelle/SwiftyGuitarChords/issues/7)
  
 It is all in a struct; it can be exported in any way you like...
-
-BTW: I love SwiftUI to write *quick and dirty* applications!

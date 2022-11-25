@@ -38,7 +38,8 @@ struct ChordEditView: View {
                                                   frets: chord.frets,
                                                   fingers: chord.fingers,
                                                   baseFret: chord.baseFret,
-                                                  barres: chord.barres.first ?? 0,
+                                                  barres: chord.barres,
+                                                  bar: chord.barres.first ?? 0,
                                                   capo: chord.capo,
                                                   root: chord.key,
                                                   quality: chord.suffix)
@@ -75,7 +76,7 @@ struct ChordEditView: View {
                             .tag(value)
                     }
                 }
-                Picker("Barres:", selection: $values.barres) {
+                Picker("Barres:", selection: $values.bar) {
                     Text("None")
                         .tag(0)
                     ForEach(1...5, id: \.self) { value in
@@ -215,7 +216,7 @@ struct ChordEditView: View {
                                        frets: values.frets,
                                        fingers: values.fingers,
                                        baseFret: values.baseFret,
-                                       barres: values.barres != 0 ? [values.barres] : [],
+                                       barres: values.bar != 0 ? [values.bar] : [],
                                        midi: values.midi.map({$0.note}),
                                        key: values.root,
                                        suffix: values.quality

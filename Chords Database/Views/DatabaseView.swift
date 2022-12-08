@@ -96,13 +96,12 @@ struct DatabaseView: View {
         chords = allChords
         haveChords = chords.isEmpty ? false : true
     }
-    
+
     func chordFinder(chord: ChordPosition) -> some View {
         VStack(alignment: .leading) {
             Label(chord.chordFinder.isEmpty ? "Found no matching chord" : "Found:", systemImage: "waveform.and.magnifyingglass")
                 .padding(.vertical, 3)
             HStack {
-                //Text(chord.chordFinder.isEmpty ? "Found nothing" : "Found")
                 ForEach(chord.chordFinder) { result in
                     Text(result.display)
                         .foregroundColor(chord.name == result.name ? .accentColor : .secondary)
@@ -111,7 +110,7 @@ struct DatabaseView: View {
             .font(.title3)
         }
     }
-    
+
     func actions(chord: ChordPosition) -> some View {
         VStack(alignment: .leading) {
             editButton(chord: chord)

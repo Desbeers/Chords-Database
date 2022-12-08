@@ -33,18 +33,6 @@ struct MainView: View {
         })
         .animation(.default, value: midiFilter)
         .toolbar {
-            
-//            /// Test button
-//            Button(action: {
-//                let chord = getChordInfo(root: .a, quality: .slashE)
-//                dump(chord)
-//                print(chord.components())
-//            }, label: {
-//                Text("Test")
-//            })
-//            /// Filter MIDI toggle
-//                         Toggle("Hide good MIDI", isOn: $midiFilter)
-            
             MidiPlayer.InstrumentPicker()
             /// New Chord Button
             Button(action: {

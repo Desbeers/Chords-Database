@@ -29,7 +29,7 @@ struct ChordEditView: View {
     @State private var chordID: Int?
     /// The chord info result
     @State private var chordInfo: Chord?
-    
+
     /// Init the form
     init(chord: ChordPosition) {
         self.chord = chord
@@ -233,7 +233,7 @@ struct ChordEditView: View {
             Divider()
         }
     }
-    
+
     func chordFinder(chord: ChordPosition) -> some View {
         HStack {
             Text(chord.chordFinder.isEmpty ? "Found nothing" : "Found")

@@ -3,7 +3,7 @@
 For my [Chord Provider](https://github.com/Desbeers/Chord-Provider) application, I use the great [Swifty Guitar Chords](https://github.com/BeauNouvelle/SwiftyGuitarChords) package.
 It has a database with all the known chords.
 
-This macOS Ventura application shows all those chords.
+This macOS Ventura and iPadOS 16 application shows all those chords.
 
 ![Chords Database](screenshot.png)
 

@@ -25,12 +25,20 @@ struct MainView: View {
             columnVisibility: $columnVisibility,
             sidebar: {
             SidebarView()
+                    .navigationSplitViewColumnWidth(StaticSetting.sidebarColumnWidth)
+                    .navigationBarBackButtonHidden()
+                    .navigationTitle("Chords")
         }, content: {
             RootDetailsView()
                 .navigationSplitViewColumnWidth(200)
+                .navigationBarBackButtonHidden()
+                .navigationTitle("Suffix")
         }, detail: {
             DatabaseView()
+                .navigationBarBackButtonHidden()
+                .navigationTitle("Database")
         })
+        .navigationTitle("Chords Database")
         .animation(.default, value: midiFilter)
         .toolbar {
             MidiPlayer.InstrumentPicker()
@@ -51,8 +59,15 @@ struct MainView: View {
             })
             .labelStyle(.iconOnly)
         }
+#if os(macOS)
         .sheet(item: $model.editChord) { chord in
             ChordEditView(chord: chord)
+                .frame(minWidth: 740, minHeight: 700)
         }
+#else
+        .fullScreenCover(item: $model.editChord) { chord in
+            ChordEditView(chord: chord)
+        }
+#endif
     }
 }

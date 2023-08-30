@@ -23,8 +23,6 @@ struct DatabaseView: View {
     @State var chords: [ChordPosition] = []
     /// Bool if we have chords or not
     @State var haveChords = true
-    /// The selection in the table
-    @State private var selection: ChordPosition.ID?
     /// The chord for the 'delete' action
     @State private var actionButton: ChordPosition?
     /// The body of the View
@@ -34,7 +32,7 @@ struct DatabaseView: View {
                 .font(.title)
                 .padding(.top)
         }
-        Table(chords, selection: $selection) {
+        Table(chords) {
             TableColumn("Diagram") { chord in
                 model.diagram(chord: chord)
                 #if os(macOS)
@@ -180,7 +178,7 @@ struct DatabaseView: View {
                         .bold()
                         .frame(width: 16)
                     configuration.title
-                        .frame(width: 70, alignment: .leading)
+                        .frame(width: 100, alignment: .leading)
                 }
         }
     }

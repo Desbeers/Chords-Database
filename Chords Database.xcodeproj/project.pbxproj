@@ -19,6 +19,7 @@
 		D7CB66262A9F3933000F5724 /* ChordsDatabaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7CB661E2A9F3933000F5724 /* ChordsDatabaseModel.swift */; };
 		D7CB66272A9F3933000F5724 /* ChordsDatabaseDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7CB661F2A9F3933000F5724 /* ChordsDatabaseDocument.swift */; };
 		D7CB662A2A9F395A000F5724 /* SwiftlyChordUtilities in Frameworks */ = {isa = PBXBuildFile; productRef = D7CB66292A9F395A000F5724 /* SwiftlyChordUtilities */; };
+		D7CB662C2A9F42CF000F5724 /* StaticSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7CB662B2A9F42CF000F5724 /* StaticSetting.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		D7CB661C2A9F3933000F5724 /* DatabaseView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseView.swift; sourceTree = "<group>"; };
 		D7CB661E2A9F3933000F5724 /* ChordsDatabaseModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChordsDatabaseModel.swift; sourceTree = "<group>"; };
 		D7CB661F2A9F3933000F5724 /* ChordsDatabaseDocument.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChordsDatabaseDocument.swift; sourceTree = "<group>"; };
+		D7CB662B2A9F42CF000F5724 /* StaticSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticSetting.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +108,7 @@
 			children = (
 				D7CB661E2A9F3933000F5724 /* ChordsDatabaseModel.swift */,
 				D7CB661F2A9F3933000F5724 /* ChordsDatabaseDocument.swift */,
+				D7CB662B2A9F42CF000F5724 /* StaticSetting.swift */,
 			);
 			path = General;
 			sourceTree = "<group>";
@@ -120,6 +123,7 @@
 				D7CB65FB2A9F37AC000F5724 /* Sources */,
 				D7CB65FC2A9F37AC000F5724 /* Frameworks */,
 				D7CB65FD2A9F37AC000F5724 /* Resources */,
+				D7CB662D2A9F95D9000F5724 /* SwiftLint */,
 			);
 			buildRules = (
 			);
@@ -182,11 +186,34 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		D7CB662D2A9F95D9000F5724 /* SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = SwiftLint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which /opt/homebrew/bin/swiftlint >/dev/null; then\n  /opt/homebrew/bin/swiftlint --no-cache\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		D7CB65FB2A9F37AC000F5724 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D7CB662C2A9F42CF000F5724 /* StaticSetting.swift in Sources */,
 				D7CB66252A9F3933000F5724 /* DatabaseView.swift in Sources */,
 				D7CB66272A9F3933000F5724 /* ChordsDatabaseDocument.swift in Sources */,
 				D7CB66152A9F391F000F5724 /* ChordsDatabaseApp.swift in Sources */,
@@ -329,6 +356,7 @@
 				DEVELOPMENT_TEAM = FHPCJ7396C;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Chords Database/Info.plist";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
@@ -348,7 +376,7 @@
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 13.4;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = nl.desbeers.chordsdatabase;
+				PRODUCT_BUNDLE_IDENTIFIER = nl.desbeers.cdb;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
@@ -372,6 +400,7 @@
 				DEVELOPMENT_TEAM = FHPCJ7396C;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Chords Database/Info.plist";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
@@ -391,7 +420,7 @@
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 13.4;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = nl.desbeers.chordsdatabase;
+				PRODUCT_BUNDLE_IDENTIFIER = nl.desbeers.cdb;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";

@@ -64,26 +64,44 @@ struct ChordEditView: View {
             .pickerStyle(.segmented)
             .padding(.bottom)
             HStack {
-                Picker("Suffix:", selection: $values.quality) {
-                    ForEach(Chords.Quality.allCases, id: \.rawValue) { value in
-                        Text(value.rawValue)
-                            .tag(value)
+                LabeledContent(content: {
+                    Picker("Suffix:", selection: $values.quality) {
+                        ForEach(Chords.Quality.allCases, id: \.rawValue) { value in
+                            Text(value.rawValue)
+                                .tag(value)
+                        }
                     }
-                }
-                Picker("Base fret:", selection: $values.baseFret) {
-                    ForEach(1...20, id: \.self) { value in
-                        Text(value.description)
-                            .tag(value)
+                    .labelsHidden()
+                }, label: {
+                    Text("Suffix:")
+                })
+                .frame(maxWidth: 150)
+                LabeledContent(content: {
+                    Picker("Base fret:", selection: $values.baseFret) {
+                        ForEach(1...20, id: \.self) { value in
+                            Text(value.description)
+                                .tag(value)
+                        }
                     }
-                }
-                Picker("Barres:", selection: $values.bar) {
-                    Text("None")
-                        .tag(0)
-                    ForEach(1...5, id: \.self) { value in
-                        Text(value.description)
-                            .tag(value)
+                    .labelsHidden()
+                }, label: {
+                    Text("Base fret:")
+                })
+                .frame(maxWidth: 150)
+                LabeledContent(content: {
+                    Picker("Barres:", selection: $values.bar) {
+                        Text("None")
+                            .tag(0)
+                        ForEach(1...5, id: \.self) { value in
+                            Text(value.description)
+                                .tag(value)
+                        }
                     }
-                }
+                    .labelsHidden()
+                }, label: {
+                    Text("Barres:")
+                })
+                .frame(maxWidth: 150)
             }
             HStack {
                 VStack {
@@ -93,42 +111,38 @@ struct ChordEditView: View {
                             .frame(height: 20)
                         ForEach(result.notes) { note in
                             Text(note.note.display.symbol)
-                                .frame(width: 18)
                             Divider()
                                 .frame(height: 20)
                         }
-                    }
-                    HStack {
-                        Divider()
-                            .frame(height: 20)
-                        ForEach(chord.midi, id: \.self) { note in
-                            Text("\(note)")
-                                .frame(width: 18)
-                            Divider()
-                                .frame(height: 20)
-                        }
-                    }
-                    HStack {
-                        MidiPlayer.InstrumentPicker()
-                        .frame(width: 180)
-                        .labelsHidden()
-                        MidiPlayer.PlayButton(chord: result)
                     }
                     if let chordInfo {
-                        HStack {
-                            Text("**\(chordInfo.display)** contains")
-                            ForEach(chordInfo.components(), id: \.self) { component in
-                                Text(component.display.symbol)
-                            }
-                        }
+
+                        Label(
+                            title: {
+                                HStack {
+                                    Text("**\(chordInfo.display)** contains")
+                                    ForEach(chordInfo.components(), id: \.self) { component in
+                                        Text(component.display.symbol)
+                                    }
+                                }
+                            },
+                            icon: { Image(systemName: "info.circle.fill") }
+                        )
+                        .foregroundStyle(.secondary)
                     }
+                    MidiPlayer.PlayButton(chord: result)
+                        .padding()
                 }
-                .frame(width: 400)
+                .frame(minWidth: 300)
                 VStack {
                     Section(
                         content: {
                             HStack {
                                 ForEach(GuitarTuning.allCases, id: \.rawValue) { fret in
+#if os(iOS)
+                                    Text(String(describing: fret))
+                                        .font(.title2)
+#endif
                                     Picker(
                                         selection: $values.frets[fret.rawValue],
                                         content: {
@@ -148,11 +162,7 @@ struct ChordEditView: View {
                                     Divider()
                                 }
                             }
-                            #if os(macOS)
-                            .pickerStyle(.radioGroup)
-                            #else
-                            .pickerStyle(.inline)
-                            #endif
+                            .pickerStyle(StaticSetting.pickerStyle)
                         }, header: {
                             header(text: "Frets")
                         })
@@ -160,6 +170,10 @@ struct ChordEditView: View {
                         content: {
                             HStack {
                                 ForEach(GuitarTuning.allCases, id: \.rawValue) { finger in
+#if os(iOS)
+                                    Text(String(describing: finger))
+                                        .font(.title2)
+#endif
                                     Picker(
                                         selection: $values.fingers[finger.rawValue],
                                         content: {
@@ -176,11 +190,7 @@ struct ChordEditView: View {
                                     Divider()
                                 }
                             }
-#if os(macOS)
-.pickerStyle(.radioGroup)
-#else
-.pickerStyle(.inline)
-#endif
+                            .pickerStyle(StaticSetting.pickerStyle)
                         }, header: {
                             header(text: "Fingers")
                         })
@@ -204,12 +214,19 @@ struct ChordEditView: View {
                     Text(status.rawValue)
                 })
                 .disabled(chord == result)
+                .padding(.trailing)
                 Button(action: {
                     dismiss()
                 }, label: {
                     Text("Cancel")
                 })
+                .padding(.leading)
             }
+        }
+        .overlay(alignment: .topTrailing) {
+            MidiPlayer.InstrumentPicker()
+                .frame(maxWidth: 200)
+                .labelsHidden()
         }
         .padding()
         .task {
@@ -221,13 +238,13 @@ struct ChordEditView: View {
         .animation(.default, value: chordInfo?.name)
         .task(id: values) {
             result = ChordPosition(id: values.id,
-                                       frets: values.frets,
-                                       fingers: values.fingers,
-                                       baseFret: values.baseFret,
-                                       barres: values.bar != 0 ? [values.bar] : [],
-                                       midi: values.midi.map({$0.note}),
-                                       key: values.root,
-                                       suffix: values.quality
+                                   frets: values.frets,
+                                   fingers: values.fingers,
+                                   baseFret: values.baseFret,
+                                   barres: values.bar != 0 ? [values.bar] : [],
+                                   midi: values.midi.map({$0.note}),
+                                   key: values.root,
+                                   suffix: values.quality
             )
             chordInfo = getChordInfo(root: values.root, quality: values.quality)
         }

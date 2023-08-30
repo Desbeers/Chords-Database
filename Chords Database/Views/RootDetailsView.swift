@@ -29,7 +29,9 @@ struct RootDetailsView: View {
                     .tag(suffix.suffix)
             }
         }
+        #if os(macOS)
         .listStyle(.inset(alternatesRowBackgrounds: true))
+        #endif
         .task(id: model.allChords) {
             filterSuffixes()
         }

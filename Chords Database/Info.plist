@@ -5,6 +5,8 @@
 	<key>CFBundleDocumentTypes</key>
 	<array>
 		<dict>
+			<key>CFBundleTypeName</key>
+			<string>Chords Database</string>
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>LSHandlerRank</key>
@@ -17,7 +19,7 @@
 			<string>$(PRODUCT_BUNDLE_IDENTIFIER).example-document</string>
 		</dict>
 	</array>
-	<key>UTImportedTypeDeclarations</key>
+	<key>UTExportedTypeDeclarations</key>
 	<array>
 		<dict>
 			<key>UTTypeConformsTo</key>

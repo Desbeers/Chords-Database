@@ -30,14 +30,16 @@ struct DatabaseView: View {
     /// The body of the View
     var body: some View {
         if !haveChords && chords.isEmpty {
-            Text("No chords in the key of \(model.selectedRoot.display.symbol) found in the datadase")
+            Text("No chords in the key of \(model.selectedRoot?.display.symbol ?? "") found in the datadase")
                 .font(.title)
                 .padding(.top)
         }
         Table(chords, selection: $selection) {
             TableColumn("Diagram") { chord in
                 model.diagram(chord: chord)
+                #if os(macOS)
                     .background(Color(nsColor: .textBackgroundColor))
+                #endif
                     .cornerRadius(4)
             }
             .width(120)

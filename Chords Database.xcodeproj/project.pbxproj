@@ -7,124 +7,119 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D72286BA290AC94700937256 /* DatabaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72286B9290AC94700937256 /* DatabaseView.swift */; };
-		D72286BC290AC95A00937256 /* SidebarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72286BB290AC95A00937256 /* SidebarView.swift */; };
-		D72286BE290ACA3500937256 /* ChordsDatabaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72286BD290ACA3500937256 /* ChordsDatabaseModel.swift */; };
-		D72286C6290ADCA600937256 /* RootDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72286C5290ADCA600937256 /* RootDetailsView.swift */; };
-		D72286CA290BC24100937256 /* ChordEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72286C9290BC24100937256 /* ChordEditView.swift */; };
-		D72286CE290E9B8F00937256 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72286CD290E9B8F00937256 /* ContentView.swift */; };
-		D751B839290AC40A0002AAFF /* ChordsDatabaseApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D751B838290AC40A0002AAFF /* ChordsDatabaseApp.swift */; };
-		D751B83B290AC40A0002AAFF /* ChordsDatabaseDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = D751B83A290AC40A0002AAFF /* ChordsDatabaseDocument.swift */; };
-		D751B83D290AC40A0002AAFF /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D751B83C290AC40A0002AAFF /* MainView.swift */; };
-		D751B83F290AC40A0002AAFF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D751B83E290AC40A0002AAFF /* Assets.xcassets */; };
-		D751B842290AC40A0002AAFF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D751B841290AC40A0002AAFF /* Preview Assets.xcassets */; };
-		D7925A55292F8EC800EA54B0 /* SwiftlyChordUtilities in Frameworks */ = {isa = PBXBuildFile; productRef = D7925A54292F8EC800EA54B0 /* SwiftlyChordUtilities */; };
+		D7CB66092A9F37AF000F5724 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D7CB66082A9F37AF000F5724 /* Assets.xcassets */; };
+		D7CB660E2A9F37AF000F5724 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D7CB660D2A9F37AF000F5724 /* Preview Assets.xcassets */; };
+		D7CB66152A9F391F000F5724 /* ChordsDatabaseApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7CB66142A9F391F000F5724 /* ChordsDatabaseApp.swift */; };
+		D7CB66202A9F3933000F5724 /* ChordEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7CB66172A9F3933000F5724 /* ChordEditView.swift */; };
+		D7CB66212A9F3933000F5724 /* RootDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7CB66182A9F3933000F5724 /* RootDetailsView.swift */; };
+		D7CB66222A9F3933000F5724 /* SidebarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7CB66192A9F3933000F5724 /* SidebarView.swift */; };
+		D7CB66232A9F3933000F5724 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7CB661A2A9F3933000F5724 /* MainView.swift */; };
+		D7CB66242A9F3933000F5724 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7CB661B2A9F3933000F5724 /* ContentView.swift */; };
+		D7CB66252A9F3933000F5724 /* DatabaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7CB661C2A9F3933000F5724 /* DatabaseView.swift */; };
+		D7CB66262A9F3933000F5724 /* ChordsDatabaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7CB661E2A9F3933000F5724 /* ChordsDatabaseModel.swift */; };
+		D7CB66272A9F3933000F5724 /* ChordsDatabaseDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7CB661F2A9F3933000F5724 /* ChordsDatabaseDocument.swift */; };
+		D7CB662A2A9F395A000F5724 /* SwiftlyChordUtilities in Frameworks */ = {isa = PBXBuildFile; productRef = D7CB66292A9F395A000F5724 /* SwiftlyChordUtilities */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		D72286B9290AC94700937256 /* DatabaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseView.swift; sourceTree = "<group>"; };
-		D72286BB290AC95A00937256 /* SidebarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarView.swift; sourceTree = "<group>"; };
-		D72286BD290ACA3500937256 /* ChordsDatabaseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChordsDatabaseModel.swift; sourceTree = "<group>"; };
-		D72286C5290ADCA600937256 /* RootDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootDetailsView.swift; sourceTree = "<group>"; };
-		D72286C8290B03FE00937256 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		D72286C9290BC24100937256 /* ChordEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChordEditView.swift; sourceTree = "<group>"; };
-		D72286CD290E9B8F00937256 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		D74187112A37200F00041DFE /* SwiftlyChordUtilities */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = SwiftlyChordUtilities; path = ../SwiftlyChordUtilities; sourceTree = "<group>"; };
-		D751B835290AC40A0002AAFF /* Chords Database.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Chords Database.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		D751B838290AC40A0002AAFF /* ChordsDatabaseApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChordsDatabaseApp.swift; sourceTree = "<group>"; };
-		D751B83A290AC40A0002AAFF /* ChordsDatabaseDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChordsDatabaseDocument.swift; sourceTree = "<group>"; };
-		D751B83C290AC40A0002AAFF /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
-		D751B83E290AC40A0002AAFF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		D751B841290AC40A0002AAFF /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		D751B843290AC40A0002AAFF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D751B844290AC40A0002AAFF /* ChordsDatabase.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ChordsDatabase.entitlements; sourceTree = "<group>"; };
+		D7CB65FF2A9F37AC000F5724 /* Chords Database.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Chords Database.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D7CB66082A9F37AF000F5724 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		D7CB660A2A9F37AF000F5724 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D7CB660B2A9F37AF000F5724 /* ChordsDatabase.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ChordsDatabase.entitlements; sourceTree = "<group>"; };
+		D7CB660D2A9F37AF000F5724 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		D7CB66142A9F391F000F5724 /* ChordsDatabaseApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChordsDatabaseApp.swift; sourceTree = "<group>"; };
+		D7CB66172A9F3933000F5724 /* ChordEditView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChordEditView.swift; sourceTree = "<group>"; };
+		D7CB66182A9F3933000F5724 /* RootDetailsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootDetailsView.swift; sourceTree = "<group>"; };
+		D7CB66192A9F3933000F5724 /* SidebarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SidebarView.swift; sourceTree = "<group>"; };
+		D7CB661A2A9F3933000F5724 /* MainView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		D7CB661B2A9F3933000F5724 /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		D7CB661C2A9F3933000F5724 /* DatabaseView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseView.swift; sourceTree = "<group>"; };
+		D7CB661E2A9F3933000F5724 /* ChordsDatabaseModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChordsDatabaseModel.swift; sourceTree = "<group>"; };
+		D7CB661F2A9F3933000F5724 /* ChordsDatabaseDocument.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChordsDatabaseDocument.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		D751B832290AC40A0002AAFF /* Frameworks */ = {
+		D7CB65FC2A9F37AC000F5724 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D7925A55292F8EC800EA54B0 /* SwiftlyChordUtilities in Frameworks */,
+				D7CB662A2A9F395A000F5724 /* SwiftlyChordUtilities in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		D72286C1290ACC9200937256 /* General */ = {
+		D7CB65F62A9F37AC000F5724 = {
 			isa = PBXGroup;
 			children = (
-				D751B83A290AC40A0002AAFF /* ChordsDatabaseDocument.swift */,
-				D72286BD290ACA3500937256 /* ChordsDatabaseModel.swift */,
-			);
-			path = General;
-			sourceTree = "<group>";
-		};
-		D72286C2290ACCA300937256 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				D72286CD290E9B8F00937256 /* ContentView.swift */,
-				D751B83C290AC40A0002AAFF /* MainView.swift */,
-				D72286BB290AC95A00937256 /* SidebarView.swift */,
-				D72286C5290ADCA600937256 /* RootDetailsView.swift */,
-				D72286B9290AC94700937256 /* DatabaseView.swift */,
-				D72286C9290BC24100937256 /* ChordEditView.swift */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		D751B82C290AC40A0002AAFF = {
-			isa = PBXGroup;
-			children = (
-				D74187112A37200F00041DFE /* SwiftlyChordUtilities */,
-				D72286C8290B03FE00937256 /* README.md */,
-				D751B837290AC40A0002AAFF /* Chords Database */,
-				D751B836290AC40A0002AAFF /* Products */,
+				D7CB66012A9F37AC000F5724 /* Chords Database */,
+				D7CB66002A9F37AC000F5724 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		D751B836290AC40A0002AAFF /* Products */ = {
+		D7CB66002A9F37AC000F5724 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				D751B835290AC40A0002AAFF /* Chords Database.app */,
+				D7CB65FF2A9F37AC000F5724 /* Chords Database.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		D751B837290AC40A0002AAFF /* Chords Database */ = {
+		D7CB66012A9F37AC000F5724 /* Chords Database */ = {
 			isa = PBXGroup;
 			children = (
-				D72286C1290ACC9200937256 /* General */,
-				D72286C2290ACCA300937256 /* Views */,
-				D751B838290AC40A0002AAFF /* ChordsDatabaseApp.swift */,
-				D751B83E290AC40A0002AAFF /* Assets.xcassets */,
-				D751B843290AC40A0002AAFF /* Info.plist */,
-				D751B844290AC40A0002AAFF /* ChordsDatabase.entitlements */,
-				D751B840290AC40A0002AAFF /* Preview Content */,
+				D7CB66142A9F391F000F5724 /* ChordsDatabaseApp.swift */,
+				D7CB661D2A9F3933000F5724 /* General */,
+				D7CB66162A9F3933000F5724 /* Views */,
+				D7CB66082A9F37AF000F5724 /* Assets.xcassets */,
+				D7CB660A2A9F37AF000F5724 /* Info.plist */,
+				D7CB660B2A9F37AF000F5724 /* ChordsDatabase.entitlements */,
+				D7CB660C2A9F37AF000F5724 /* Preview Content */,
 			);
 			path = "Chords Database";
 			sourceTree = "<group>";
 		};
-		D751B840290AC40A0002AAFF /* Preview Content */ = {
+		D7CB660C2A9F37AF000F5724 /* Preview Content */ = {
 			isa = PBXGroup;
 			children = (
-				D751B841290AC40A0002AAFF /* Preview Assets.xcassets */,
+				D7CB660D2A9F37AF000F5724 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		D7CB66162A9F3933000F5724 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D7CB661B2A9F3933000F5724 /* ContentView.swift */,
+				D7CB661A2A9F3933000F5724 /* MainView.swift */,
+				D7CB66192A9F3933000F5724 /* SidebarView.swift */,
+				D7CB66182A9F3933000F5724 /* RootDetailsView.swift */,
+				D7CB661C2A9F3933000F5724 /* DatabaseView.swift */,
+				D7CB66172A9F3933000F5724 /* ChordEditView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		D7CB661D2A9F3933000F5724 /* General */ = {
+			isa = PBXGroup;
+			children = (
+				D7CB661E2A9F3933000F5724 /* ChordsDatabaseModel.swift */,
+				D7CB661F2A9F3933000F5724 /* ChordsDatabaseDocument.swift */,
+			);
+			path = General;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		D751B834290AC40A0002AAFF /* Chords Database */ = {
+		D7CB65FE2A9F37AC000F5724 /* Chords Database */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D751B847290AC40A0002AAFF /* Build configuration list for PBXNativeTarget "Chords Database" */;
+			buildConfigurationList = D7CB66112A9F37AF000F5724 /* Build configuration list for PBXNativeTarget "Chords Database" */;
 			buildPhases = (
-				D751B831290AC40A0002AAFF /* Sources */,
-				D751B832290AC40A0002AAFF /* Frameworks */,
-				D751B833290AC40A0002AAFF /* Resources */,
-				D7B72DFB2916D2EF00CA8D65 /* ShellScript */,
+				D7CB65FB2A9F37AC000F5724 /* Sources */,
+				D7CB65FC2A9F37AC000F5724 /* Frameworks */,
+				D7CB65FD2A9F37AC000F5724 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -132,28 +127,29 @@
 			);
 			name = "Chords Database";
 			packageProductDependencies = (
-				D7925A54292F8EC800EA54B0 /* SwiftlyChordUtilities */,
+				D7CB66292A9F395A000F5724 /* SwiftlyChordUtilities */,
 			);
-			productName = DocApp;
-			productReference = D751B835290AC40A0002AAFF /* Chords Database.app */;
+			productName = "Chords Database";
+			productReference = D7CB65FF2A9F37AC000F5724 /* Chords Database.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		D751B82D290AC40A0002AAFF /* Project object */ = {
+		D7CB65F72A9F37AC000F5724 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1410;
-				LastUpgradeCheck = 1430;
+				LastSwiftUpdateCheck = 1500;
+				LastUpgradeCheck = 1500;
 				TargetAttributes = {
-					D751B834290AC40A0002AAFF = {
-						CreatedOnToolsVersion = 14.1;
+					D7CB65FE2A9F37AC000F5724 = {
+						CreatedOnToolsVersion = 15.0;
+						LastSwiftMigration = 1500;
 					};
 				};
 			};
-			buildConfigurationList = D751B830290AC40A0002AAFF /* Build configuration list for PBXProject "Chords Database" */;
+			buildConfigurationList = D7CB65FA2A9F37AC000F5724 /* Build configuration list for PBXProject "Chords Database" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -161,76 +157,56 @@
 				en,
 				Base,
 			);
-			mainGroup = D751B82C290AC40A0002AAFF;
+			mainGroup = D7CB65F62A9F37AC000F5724;
 			packageReferences = (
-				D7925A53292F8EC800EA54B0 /* XCRemoteSwiftPackageReference "SwiftlyChordUtilities" */,
+				D7CB66282A9F395A000F5724 /* XCRemoteSwiftPackageReference "SwiftlyChordUtilities" */,
 			);
-			productRefGroup = D751B836290AC40A0002AAFF /* Products */;
+			productRefGroup = D7CB66002A9F37AC000F5724 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				D751B834290AC40A0002AAFF /* Chords Database */,
+				D7CB65FE2A9F37AC000F5724 /* Chords Database */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		D751B833290AC40A0002AAFF /* Resources */ = {
+		D7CB65FD2A9F37AC000F5724 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D751B842290AC40A0002AAFF /* Preview Assets.xcassets in Resources */,
-				D751B83F290AC40A0002AAFF /* Assets.xcassets in Resources */,
+				D7CB660E2A9F37AF000F5724 /* Preview Assets.xcassets in Resources */,
+				D7CB66092A9F37AF000F5724 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
-/* Begin PBXShellScriptBuildPhase section */
-		D7B72DFB2916D2EF00CA8D65 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			alwaysOutOfDate = 1;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "if which /opt/homebrew/bin/swiftlint >/dev/null; then\n  # swiftlint --enable-all-rules\n  # swiftlint autocorrect\n  /opt/homebrew/bin/swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
-		};
-/* End PBXShellScriptBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
-		D751B831290AC40A0002AAFF /* Sources */ = {
+		D7CB65FB2A9F37AC000F5724 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D72286CE290E9B8F00937256 /* ContentView.swift in Sources */,
-				D751B839290AC40A0002AAFF /* ChordsDatabaseApp.swift in Sources */,
-				D72286BE290ACA3500937256 /* ChordsDatabaseModel.swift in Sources */,
-				D72286C6290ADCA600937256 /* RootDetailsView.swift in Sources */,
-				D72286BA290AC94700937256 /* DatabaseView.swift in Sources */,
-				D72286BC290AC95A00937256 /* SidebarView.swift in Sources */,
-				D751B83B290AC40A0002AAFF /* ChordsDatabaseDocument.swift in Sources */,
-				D72286CA290BC24100937256 /* ChordEditView.swift in Sources */,
-				D751B83D290AC40A0002AAFF /* MainView.swift in Sources */,
+				D7CB66252A9F3933000F5724 /* DatabaseView.swift in Sources */,
+				D7CB66272A9F3933000F5724 /* ChordsDatabaseDocument.swift in Sources */,
+				D7CB66152A9F391F000F5724 /* ChordsDatabaseApp.swift in Sources */,
+				D7CB66222A9F3933000F5724 /* SidebarView.swift in Sources */,
+				D7CB66242A9F3933000F5724 /* ContentView.swift in Sources */,
+				D7CB66202A9F3933000F5724 /* ChordEditView.swift in Sources */,
+				D7CB66262A9F3933000F5724 /* ChordsDatabaseModel.swift in Sources */,
+				D7CB66232A9F3933000F5724 /* MainView.swift in Sources */,
+				D7CB66212A9F3933000F5724 /* RootDetailsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		D751B845290AC40A0002AAFF /* Debug */ = {
+		D7CB660F2A9F37AF000F5724 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -260,11 +236,11 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
-				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -278,20 +254,20 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = macosx;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
-		D751B846290AC40A0002AAFF /* Release */ = {
+		D7CB66102A9F37AF000F5724 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -321,11 +297,11 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
-				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
@@ -333,92 +309,115 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
-				SDKROOT = macosx;
 				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
 			};
 			name = Release;
 		};
-		D751B848290AC40A0002AAFF /* Debug */ = {
+		D7CB66122A9F37AF000F5724 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "Chords Database/ChordsDatabase.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"Chords Database/Preview Content\"";
 				DEVELOPMENT_TEAM = FHPCJ7396C;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Chords Database/Info.plist";
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-				);
-				MACOSX_DEPLOYMENT_TARGET = 13.3;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				"INFOPLIST_KEY_UISupportsDocumentBrowser[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UISupportsDocumentBrowser[sdk=iphonesimulator*]" = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.5;
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 13.4;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = nl.desbeers.ChordsDatabase;
+				PRODUCT_BUNDLE_IDENTIFIER = nl.desbeers.chordsdatabase;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
-		D751B849290AC40A0002AAFF /* Release */ = {
+		D7CB66132A9F37AF000F5724 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "Chords Database/ChordsDatabase.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"Chords Database/Preview Content\"";
 				DEVELOPMENT_TEAM = FHPCJ7396C;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Chords Database/Info.plist";
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-				);
-				MACOSX_DEPLOYMENT_TARGET = 13.3;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				"INFOPLIST_KEY_UISupportsDocumentBrowser[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UISupportsDocumentBrowser[sdk=iphonesimulator*]" = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.5;
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 13.4;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = nl.desbeers.ChordsDatabase;
+				PRODUCT_BUNDLE_IDENTIFIER = nl.desbeers.chordsdatabase;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		D751B830290AC40A0002AAFF /* Build configuration list for PBXProject "Chords Database" */ = {
+		D7CB65FA2A9F37AC000F5724 /* Build configuration list for PBXProject "Chords Database" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				D751B845290AC40A0002AAFF /* Debug */,
-				D751B846290AC40A0002AAFF /* Release */,
+				D7CB660F2A9F37AF000F5724 /* Debug */,
+				D7CB66102A9F37AF000F5724 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D751B847290AC40A0002AAFF /* Build configuration list for PBXNativeTarget "Chords Database" */ = {
+		D7CB66112A9F37AF000F5724 /* Build configuration list for PBXNativeTarget "Chords Database" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				D751B848290AC40A0002AAFF /* Debug */,
-				D751B849290AC40A0002AAFF /* Release */,
+				D7CB66122A9F37AF000F5724 /* Debug */,
+				D7CB66132A9F37AF000F5724 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -426,7 +425,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		D7925A53292F8EC800EA54B0 /* XCRemoteSwiftPackageReference "SwiftlyChordUtilities" */ = {
+		D7CB66282A9F395A000F5724 /* XCRemoteSwiftPackageReference "SwiftlyChordUtilities" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Desbeers/SwiftlyChordUtilities";
 			requirement = {
@@ -437,12 +436,12 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		D7925A54292F8EC800EA54B0 /* SwiftlyChordUtilities */ = {
+		D7CB66292A9F395A000F5724 /* SwiftlyChordUtilities */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = D7925A53292F8EC800EA54B0 /* XCRemoteSwiftPackageReference "SwiftlyChordUtilities" */;
+			package = D7CB66282A9F395A000F5724 /* XCRemoteSwiftPackageReference "SwiftlyChordUtilities" */;
 			productName = SwiftlyChordUtilities;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
-	rootObject = D751B82D290AC40A0002AAFF /* Project object */;
+	rootObject = D7CB65F72A9F37AC000F5724 /* Project object */;
 }

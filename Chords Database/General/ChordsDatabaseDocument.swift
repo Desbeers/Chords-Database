@@ -13,7 +13,7 @@ import UniformTypeIdentifiers
 extension UTType {
     /// Add the UIType for the Chord Databse document
     static var cdb: UTType {
-        UTType(importedAs: "nl.desbeers.cdb")
+        UTType(exportedAs: "nl.desbeers.cdb")
     }
 }
 

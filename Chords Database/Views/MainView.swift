@@ -14,7 +14,7 @@ struct MainView: View {
     /// The SwiftUI model for the Chords Database
     @EnvironmentObject var model: ChordsDatabaseModel
     /// Visibility for the NavigationSpliView
-    @State private var columnVisibility = NavigationSplitViewVisibility.automatic
+    @State private var columnVisibility = NavigationSplitViewVisibility.all
     /// Filter MIDI toggle
     @AppStorage("Bad MIDI filter") private var midiFilter = false
     /// MIDI instrument
@@ -42,7 +42,7 @@ struct MainView: View {
                                              baseFret: 1,
                                              barres: [],
                                              midi: [48, 52, 55, 60, 64],
-                                             key: model.selectedRoot,
+                                             key: model.selectedRoot ?? .c,
                                              suffix: model.selectedQuality ?? .major
                 )
                 model.editChord = newChord

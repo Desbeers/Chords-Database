@@ -1,12 +1,21 @@
 {
   "pins" : [
     {
-      "identity" : "swiftyguitarchords",
+      "identity" : "swiftlychordutilities",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/BeauNouvelle/SwiftyGuitarChords.git",
+      "location" : "https://github.com/Desbeers/SwiftlyChordUtilities",
       "state" : {
         "branch" : "main",
-        "revision" : "8040d5fb5d281c5a7f0ce32aeff4d0cc2d001581"
+        "revision" : "044666a0581a1f982f376fe4a1cbfc00cb763352"
+      }
+    },
+    {
+      "identity" : "swiftyguitarchords",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Desbeers/SwiftyGuitarChords",
+      "state" : {
+        "branch" : "main",
+        "revision" : "fae0b6b55df940f47c6b6f2544a3ead3eca32d1c"
       }
     }
   ],

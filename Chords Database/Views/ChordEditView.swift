@@ -148,7 +148,11 @@ struct ChordEditView: View {
                                     Divider()
                                 }
                             }
+                            #if os(macOS)
                             .pickerStyle(.radioGroup)
+                            #else
+                            .pickerStyle(.inline)
+                            #endif
                         }, header: {
                             header(text: "Frets")
                         })
@@ -172,7 +176,11 @@ struct ChordEditView: View {
                                     Divider()
                                 }
                             }
-                            .pickerStyle(.radioGroup)
+#if os(macOS)
+.pickerStyle(.radioGroup)
+#else
+.pickerStyle(.inline)
+#endif
                         }, header: {
                             header(text: "Fingers")
                         })

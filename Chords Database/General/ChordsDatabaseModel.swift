@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-import SwiftyChords
+import SwiftlyChordUtilities
 
 // MARK: The Chord Databse model
 
@@ -49,7 +49,7 @@ class ChordsDatabaseModel: ObservableObject {
         }
     }
     static func getChords() -> [ChordPosition] {
-        SwiftyChords.Chords.guitar
+        Chords.guitar
             .sorted { $0.key == $1.key ? $0.suffix < $1.suffix : $0.key < $1.key }
     }
     /// Build a SwiftUI Image diagram fom a `ChordPosition`

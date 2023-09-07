@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-import SwiftyChords
+import SwiftlyChordUtilities
 
 /// The  Sidebar View
 struct SidebarView: View {

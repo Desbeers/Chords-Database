@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import SwiftyChords
 import SwiftlyChordUtilities
 
 /// The  Details View for a selected `key`
@@ -14,7 +13,7 @@ struct RootDetailsView: View {
     /// The SwiftUI model for the Chords Database
     @EnvironmentObject var model: ChordsDatabaseModel
     /// The Suffixes to show in this View
-    @State var suffixes: [SwiftyChords.ChordPosition] = []
+    @State var suffixes: [ChordPosition] = []
     /// Filter MIDI toggle
     @AppStorage("Bad MIDI filter") private var midiFilter = false
     /// The body of the View

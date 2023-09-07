@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import SwiftyChords
 import SwiftlyChordUtilities
 
 /// The  Database View for Chords

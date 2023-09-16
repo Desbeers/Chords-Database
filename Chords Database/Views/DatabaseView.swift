@@ -2,7 +2,7 @@
 //  DatabaseView.swift
 //  Chords Database
 //
-//  © 2022 Nick Berendsen
+//  © 2023 Nick Berendsen
 //
 
 import SwiftUI
@@ -12,18 +12,17 @@ import SwiftlyChordUtilities
 struct DatabaseView: View {
     /// The SwiftUI model for the Chords Database
     @EnvironmentObject var model: ChordsDatabaseModel
-    /// Filter MIDI toggle
-    @AppStorage("Bad MIDI filter") private var midiFilter = false
-    /// MIDI instrument
-    @AppStorage("MIDI instrument") private var midiInstrument: MidiPlayer.Instrument = .acousticNylonGuitar
+    /// Chord Display Options
+    @EnvironmentObject private var options: ChordDisplayOptions
     /// The conformation dialog to delete a chord
     @State private var confirmationShown = false
     /// The Chords to show in this View
-    @State var chords: [ChordPosition] = []
+    @State var chords: [ChordDefinition] = []
     /// Bool if we have chords or not
     @State var haveChords = true
     /// The chord for the 'delete' action
-    @State private var actionButton: ChordPosition?
+    @State private var actionButton: ChordDefinition?
+
     /// The body of the View
     var body: some View {
         if !haveChords && chords.isEmpty {
@@ -31,40 +30,27 @@ struct DatabaseView: View {
                 .font(.title)
                 .padding(.top)
         }
-        Table(chords) {
-            TableColumn("Diagram") { chord in
-                model.diagram(chord: chord)
-                #if os(macOS)
-                    .background(Color(nsColor: .textBackgroundColor))
-                #endif
-                    .cornerRadius(4)
-            }
-            .width(120)
-            TableColumn("Chord") { chord in
-                VStack(alignment: .leading) {
-                    Text("\(chord.key.display.accessible)\(chord.suffix.display.accessible)")
-                        .font(.title2)
-                    chordFinder(chord: chord)
+        ScrollView {
+            LazyVGrid(
+                columns: [GridItem(.adaptive(minimum: 260))],
+                alignment: .center,
+                spacing: 4,
+                pinnedViews: [.sectionHeaders, .sectionFooters]
+            ) {
+                ForEach(chords) { chord in
+                    HStack {
+                        DiagramView(chord: chord, width: 100)
+                        VStack {
+                            actions(chord: chord)
+                        }
+                    }
+                    .padding()
+                    .background(checkChord(chord: chord) ? Color.accentColor.opacity(0.1) : Color.red.opacity(0.1))
+                    .padding()
                 }
-            }
-            TableColumn("Base Fret") { chord in
-                Text("\(chord.baseFret)")
-            }
-            .width(80)
-            TableColumn("Midi") { chord in
-                VStack(alignment: .leading) {
-                    MidiPlayer.PlayButton(chord: chord)
-                    Text(chord.midi == Midi.values(values: chord) ? "" : "MIDI values are not correct")
-                        .font(.caption)
-                        .padding(.top)
-                }
-            }
-            .width(140)
-            TableColumn("Action") { chord in
-                actions(chord: chord)
             }
         }
-        .buttonStyle(.bordered)
+            .buttonStyle(.bordered)
         .animation(.default, value: haveChords)
         .id(model.selectedRoot)
         .task(id: model.allChords) {
@@ -76,33 +62,43 @@ struct DatabaseView: View {
         .task(id: model.selectedQuality) {
             filterChords()
         }
-        .task(id: midiFilter) {
-            filterChords()
+        .navigationDestination(for: ChordDefinition.self) { chord in
+            ChordEditView(chord: chord)
         }
     }
 
+    func checkChord(chord: ChordDefinition) -> Bool {
+        let chords = chord.chordFinder
+        for match in chords {
+            if match.root == chord.root && match.quality == chord.quality {
+                return true
+            }
+        }
+        return false
+    }
+
     func filterChords() {
-        var allChords = model.allChords.filter({$0.key == model.selectedRoot})
-        if let suffix = model.selectedQuality {
-            allChords = allChords.filter({$0.suffix == suffix})
+        var allChords = model.allChords.filter { $0.root == model.selectedRoot }
+        if let quality = model.selectedQuality {
+            allChords = allChords.filter { $0.quality == quality }
         }
-        if midiFilter {
-            allChords = allChords.filter({$0.midi != Midi.values(values: $0)})
-        }
-        allChords.sort(using: KeyPathComparator(\.key))
-        allChords.sort(using: KeyPathComparator(\.suffix))
+        allChords.sort(using: KeyPathComparator(\.root))
+        allChords.sort(using: KeyPathComparator(\.quality))
         allChords.sort(using: KeyPathComparator(\.baseFret))
         chords = allChords
         haveChords = chords.isEmpty ? false : true
     }
 
-    func chordFinder(chord: ChordPosition) -> some View {
+    func chordFinder(chord: ChordDefinition) -> some View {
         VStack(alignment: .leading) {
-            Label(chord.chordFinder.isEmpty ? "Found no matching chord" : "Found:", systemImage: "waveform.and.magnifyingglass")
-                .padding(.vertical, 3)
+            Label(
+                chord.chordFinder.isEmpty ? "Found no matching chord" : "Found:",
+                systemImage: "waveform.and.magnifyingglass"
+            )
+            .padding(.vertical, 3)
             HStack {
                 ForEach(chord.chordFinder) { result in
-                    Text(result.display)
+                    Text(result.name)
                         .foregroundColor(chord.name == result.name ? .accentColor : .secondary)
                 }
             }
@@ -110,9 +106,12 @@ struct DatabaseView: View {
         }
     }
 
-    func actions(chord: ChordPosition) -> some View {
+    func actions(chord: ChordDefinition) -> some View {
         VStack(alignment: .leading) {
-            editButton(chord: chord)
+
+            NavigationLink(value: chord) {
+                Label("Edit", systemImage: "square.and.pencil")
+            }
             duplicateButton(chord: chord)
             Button(action: {
                 actionButton = chord
@@ -123,7 +122,7 @@ struct DatabaseView: View {
         }
         .labelStyle(ActionLabelStyle())
         .confirmationDialog(
-            "Delete \(actionButton?.key.display.accessible ?? "") \(actionButton?.suffix.display.accessible ?? "")?",
+            "Delete \(actionButton?.root.display.accessible ?? "") \(actionButton?.quality.display.accessible ?? "")?",
             isPresented: $confirmationShown,
             titleVisibility: .visible
         ) {
@@ -133,7 +132,7 @@ struct DatabaseView: View {
         }
     }
 
-    func editButton(chord: ChordPosition) -> some View {
+    func editButton(chord: ChordDefinition) -> some View {
         Button(action: {
             model.editChord = chord
         }, label: {
@@ -141,9 +140,9 @@ struct DatabaseView: View {
         })
     }
 
-    func deleteButton(chord: ChordPosition?) -> some View {
+    func deleteButton(chord: ChordDefinition?) -> some View {
         Button(action: {
-            if let chord, let chordIndex = model.allChords.firstIndex(where: {$0.id == chord.id}) {
+            if let chord, let chordIndex = model.allChords.firstIndex(where: { $0.id == chord.id }) {
                 model.allChords.remove(at: chordIndex)
                 model.updateDocument.toggle()
             }
@@ -152,16 +151,16 @@ struct DatabaseView: View {
         })
     }
 
-    func duplicateButton(chord: ChordPosition) -> some View {
+    func duplicateButton(chord: ChordDefinition) -> some View {
         Button(action: {
-            let newChord = ChordPosition(id: UUID(),
-                                         frets: chord.frets,
-                                         fingers: chord.fingers,
-                                         baseFret: chord.baseFret,
-                                         barres: chord.barres,
-                                         midi: chord.midi,
-                                         key: chord.key,
-                                         suffix: chord.suffix
+            let newChord = ChordDefinition(
+                id: UUID(),
+                name: "Chord",
+                frets: chord.frets,
+                fingers: chord.fingers,
+                baseFret: chord.baseFret,
+                root: chord.root,
+                quality: chord.quality
             )
             model.editChord = newChord
         }, label: {
@@ -172,13 +171,13 @@ struct DatabaseView: View {
     struct ActionLabelStyle: LabelStyle {
         @Environment(\.sizeCategory) var sizeCategory
         func makeBody(configuration: Configuration) -> some View {
-                HStack {
-                    configuration.icon
-                        .bold()
-                        .frame(width: 16)
-                    configuration.title
-                        .frame(width: 100, alignment: .leading)
-                }
+            HStack {
+                configuration.icon
+                    .bold()
+                    .frame(width: 16)
+                configuration.title
+                    .frame(width: 80, alignment: .leading)
+            }
         }
     }
 }

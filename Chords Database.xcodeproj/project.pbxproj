@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D7A097432AAFA2E8007BFB76 /* ChordEditView+Frets&Fingers.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A097422AAFA2E8007BFB76 /* ChordEditView+Frets&Fingers.swift */; };
 		D7CB66092A9F37AF000F5724 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D7CB66082A9F37AF000F5724 /* Assets.xcassets */; };
 		D7CB660E2A9F37AF000F5724 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D7CB660D2A9F37AF000F5724 /* Preview Assets.xcassets */; };
 		D7CB66152A9F391F000F5724 /* ChordsDatabaseApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7CB66142A9F391F000F5724 /* ChordsDatabaseApp.swift */; };
@@ -19,10 +20,13 @@
 		D7CB66262A9F3933000F5724 /* ChordsDatabaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7CB661E2A9F3933000F5724 /* ChordsDatabaseModel.swift */; };
 		D7CB66272A9F3933000F5724 /* ChordsDatabaseDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7CB661F2A9F3933000F5724 /* ChordsDatabaseDocument.swift */; };
 		D7CB662A2A9F395A000F5724 /* SwiftlyChordUtilities in Frameworks */ = {isa = PBXBuildFile; productRef = D7CB66292A9F395A000F5724 /* SwiftlyChordUtilities */; };
-		D7CB662C2A9F42CF000F5724 /* StaticSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7CB662B2A9F42CF000F5724 /* StaticSetting.swift */; };
+		D7D05E962AB4C0DB0044670A /* DiagramView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D05E952AB4C0DB0044670A /* DiagramView.swift */; };
+		D7D05E9A2AB5C70B0044670A /* StaticSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D05E992AB5C70B0044670A /* StaticSetting.swift */; };
+		D7EC194D2AAA281D001973BA /* ExportDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7EC194C2AAA281D001973BA /* ExportDatabase.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D7A097422AAFA2E8007BFB76 /* ChordEditView+Frets&Fingers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ChordEditView+Frets&Fingers.swift"; sourceTree = "<group>"; };
 		D7CB65FF2A9F37AC000F5724 /* Chords Database.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Chords Database.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7CB66082A9F37AF000F5724 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D7CB660A2A9F37AF000F5724 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -37,7 +41,9 @@
 		D7CB661C2A9F3933000F5724 /* DatabaseView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseView.swift; sourceTree = "<group>"; };
 		D7CB661E2A9F3933000F5724 /* ChordsDatabaseModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChordsDatabaseModel.swift; sourceTree = "<group>"; };
 		D7CB661F2A9F3933000F5724 /* ChordsDatabaseDocument.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChordsDatabaseDocument.swift; sourceTree = "<group>"; };
-		D7CB662B2A9F42CF000F5724 /* StaticSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticSetting.swift; sourceTree = "<group>"; };
+		D7D05E952AB4C0DB0044670A /* DiagramView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiagramView.swift; sourceTree = "<group>"; };
+		D7D05E992AB5C70B0044670A /* StaticSetting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StaticSetting.swift; sourceTree = "<group>"; };
+		D7EC194C2AAA281D001973BA /* ExportDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExportDatabase.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,6 +58,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D7A097412AAFA11F007BFB76 /* ChordEdit */ = {
+			isa = PBXGroup;
+			children = (
+				D7CB66172A9F3933000F5724 /* ChordEditView.swift */,
+				D7A097422AAFA2E8007BFB76 /* ChordEditView+Frets&Fingers.swift */,
+			);
+			path = ChordEdit;
+			sourceTree = "<group>";
+		};
 		D7CB65F62A9F37AC000F5724 = {
 			isa = PBXGroup;
 			children = (
@@ -93,12 +108,13 @@
 		D7CB66162A9F3933000F5724 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				D7A097412AAFA11F007BFB76 /* ChordEdit */,
 				D7CB661B2A9F3933000F5724 /* ContentView.swift */,
+				D7D05E952AB4C0DB0044670A /* DiagramView.swift */,
 				D7CB661A2A9F3933000F5724 /* MainView.swift */,
 				D7CB66192A9F3933000F5724 /* SidebarView.swift */,
 				D7CB66182A9F3933000F5724 /* RootDetailsView.swift */,
 				D7CB661C2A9F3933000F5724 /* DatabaseView.swift */,
-				D7CB66172A9F3933000F5724 /* ChordEditView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -108,7 +124,8 @@
 			children = (
 				D7CB661E2A9F3933000F5724 /* ChordsDatabaseModel.swift */,
 				D7CB661F2A9F3933000F5724 /* ChordsDatabaseDocument.swift */,
-				D7CB662B2A9F42CF000F5724 /* StaticSetting.swift */,
+				D7EC194C2AAA281D001973BA /* ExportDatabase.swift */,
+				D7D05E992AB5C70B0044670A /* StaticSetting.swift */,
 			);
 			path = General;
 			sourceTree = "<group>";
@@ -213,15 +230,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D7CB662C2A9F42CF000F5724 /* StaticSetting.swift in Sources */,
+				D7A097432AAFA2E8007BFB76 /* ChordEditView+Frets&Fingers.swift in Sources */,
+				D7D05E9A2AB5C70B0044670A /* StaticSetting.swift in Sources */,
 				D7CB66252A9F3933000F5724 /* DatabaseView.swift in Sources */,
 				D7CB66272A9F3933000F5724 /* ChordsDatabaseDocument.swift in Sources */,
 				D7CB66152A9F391F000F5724 /* ChordsDatabaseApp.swift in Sources */,
 				D7CB66222A9F3933000F5724 /* SidebarView.swift in Sources */,
 				D7CB66242A9F3933000F5724 /* ContentView.swift in Sources */,
+				D7EC194D2AAA281D001973BA /* ExportDatabase.swift in Sources */,
 				D7CB66202A9F3933000F5724 /* ChordEditView.swift in Sources */,
 				D7CB66262A9F3933000F5724 /* ChordsDatabaseModel.swift in Sources */,
 				D7CB66232A9F3933000F5724 /* MainView.swift in Sources */,
+				D7D05E962AB4C0DB0044670A /* DiagramView.swift in Sources */,
 				D7CB66212A9F3933000F5724 /* RootDetailsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

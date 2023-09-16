@@ -2,17 +2,18 @@
 //  ChordsDatabaseDocument.swift
 //  Chords Database
 //
-//  © 2022 Nick Berendsen
+//  © 2023 Nick Berendsen
 //
 
 import SwiftUI
 import UniformTypeIdentifiers
+import SwiftlyChordUtilities
 
 // MARK: The Chord Databse document
 
 extension UTType {
     /// Add the UIType for the Chord Databse document
-    static var cdb: UTType {
+    static var chordsdb: UTType {
         UTType(exportedAs: "nl.desbeers.chordsdb")
     }
 }
@@ -20,17 +21,22 @@ extension UTType {
 /// The Chords database document
 struct ChordsDatabaseDocument: FileDocument {
     /// The type of the document
-    static var readableContentTypes: [UTType] { [.cdb] }
+    static var readableContentTypes: [UTType] { [.chordsdb] }
     /// The content of the document
     var chords: String
     /// Init the document
-    init(chords: String = "default") {
-        self.chords = chords
+    init(chords: String = "") {
+        if chords.isEmpty {
+            self.chords = Chords.readDatabase(.guitar)
+        } else {
+            self.chords = chords
+        }
     }
     /// Init for an existing document
     init(configuration: ReadConfiguration) throws {
-        guard let data = configuration.file.regularFileContents,
-              let string = String(data: data, encoding: .utf8)
+        guard
+            let data = configuration.file.regularFileContents,
+            let string = String(data: data, encoding: .utf8)
         else {
             throw CocoaError(.fileReadCorruptFile)
         }
@@ -40,6 +46,7 @@ struct ChordsDatabaseDocument: FileDocument {
     /// - Parameter configuration: The `WriteConfiguration`
     /// - Returns: A `FileWrapper`
     func fileWrapper(configuration: WriteConfiguration) throws -> FileWrapper {
+        // swiftlint:disable:next force_unwrapping
         let data = chords.data(using: .utf8)!
         return .init(regularFileWithContents: data)
     }

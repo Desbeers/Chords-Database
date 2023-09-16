@@ -2,7 +2,7 @@
 //  SidebarView.swift
 //  Chords Database
 //
-//  © 2022 Nick Berendsen
+//  © 2023 Nick Berendsen
 //
 
 import SwiftUI
@@ -13,11 +13,11 @@ struct SidebarView: View {
     /// The SwiftUI model for the Chords Database
     @EnvironmentObject var model: ChordsDatabaseModel
     /// The Keys to show in this View
-    @State var kays: [Chords.Root] = []
+    @State var kays: [Chord.Root] = []
     /// The body of the View
     var body: some View {
         List(selection: $model.selectedRoot) {
-            ForEach(Chords.Root.allCases, id: \.rawValue) { key in
+            ForEach(Chord.Root.allCases, id: \.rawValue) { key in
                 Text(key.display.symbol)
                     .tag(key)
             }

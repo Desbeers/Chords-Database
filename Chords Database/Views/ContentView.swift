@@ -2,7 +2,7 @@
 //  ContentView.swift
 //  Chords Database
 //
-//  © 2022 Nick Berendsen
+//  © 2023 Nick Berendsen
 //
 
 import SwiftUI
@@ -19,15 +19,8 @@ struct ContentView: View {
             .environmentObject(model)
         /// Import the chords
             .task {
-                if document.chords == "default" {
-                    /// Load the default database
-                    model.allChords = ChordsDatabaseModel.getChords()
-                    /// Update the document
-                    model.updateDocument.toggle()
-                } else {
-                    /// Load the content of the database
-                    model.importDB(database: document.chords)
-                }
+                /// Load the content of the database
+                model.importDB(database: document.chords)
             }
         /// Store changes of chords in the document
             .onChange(of: model.updateDocument ) { _ in

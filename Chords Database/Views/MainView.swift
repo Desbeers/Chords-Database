@@ -34,10 +34,11 @@ struct MainView: View {
         .navigationTitle("Chords Database")
         .toolbar {
             options.mirrorButton
+            options.tuningPicker
             options.instrumentPicker
             /// New Chord Button
             Button(action: {
-                if var chord = ChordDefinition(name: "C") {
+                if var chord = ChordDefinition(name: "C", tuning: options.displayOptions.tuning) {
                     /// Give it a new ID
                     chord.id = UUID()
                     model.navigationStack.append(chord)

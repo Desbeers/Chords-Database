@@ -107,6 +107,9 @@ struct ChordEditView: View {
                 chordID = index
             }
         }
+        .task(id: options.displayOptions.tuning) {
+            options.definition.tuning = options.displayOptions.tuning
+        }
         .task(id: options.definition) {
             let diagram = ChordDefinition(
                 id: options.definition.id,
@@ -116,6 +119,7 @@ struct ChordEditView: View {
                 baseFret: options.definition.baseFret,
                 root: options.definition.root,
                 quality: options.definition.quality,
+                tuning: options.displayOptions.tuning,
                 status: .standard
             )
             chordFinder = diagram.chordFinder

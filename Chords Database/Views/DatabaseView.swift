@@ -39,7 +39,7 @@ struct DatabaseView: View {
             ) {
                 ForEach(chords) { chord in
                     HStack {
-                        DiagramView(chord: chord, width: 100)
+                        DiagramView(chord: chord, width: 100, tuning: options.displayOptions.tuning)
                         VStack {
                             actions(chord: chord)
                         }
@@ -160,7 +160,8 @@ struct DatabaseView: View {
                 fingers: chord.fingers,
                 baseFret: chord.baseFret,
                 root: chord.root,
-                quality: chord.quality
+                quality: chord.quality,
+                tuning: chord.tuning
             )
             model.editChord = newChord
         }, label: {

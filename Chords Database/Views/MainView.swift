@@ -38,14 +38,22 @@ struct MainView: View {
             options.instrumentPicker
             /// New Chord Button
             Button(action: {
-                if var chord = ChordDefinition(name: "C", tuning: options.displayOptions.tuning) {
-                    /// Give it a new ID
-                    chord.id = UUID()
-                    model.navigationStack.append(chord)
-                }
+                let chord = ChordDefinition(
+                    id: UUID(),
+                    name: "New",
+                    frets: [0, 0, 0, 0, 0, 0],
+                    fingers: [0, 0, 0, 0, 0, 0],
+                    baseFret: 1,
+                    root: .c,
+                    quality: .major,
+                    tuning: options.displayOptions.tuning,
+                    status: .standard
+                )
+                model.navigationStack.append(chord)
             }, label: {
                 Label("New Chord", systemImage: "plus")
             })
+            .disabled(!model.navigationStack.isEmpty)
             .labelStyle(.iconOnly)
         }
     }

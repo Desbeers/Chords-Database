@@ -23,6 +23,7 @@ import SwiftlyChordUtilities
     @StateObject private var options = ChordDisplayOptions(defaults: defaults)
     /// The body of the Scene
     var body: some Scene {
+
         DocumentGroup(newDocument: ChordsDatabaseDocument()) { file in
             ContentView(document: file.$document)
                 .environmentObject(options)

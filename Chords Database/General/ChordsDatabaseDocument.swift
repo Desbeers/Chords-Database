@@ -20,17 +20,19 @@ extension UTType {
 
 /// The Chords database document
 struct ChordsDatabaseDocument: FileDocument {
+
     /// The type of the document
     static var readableContentTypes: [UTType] { [.chordsdb] }
     /// The content of the document
     var chords: String
     /// Init the document
     init(chords: String = "") {
-        if chords.isEmpty {
-            self.chords = Chords.readDatabase(.guitar)
-        } else {
-            self.chords = chords
-        }
+//        if chords.isEmpty {
+//            self.chords = Chords.jsonDatabase(instrument: .guitarStandardETuning)
+//        } else {
+//            self.chords = chords
+//        }
+        self.chords = chords
     }
     /// Init for an existing document
     init(configuration: ReadConfiguration) throws {

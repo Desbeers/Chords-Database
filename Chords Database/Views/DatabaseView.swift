@@ -26,20 +26,20 @@ struct DatabaseView: View {
     /// The body of the View
     var body: some View {
         if !haveChords && chords.isEmpty {
-            Text("No chords in the key of \(model.selectedRoot?.display.symbol ?? "") found in the datadase")
+            Text("No chords in the key of \(model.selectedRoot?.display.symbol ?? "") found in the \(model.instrument.label) Database")
                 .font(.title)
                 .padding(.top)
         }
         ScrollView {
             LazyVGrid(
-                columns: [GridItem(.adaptive(minimum: 260))],
+                columns: [GridItem(.adaptive(minimum: 220))],
                 alignment: .center,
                 spacing: 4,
                 pinnedViews: [.sectionHeaders, .sectionFooters]
             ) {
                 ForEach(chords) { chord in
                     HStack {
-                        DiagramView(chord: chord, width: 100, tuning: options.displayOptions.tuning)
+                        DiagramView(chord: chord, width: 150)
                         VStack {
                             actions(chord: chord)
                         }
@@ -48,7 +48,20 @@ struct DatabaseView: View {
                     .background(checkChord(chord: chord) ? Color.accentColor.opacity(0.1) : Color.red.opacity(0.1))
                     .padding()
                 }
+                if let root = model.selectedRoot, root != Chord.Root.none {
+                    Button(
+                        action: {
+                            if let newChord = ChordDefinition(definition: root.rawValue, instrument: model.instrument) {
+                                options.definition = newChord
+                                model.navigationStack.append(newChord)
+                            }
+                        }, label: {
+                            Text("Add a new **\(root.display.symbol)** chord")
+                        }
+                    )
+                }
             }
+            .padding()
         }
             .buttonStyle(.bordered)
         .animation(.default, value: haveChords)
@@ -78,13 +91,16 @@ struct DatabaseView: View {
     }
 
     func filterChords() {
-        var allChords = model.allChords.filter { $0.root == model.selectedRoot }
+
+        var allChords: [ChordDefinition] = []
+        if model.selectedRoot == Chord.Root.none {
+            allChords = model.allChords
+        } else {
+            allChords = model.allChords.filter { $0.root == model.selectedRoot }
+        }
         if let quality = model.selectedQuality {
             allChords = allChords.filter { $0.quality == quality }
         }
-        allChords.sort(using: KeyPathComparator(\.root))
-        allChords.sort(using: KeyPathComparator(\.quality))
-        allChords.sort(using: KeyPathComparator(\.baseFret))
         chords = allChords
         haveChords = chords.isEmpty ? false : true
     }
@@ -107,11 +123,15 @@ struct DatabaseView: View {
     }
 
     func actions(chord: ChordDefinition) -> some View {
-        VStack(alignment: .leading) {
+        VStack(alignment: .leading, spacing: 10) {
 
-            NavigationLink(value: chord) {
+            Button(action: {
+                options.definition = chord
+                model.navigationStack.append(chord)
+            }, label: {
                 Label("Edit", systemImage: "square.and.pencil")
-            }
+            })
+
             duplicateButton(chord: chord)
             Button(action: {
                 actionButton = chord
@@ -120,7 +140,10 @@ struct DatabaseView: View {
                 Label("Delete", systemImage: "trash")
             })
         }
-        .labelStyle(ActionLabelStyle())
+        .labelStyle(.iconOnly)
+        .buttonStyle(.plain)
+        .font(.largeTitle)
+        //.labelStyle(ActionLabelStyle())
         .confirmationDialog(
             "Delete \(actionButton?.root.display.accessible ?? "") \(actionButton?.quality.display.accessible ?? "")?",
             isPresented: $confirmationShown,
@@ -153,17 +176,19 @@ struct DatabaseView: View {
 
     func duplicateButton(chord: ChordDefinition) -> some View {
         Button(action: {
-            let newChord = ChordDefinition(
+            let duplicatedChord = ChordDefinition(
                 id: UUID(),
                 name: "Chord",
                 frets: chord.frets,
                 fingers: chord.fingers,
                 baseFret: chord.baseFret,
                 root: chord.root,
-                quality: chord.quality,
-                tuning: chord.tuning
+                quality: chord.quality, 
+                bass: chord.bass,
+                instrument: chord.instrument
             )
-            model.editChord = newChord
+            options.definition = duplicatedChord
+            model.navigationStack.append(duplicatedChord)
         }, label: {
             Label("Duplicate", systemImage: "doc.on.doc")
         })
@@ -179,6 +204,7 @@ struct DatabaseView: View {
                 configuration.title
                     .frame(width: 80, alignment: .leading)
             }
+            .buttonStyle(.plain)
         }
     }
 }

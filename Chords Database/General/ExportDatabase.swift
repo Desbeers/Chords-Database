@@ -14,6 +14,10 @@ import UniformTypeIdentifiers
 struct ExportButton: View {
     /// The SwiftUI model for the Chords Database
     @EnvironmentObject var model: ChordsDatabaseModel
+
+    /// Chord Display Options
+    @EnvironmentObject private var options: ChordDisplayOptions
+
     @State private var showExport: Bool = false
     @State private var data: Data?
     var body: some View {
@@ -36,26 +40,30 @@ struct ExportButton: View {
 
     private var exportChords: String {
         return ""
-//        let export = model.allChords.map { chord in
-//            CustomChord(
-//                id: chord.id,
-//                frets: chord.frets,
-//                fingers: chord.fingers,
-//                baseFret: chord.baseFret,
-//                //barres: chord.barres,
-//                root: chord.key,
-//                quality: chord.suffix
-//            )
-//        }
+
+//        let definitions = model.allChords.map(\.define).sorted()
+//        let export = Database(
+//            instrument: options.displayOptions.instrument,
+//            definitions: definitions
+//        )
 //        let encoder = JSONEncoder()
 //        encoder.outputFormatting = .prettyPrinted
 //        do {
 //            let encodedData = try encoder.encode(export)
-//            let jsonString = String(data: encodedData,
-//                                    encoding: .utf8)
+//            let jsonString = String(
+//                data: encodedData,
+//                encoding: .utf8
+//            )
 //            return jsonString ?? "error"
 //        } catch {
 //            return "error"
 //        }
     }
+}
+
+struct DirectiveExport: Codable {
+    let id: UUID
+    let root: Chord.Root
+    let quality: Chord.Quality
+    let define: String
 }

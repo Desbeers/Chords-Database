@@ -17,10 +17,11 @@ struct MainView: View {
         NavigationSplitView(
             sidebar: {
                 HStack(spacing: 0) {
-                    SidebarView()
+                    RootPickerView()
                     Divider()
-                    RootDetailsView()
+                    QualityPickerView()
                 }
+                .navigationSplitViewColumnWidth(200)
                 .navigationBarBackButtonHidden()
             }, detail: {
                 NavigationStack(path: $model.navigationStack) {
@@ -33,23 +34,16 @@ struct MainView: View {
         )
         .navigationTitle("Chords Database")
         .toolbar {
-            options.mirrorButton
-            options.tuningPicker
-            options.instrumentPicker
+            Text(model.instrument.label)
+            // ExportButton()
+            options.mirrorToggle
+            options.midiInstrumentPicker
             /// New Chord Button
             Button(action: {
-                let chord = ChordDefinition(
-                    id: UUID(),
-                    name: "New",
-                    frets: [0, 0, 0, 0, 0, 0],
-                    fingers: [0, 0, 0, 0, 0, 0],
-                    baseFret: 1,
-                    root: .c,
-                    quality: .major,
-                    tuning: options.displayOptions.tuning,
-                    status: .standard
-                )
-                model.navigationStack.append(chord)
+                if let newChord = ChordDefinition(definition: "C", instrument: model.instrument) {
+                    options.definition = newChord
+                    model.navigationStack.append(newChord)
+                }
             }, label: {
                 Label("New Chord", systemImage: "plus")
             })

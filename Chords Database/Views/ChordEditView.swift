@@ -78,7 +78,7 @@ struct ChordEditView: View {
 
 
     enum Status: String {
-        case new = "Save New Chord"
+        case new = "Add New Chord"
         case update = "Update Chord"
     }
 }

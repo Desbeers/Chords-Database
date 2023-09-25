@@ -10,15 +10,26 @@ import SwiftlyChordUtilities
 
 /// The  Content View
 struct ContentView: View {
+    static let defaults = ChordDefinition.DisplayOptions(
+        showName: true,
+        showNotes: true,
+        showPlayButton: true,
+        rootDisplay: .symbol,
+        qualityDisplay: .symbolized,
+        showFingers: true,
+        mirrorDiagram: false
+    )
+    /// Chord Display Options
+    @StateObject private var options = ChordDisplayOptions(defaults: defaults)
     /// The SwiftUI model for the Chords Database
     @StateObject var model = ChordsDatabaseModel()
     /// Chord Display Options
-    @EnvironmentObject private var options: ChordDisplayOptions
     /// The current document with the databse
     @Binding var document: ChordsDatabaseDocument
     /// The body of the View
     var body: some View {
         MainView()
+            .environmentObject(options)
             .environmentObject(model)
             .sheet(
                 isPresented: $model.showTemplate,
@@ -36,6 +47,7 @@ struct ContentView: View {
                 },
                 content: {
                     TemplateView()
+                        .environmentObject(options)
                 }
             )
         /// Import the chords

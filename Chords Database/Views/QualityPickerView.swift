@@ -23,13 +23,8 @@ struct QualityPickerView: View {
                 .font(.title)
             List(selection: $model.selectedQuality) {
                 ForEach(qualities) { quality in
-                    Text("\(quality.quality == .major ? "M" : quality.quality.display.symbolized)")
+                    Text("\(quality.quality == .major ? "M" : quality.quality.display.short)")
                         .font(.headline)
-//                    HStack {
-//                        Text("\(suffix.root.rawValue)")
-//                            .font(.headline)
-//                        Text("\(suffix.quality.display.symbolized)")
-//                    }
                     .tag(quality.quality)
                 }
             }

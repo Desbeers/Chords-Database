@@ -31,6 +31,10 @@ struct DatabaseView: View {
                 .padding(.top)
         }
         ScrollView {
+            if model.instrument == .ukuleleStandardGTuning {
+                Label("For Ukulele chords, the first note is often not the base chord. With only 4 strings, I leave them as they are", systemImage: "info.circle.fill")
+                    .padding()
+            }
             LazyVGrid(
                 columns: [GridItem(.adaptive(minimum: 220))],
                 alignment: .center,
@@ -38,14 +42,20 @@ struct DatabaseView: View {
                 pinnedViews: [.sectionHeaders, .sectionFooters]
             ) {
                 ForEach(chords) { chord in
-                    HStack {
-                        DiagramView(chord: chord, width: 150)
-                        VStack {
-                            actions(chord: chord)
+                    VStack {
+                        HStack {
+                            DiagramView(chord: chord, width: 150)
+                            VStack {
+                                actions(chord: chord)
+                            }
                         }
+                        Text(chord.validate.label)
+                            .font(.caption)
+                            .lineLimit(1)
+                            .minimumScaleFactor(0.2)
                     }
                     .padding()
-                    .background(checkChord(chord: chord) ? Color.accentColor.opacity(0.1) : Color.red.opacity(0.1))
+                    .background(chord.validate.color.opacity(0.1))
                     .padding()
                 }
                 if let root = model.selectedRoot, root != Chord.Root.none {
@@ -79,16 +89,16 @@ struct DatabaseView: View {
             ChordEditView(chord: chord)
         }
     }
-
-    func checkChord(chord: ChordDefinition) -> Bool {
-        let chords = chord.chordFinder
-        for match in chords {
-            if match.root == chord.root && match.quality == chord.quality {
-                return true
-            }
-        }
-        return false
-    }
+//
+//    func checkChord(chord: ChordDefinition) -> Bool {
+//        let chords = chord.chordFinder
+//        for match in chords {
+//            if match.root == chord.root && match.quality == chord.quality && match.bass == chord.bass {
+//                return true
+//            }
+//        }
+//        return false
+//    }
 
     func filterChords() {
 
@@ -105,22 +115,22 @@ struct DatabaseView: View {
         haveChords = chords.isEmpty ? false : true
     }
 
-    func chordFinder(chord: ChordDefinition) -> some View {
-        VStack(alignment: .leading) {
-            Label(
-                chord.chordFinder.isEmpty ? "Found no matching chord" : "Found:",
-                systemImage: "waveform.and.magnifyingglass"
-            )
-            .padding(.vertical, 3)
-            HStack {
-                ForEach(chord.chordFinder) { result in
-                    Text(result.name)
-                        .foregroundColor(chord.name == result.name ? .accentColor : .secondary)
-                }
-            }
-            .font(.title3)
-        }
-    }
+//    func chordFinder(chord: ChordDefinition) -> some View {
+//        VStack(alignment: .leading) {
+//            Label(
+//                chord.chordFinder.isEmpty ? "Found no matching chord" : "Found:",
+//                systemImage: "waveform.and.magnifyingglass"
+//            )
+//            .padding(.vertical, 3)
+//            HStack {
+//                ForEach(chord.chordFinder) { result in
+//                    Text(result.name)
+//                        .foregroundColor(chord.name == result.name ? .accentColor : .secondary)
+//                }
+//            }
+//            .font(.title3)
+//        }
+//    }
 
     func actions(chord: ChordDefinition) -> some View {
         VStack(alignment: .leading, spacing: 10) {

@@ -22,7 +22,7 @@ struct RootPickerView: View {
             List(selection: $model.selectedRoot) {
                 ForEach(Chord.Root.allCases, id: \.rawValue) { key in
                     Text(key.display.symbol)
-                        .font(.headline)
+                        .font(.title3)
                         .tag(key)
                 }
             }

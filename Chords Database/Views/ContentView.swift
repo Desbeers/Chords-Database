@@ -8,8 +8,9 @@
 import SwiftUI
 import SwiftlyChordUtilities
 
-/// The  Content View
+/// SwiftUI `View` containing all content
 struct ContentView: View {
+    /// The default display options for the diagrams
     static let defaults = ChordDefinition.DisplayOptions(
         showName: true,
         showNotes: true,
@@ -26,7 +27,7 @@ struct ContentView: View {
     /// Chord Display Options
     /// The current document with the databse
     @Binding var document: ChordsDatabaseDocument
-    /// The body of the View
+    /// The body of the `View`
     var body: some View {
         MainView()
             .environmentObject(options)

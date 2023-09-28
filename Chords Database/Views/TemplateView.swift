@@ -8,10 +8,13 @@
 import SwiftUI
 import SwiftlyChordUtilities
 
+/// SwiftUI `View` to pick a template for a new file
 struct TemplateView: View {
     /// Chord Display Options
     @EnvironmentObject private var options: ChordDisplayOptions
+    /// The dismiss environment
     @Environment(\.dismiss) var dismiss
+    /// The body of the `View`
     var body: some View {
         VStack {
             Text("Choose a template for your new database")

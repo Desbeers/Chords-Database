@@ -23,22 +23,10 @@ class ChordsDatabaseModel: ObservableObject {
     /// The *update document* toggle
     /// - Note: Toggled when a chord is new or changed
     @Published var updateDocument: Bool = false
-
     /// The current instrument
     @Published var instrument: Instrument = .guitarStandardETuning
-
     /// Template toggle
     @Published public var showTemplate: Bool = false
-
     /// The Navigation stack path
     @Published var navigationStack: [ChordDefinition] = []
-
-//    /// Export  ``allChords`` to a `String`
-//    var exportDB: String {
-//        Chords.getChordDefinitions(database: .guitarChordDefinitions, definitions: allChords)
-//    }
-//    /// Import a database String as a [ChordDefinition] array
-//    func importDB(database: Chords.Database, definitions: String) {
-//        allChords = Chords.importChordDefinitions(database: database, definitions: definitions)
-//    }
 }

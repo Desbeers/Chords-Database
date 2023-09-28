@@ -8,30 +8,31 @@
 import SwiftUI
 import SwiftlyChordUtilities
 
-/// The  Database View for Chords
+/// SwiftUI `View` for the database
 struct DatabaseView: View {
     /// The SwiftUI model for the Chords Database
     @EnvironmentObject var model: ChordsDatabaseModel
     /// Chord Display Options
     @EnvironmentObject private var options: ChordDisplayOptions
     /// The conformation dialog to delete a chord
-    @State private var confirmationShown = false
+    @State private var showDeleteConfirmation = false
     /// The Chords to show in this View
     @State var chords: [ChordDefinition] = []
     /// Bool if we have chords or not
     @State var haveChords = true
     /// The chord for the 'delete' action
     @State private var actionButton: ChordDefinition?
-
-    /// The body of the View
+    /// The body of the `View`
     var body: some View {
         if !haveChords && chords.isEmpty {
+            // swiftlint:disable:next line_length
             Text("No chords in the key of \(model.selectedRoot?.display.symbol ?? "") found in the \(model.instrument.label) Database")
                 .font(.title)
                 .padding(.top)
         }
         ScrollView {
             if model.instrument == .ukuleleStandardGTuning {
+                // swiftlint:disable:next line_length
                 Label("For Ukulele chords, the first note is often not the base chord. With only 4 strings, I leave them as they are", systemImage: "info.circle.fill")
                     .padding()
             }
@@ -73,7 +74,7 @@ struct DatabaseView: View {
             }
             .padding()
         }
-            .buttonStyle(.bordered)
+        .buttonStyle(.bordered)
         .animation(.default, value: haveChords)
         .id(model.selectedRoot)
         .task(id: model.allChords) {
@@ -89,19 +90,9 @@ struct DatabaseView: View {
             ChordEditView(chord: chord)
         }
     }
-//
-//    func checkChord(chord: ChordDefinition) -> Bool {
-//        let chords = chord.chordFinder
-//        for match in chords {
-//            if match.root == chord.root && match.quality == chord.quality && match.bass == chord.bass {
-//                return true
-//            }
-//        }
-//        return false
-//    }
 
-    func filterChords() {
-
+    /// Filter the chords
+    private func filterChords() {
         var allChords: [ChordDefinition] = []
         if model.selectedRoot == Chord.Root.none {
             allChords = model.allChords
@@ -115,48 +106,19 @@ struct DatabaseView: View {
         haveChords = chords.isEmpty ? false : true
     }
 
-//    func chordFinder(chord: ChordDefinition) -> some View {
-//        VStack(alignment: .leading) {
-//            Label(
-//                chord.chordFinder.isEmpty ? "Found no matching chord" : "Found:",
-//                systemImage: "waveform.and.magnifyingglass"
-//            )
-//            .padding(.vertical, 3)
-//            HStack {
-//                ForEach(chord.chordFinder) { result in
-//                    Text(result.name)
-//                        .foregroundColor(chord.name == result.name ? .accentColor : .secondary)
-//                }
-//            }
-//            .font(.title3)
-//        }
-//    }
-
-    func actions(chord: ChordDefinition) -> some View {
+    /// Chord actions
+    private func actions(chord: ChordDefinition) -> some View {
         VStack(alignment: .leading, spacing: 10) {
-
-            Button(action: {
-                options.definition = chord
-                model.navigationStack.append(chord)
-            }, label: {
-                Label("Edit", systemImage: "square.and.pencil")
-            })
-
+            editButton(chord: chord)
             duplicateButton(chord: chord)
-            Button(action: {
-                actionButton = chord
-                confirmationShown = true
-            }, label: {
-                Label("Delete", systemImage: "trash")
-            })
+            confirmDeleteButton(chord: chord)
         }
         .labelStyle(.iconOnly)
         .buttonStyle(.plain)
         .font(.largeTitle)
-        //.labelStyle(ActionLabelStyle())
         .confirmationDialog(
             "Delete \(actionButton?.root.display.accessible ?? "") \(actionButton?.quality.display.accessible ?? "")?",
-            isPresented: $confirmationShown,
+            isPresented: $showDeleteConfirmation,
             titleVisibility: .visible
         ) {
             deleteButton(chord: actionButton)
@@ -165,56 +127,61 @@ struct DatabaseView: View {
         }
     }
 
-    func editButton(chord: ChordDefinition) -> some View {
-        Button(action: {
-            model.editChord = chord
-        }, label: {
-            Label("Edit Chord", systemImage: "square.and.pencil")
-        })
-    }
+    // MARK: Action Buttons
 
-    func deleteButton(chord: ChordDefinition?) -> some View {
-        Button(action: {
-            if let chord, let chordIndex = model.allChords.firstIndex(where: { $0.id == chord.id }) {
-                model.allChords.remove(at: chordIndex)
-                model.updateDocument.toggle()
+    /// Edit chord button
+    private func editButton(chord: ChordDefinition) -> some View {
+        Button(
+            action: {
+                options.definition = chord
+                model.navigationStack.append(chord)
+            },
+            label: {
+                Label("Edit", systemImage: "square.and.pencil")
             }
-        }, label: {
-            Text("Delete")
-        })
+        )
     }
 
-    func duplicateButton(chord: ChordDefinition) -> some View {
-        Button(action: {
-            let duplicatedChord = ChordDefinition(
-                id: UUID(),
-                name: "Chord",
-                frets: chord.frets,
-                fingers: chord.fingers,
-                baseFret: chord.baseFret,
-                root: chord.root,
-                quality: chord.quality, 
-                bass: chord.bass,
-                instrument: chord.instrument
-            )
-            options.definition = duplicatedChord
-            model.navigationStack.append(duplicatedChord)
-        }, label: {
-            Label("Duplicate", systemImage: "doc.on.doc")
-        })
-    }
-
-    struct ActionLabelStyle: LabelStyle {
-        @Environment(\.sizeCategory) var sizeCategory
-        func makeBody(configuration: Configuration) -> some View {
-            HStack {
-                configuration.icon
-                    .bold()
-                    .frame(width: 16)
-                configuration.title
-                    .frame(width: 80, alignment: .leading)
+    /// Duplicate chord button
+    private func duplicateButton(chord: ChordDefinition) -> some View {
+        Button(
+            action: {
+                var duplicate = chord
+                duplicate.id = UUID()
+                options.definition = duplicate
+                model.navigationStack.append(duplicate)
+            },
+            label: {
+                Label("Duplicate", systemImage: "doc.on.doc")
             }
-            .buttonStyle(.plain)
-        }
+        )
+    }
+
+    /// Confirm chord delete button
+    private func confirmDeleteButton(chord: ChordDefinition) -> some View {
+        Button(
+            action: {
+                actionButton = chord
+                showDeleteConfirmation = true
+            },
+            label: {
+                Label("Delete", systemImage: "trash")
+            }
+        )
+    }
+
+    /// Delete chord button
+    private func deleteButton(chord: ChordDefinition?) -> some View {
+        Button(
+            action: {
+                if let chord, let chordIndex = model.allChords.firstIndex(where: { $0.id == chord.id }) {
+                    model.allChords.remove(at: chordIndex)
+                    model.updateDocument.toggle()
+                }
+            },
+            label: {
+                Text("Delete")
+            }
+        )
     }
 }

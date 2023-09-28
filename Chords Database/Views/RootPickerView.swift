@@ -8,13 +8,13 @@
 import SwiftUI
 import SwiftlyChordUtilities
 
-/// The  Root Picker View
+/// SwiftUI `View` containing the root picker in the sidebar
 struct RootPickerView: View {
     /// The SwiftUI model for the Chords Database
     @EnvironmentObject var model: ChordsDatabaseModel
     /// The Keys to show in this View
     @State var kays: [Chord.Root] = []
-    /// The body of the View
+    /// The body of the `View`
     var body: some View {
         VStack {
             Text("Root")

@@ -27,11 +27,6 @@ struct ChordsDatabaseDocument: FileDocument {
     var chords: String
     /// Init the document
     init(chords: String = "") {
-//        if chords.isEmpty {
-//            self.chords = Chords.jsonDatabase(instrument: .guitarStandardETuning)
-//        } else {
-//            self.chords = chords
-//        }
         self.chords = chords
     }
     /// Init for an existing document

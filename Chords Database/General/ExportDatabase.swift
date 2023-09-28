@@ -11,15 +11,15 @@ import SwiftUI
 import SwiftlyChordUtilities
 import UniformTypeIdentifiers
 
+/// SwiftUI `View` to export the database
 struct ExportButton: View {
     /// The SwiftUI model for the Chords Database
     @EnvironmentObject var model: ChordsDatabaseModel
-
     /// Chord Display Options
     @EnvironmentObject private var options: ChordDisplayOptions
-
+    /// Bool to show the file exporter dialog
     @State private var showExport: Bool = false
-    @State private var data: Data?
+    /// The body of the `View`
     var body: some View {
         Button("Export new database version") {
             showExport.toggle()
@@ -59,11 +59,4 @@ struct ExportButton: View {
 //            return "error"
 //        }
     }
-}
-
-struct DirectiveExport: Codable {
-    let id: UUID
-    let root: Chord.Root
-    let quality: Chord.Quality
-    let define: String
 }

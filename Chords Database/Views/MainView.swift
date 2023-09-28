@@ -8,11 +8,13 @@
 import SwiftUI
 import SwiftlyChordUtilities
 
+/// SwiftUI `View` containing the main content
 struct MainView: View {
     /// The SwiftUI model for the Chords Database
     @EnvironmentObject var model: ChordsDatabaseModel
     /// Chord Display Options
     @EnvironmentObject private var options: ChordDisplayOptions
+    /// The body of the `View`
     var body: some View {
         NavigationSplitView(
             sidebar: {

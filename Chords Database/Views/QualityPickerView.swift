@@ -8,7 +8,7 @@
 import SwiftUI
 import SwiftlyChordUtilities
 
-/// The  Quality picker View for a selected `Root`
+/// SwiftUI `View` containing the quality picker in the sidebar
 struct QualityPickerView: View {
     /// The SwiftUI model for the Chords Database
     @EnvironmentObject var model: ChordsDatabaseModel
@@ -16,7 +16,7 @@ struct QualityPickerView: View {
     @State var qualities: [ChordDefinition] = []
     /// Filter MIDI toggle
     @AppStorage("Bad MIDI filter") private var midiFilter = false
-    /// The body of the View
+    /// The body of the `View`
     var body: some View {
         VStack {
             Text("Quality")

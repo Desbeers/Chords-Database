@@ -21,7 +21,6 @@
 		D7CB66272A9F3933000F5724 /* ChordsDatabaseDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7CB661F2A9F3933000F5724 /* ChordsDatabaseDocument.swift */; };
 		D7CB662A2A9F395A000F5724 /* SwiftlyChordUtilities in Frameworks */ = {isa = PBXBuildFile; productRef = D7CB66292A9F395A000F5724 /* SwiftlyChordUtilities */; };
 		D7D05E962AB4C0DB0044670A /* DiagramView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D05E952AB4C0DB0044670A /* DiagramView.swift */; };
-		D7D05E9A2AB5C70B0044670A /* StaticSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D05E992AB5C70B0044670A /* StaticSetting.swift */; };
 		D7EC194D2AAA281D001973BA /* ExportDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7EC194C2AAA281D001973BA /* ExportDatabase.swift */; };
 /* End PBXBuildFile section */
 
@@ -42,7 +41,6 @@
 		D7CB661E2A9F3933000F5724 /* ChordsDatabaseModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChordsDatabaseModel.swift; sourceTree = "<group>"; };
 		D7CB661F2A9F3933000F5724 /* ChordsDatabaseDocument.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChordsDatabaseDocument.swift; sourceTree = "<group>"; };
 		D7D05E952AB4C0DB0044670A /* DiagramView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiagramView.swift; sourceTree = "<group>"; };
-		D7D05E992AB5C70B0044670A /* StaticSetting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StaticSetting.swift; sourceTree = "<group>"; };
 		D7EC194C2AAA281D001973BA /* ExportDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExportDatabase.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -99,12 +97,12 @@
 		D7CB66162A9F3933000F5724 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				D7CB661A2A9F3933000F5724 /* MainView.swift */,
 				D7CB661B2A9F3933000F5724 /* ContentView.swift */,
-				D7D05E952AB4C0DB0044670A /* DiagramView.swift */,
+				D7CB661A2A9F3933000F5724 /* MainView.swift */,
 				D7CB66192A9F3933000F5724 /* RootPickerView.swift */,
 				D7CB66182A9F3933000F5724 /* QualityPickerView.swift */,
 				D7CB661C2A9F3933000F5724 /* DatabaseView.swift */,
+				D7D05E952AB4C0DB0044670A /* DiagramView.swift */,
 				D7622B422ABEC3B4008CAC63 /* ChordEditView.swift */,
 				D706D0102ABC3CDE00EDE2D9 /* TemplateView.swift */,
 			);
@@ -117,7 +115,6 @@
 				D7CB661E2A9F3933000F5724 /* ChordsDatabaseModel.swift */,
 				D7CB661F2A9F3933000F5724 /* ChordsDatabaseDocument.swift */,
 				D7EC194C2AAA281D001973BA /* ExportDatabase.swift */,
-				D7D05E992AB5C70B0044670A /* StaticSetting.swift */,
 			);
 			path = General;
 			sourceTree = "<group>";
@@ -223,7 +220,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				D7622B432ABEC3B4008CAC63 /* ChordEditView.swift in Sources */,
-				D7D05E9A2AB5C70B0044670A /* StaticSetting.swift in Sources */,
 				D7CB66252A9F3933000F5724 /* DatabaseView.swift in Sources */,
 				D7CB66272A9F3933000F5724 /* ChordsDatabaseDocument.swift in Sources */,
 				D7CB66152A9F391F000F5724 /* ChordsDatabaseApp.swift in Sources */,

@@ -8,20 +8,19 @@
 import SwiftUI
 import SwiftlyChordUtilities
 
+/// SwiftUI `View` to edit a chord
 struct ChordEditView: View {
-
     /// The SwiftUI model for the Chords Database
     @EnvironmentObject var model: ChordsDatabaseModel
     /// Chord Display Options
     @EnvironmentObject var options: ChordDisplayOptions
-
     /// The chord to add or change
     let chord: ChordDefinition
     /// Status of the chord, new or altered
     @State private var status: Status = .new
     /// The ID of an existsing chord
     @State private var chordID: Int?
-
+    /// The body of the `View`
     var body: some View {
         ScrollView {
             VStack {

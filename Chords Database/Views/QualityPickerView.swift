@@ -12,41 +12,29 @@ import SwiftlyChordUtilities
 struct QualityPickerView: View {
     /// The SwiftUI model for the Chords Database
     @EnvironmentObject var model: ChordsDatabaseModel
-    /// The Qualities to show in this View
-    @State var qualities: [ChordDefinition] = []
-    /// Filter MIDI toggle
-    @AppStorage("Bad MIDI filter") private var midiFilter = false
     /// The body of the `View`
     var body: some View {
         VStack {
             Text("Quality")
                 .font(.title)
-            List(selection: $model.selectedQuality) {
-                ForEach(qualities) { quality in
+            List(selection: $model.selection.quality) {
+                ForEach(model.qualityChords) { quality in
                     Text("\(quality.quality == .major ? "M" : quality.quality.display.symbolized)")
                         .font(.title3)
                     .tag(quality.quality)
                 }
             }
         }
-        .task(id: model.allChords) {
+        .frame(width: 100)
+        .task(id: model.rootChords) {
             filterQualities()
         }
-        .task(id: model.selectedRoot) {
-            filterQualities()
-        }
-        .task(id: midiFilter) {
-            filterQualities()
+        .task(id: model.selection.quality) {
+            model.selection.bass = nil
         }
     }
-
-    func filterQualities() {
-        var allQualities: [ChordDefinition] = []
-        if model.selectedRoot == Chord.Root.none {
-            allQualities = model.allChords
-        } else {
-            allQualities = model.allChords.matching(root: model.selectedRoot ?? .c)
-        }
-        qualities = allQualities.uniqued(by: \.quality).sorted(using: KeyPathComparator(\.quality))
+    /// Filter the chords by quality
+    private func filterQualities() {
+        model.qualityChords = model.rootChords.uniqued(by: \.quality).sorted(using: KeyPathComparator(\.quality))
     }
 }

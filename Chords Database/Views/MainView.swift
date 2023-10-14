@@ -22,8 +22,10 @@ struct MainView: View {
                     RootPickerView()
                     Divider()
                     QualityPickerView()
+                    Divider()
+                    BassPickerView()
                 }
-                .navigationSplitViewColumnWidth(240)
+                .navigationSplitViewColumnWidth(260)
                 .navigationBarBackButtonHidden()
             }, detail: {
                 NavigationStack(path: $model.navigationStack) {

@@ -44,7 +44,7 @@ struct MainView: View {
             options.midiInstrumentPicker
             /// New Chord Button
             Button(action: {
-                if let newChord = ChordDefinition(definition: "C", instrument: model.instrument) {
+                if let newChord = ChordDefinition(definition: "C", instrument: model.instrument, status: .standard) {
                     options.definition = newChord
                     model.navigationStack.append(newChord)
                 }

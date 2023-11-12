@@ -71,7 +71,8 @@ struct DatabaseView: View {
                                 action: {
                                     if let newChord = ChordDefinition(
                                         definition: root.rawValue,
-                                        instrument: model.instrument
+                                        instrument: model.instrument,
+                                        status: .standard
                                     ) {
                                         options.definition = newChord
                                         model.navigationStack.append(newChord)

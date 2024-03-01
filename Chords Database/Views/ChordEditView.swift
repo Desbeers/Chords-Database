@@ -11,9 +11,9 @@ import SwiftlyChordUtilities
 /// SwiftUI `View` to edit a chord
 struct ChordEditView: View {
     /// The SwiftUI model for the Chords Database
-    @EnvironmentObject var model: ChordsDatabaseModel
+    @Environment(ChordsDatabaseModel.self) private var chordsDatabaseModel
     /// Chord Display Options
-    @EnvironmentObject var options: ChordDisplayOptions
+    @Environment(ChordDisplayOptions.self) private var chordDisplayOptions
     /// The chord to add or change
     let chord: ChordDefinition
     /// Status of the chord, new or altered
@@ -38,23 +38,23 @@ struct ChordEditView: View {
                 HStack {
                     Button(action: {
                         let result = ChordDefinition(
-                            id: options.definition.id,
-                            name: options.definition.name,
-                            frets: options.definition.frets,
-                            fingers: options.definition.fingers,
-                            baseFret: options.definition.baseFret,
-                            root: options.definition.root,
-                            quality: options.definition.quality,
-                            bass: options.definition.bass,
-                            instrument: options.definition.instrument,
+                            id: chordDisplayOptions.definition.id,
+                            name: chordDisplayOptions.definition.name,
+                            frets: chordDisplayOptions.definition.frets,
+                            fingers: chordDisplayOptions.definition.fingers,
+                            baseFret: chordDisplayOptions.definition.baseFret,
+                            root: chordDisplayOptions.definition.root,
+                            quality: chordDisplayOptions.definition.quality,
+                            bass: chordDisplayOptions.definition.bass,
+                            instrument: chordDisplayOptions.definition.instrument,
                             status: .standard
                         )
                         switch status {
                         case .new:
-                            model.allChords.append(result)
+                            chordsDatabaseModel.allChords.append(result)
                         case .update:
                             if let index = chordID {
-                                model.allChords[index] = result
+                                chordsDatabaseModel.allChords[index] = result
                             }
                             /// Sharp/Flat
                             if
@@ -63,29 +63,29 @@ struct ChordEditView: View {
                                 let root = Chords_Database.sharpFlat(root: result.root)
                             {
                                 let result = ChordDefinition(
-                                    id: options.definition.id,
-                                    name: options.definition.name,
-                                    frets: options.definition.frets,
-                                    fingers: options.definition.fingers,
-                                    baseFret: options.definition.baseFret,
+                                    id: chordDisplayOptions.definition.id,
+                                    name: chordDisplayOptions.definition.name,
+                                    frets: chordDisplayOptions.definition.frets,
+                                    fingers: chordDisplayOptions.definition.fingers,
+                                    baseFret: chordDisplayOptions.definition.baseFret,
                                     root: root,
-                                    quality: options.definition.quality,
-                                    bass: options.definition.bass,
-                                    instrument: options.definition.instrument,
+                                    quality: chordDisplayOptions.definition.quality,
+                                    bass: chordDisplayOptions.definition.bass,
+                                    instrument: chordDisplayOptions.definition.instrument,
                                     status: .standard
                                 )
-                                model.allChords[index] = result
+                                chordsDatabaseModel.allChords[index] = result
                             }
                         }
-                        model.updateDocument.toggle()
-                        _ = model.navigationStack.popLast()
+                        chordsDatabaseModel.updateDocument.toggle()
+                        _ = chordsDatabaseModel.navigationStack.popLast()
                     }, label: {
                         Text(status.rawValue)
                     })
-                    .disabled(chord == options.definition)
+                    .disabled(chord == chordDisplayOptions.definition)
                     .padding(.trailing)
                     Button(action: {
-                        _ = model.navigationStack.popLast()
+                        _ = chordsDatabaseModel.navigationStack.popLast()
                     }, label: {
                         Text("Cancel")
                     })
@@ -106,14 +106,14 @@ struct ChordEditView: View {
             }
             .padding()
         }
-        .animation(.default, value: options.displayOptions)
+        .animation(.default, value: chordDisplayOptions.displayOptions)
         .task {
             sharpFlat = Chords_Database.sharpFlat(root: chord.root)
-            if let index = model.allChords.firstIndex(where: { $0.id == chord.id }) {
+            if let index = chordsDatabaseModel.allChords.firstIndex(where: { $0.id == chord.id }) {
                 status = .update
                 chordID = index
 
-                if let sharpFlat, let sharpFlatIndex = model.allChords.firstIndex(where: {
+                if let sharpFlat, let sharpFlatIndex = chordsDatabaseModel.allChords.firstIndex(where: {
                     $0.root == sharpFlat &&
                     $0.quality == chord.quality &&
                     $0.baseFret == chord.baseFret &&

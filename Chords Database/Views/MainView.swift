@@ -11,11 +11,12 @@ import SwiftlyChordUtilities
 /// SwiftUI `View` containing the main content
 struct MainView: View {
     /// The SwiftUI model for the Chords Database
-    @EnvironmentObject var model: ChordsDatabaseModel
+    @Environment(ChordsDatabaseModel.self) private var chordsDatabaseModel
     /// Chord Display Options
-    @EnvironmentObject private var options: ChordDisplayOptions
+    @Environment(ChordDisplayOptions.self) private var chordDisplayOptions
     /// The body of the `View`
     var body: some View {
+        @Bindable var chordsDatabaseModel = chordsDatabaseModel
         NavigationSplitView(
             sidebar: {
                 HStack(spacing: 0) {
@@ -28,7 +29,7 @@ struct MainView: View {
                 .navigationSplitViewColumnWidth(260)
                 .navigationBarBackButtonHidden()
             }, detail: {
-                NavigationStack(path: $model.navigationStack) {
+                NavigationStack(path: $chordsDatabaseModel.navigationStack) {
                     DatabaseView()
 #if !os(macOS)
                         .navigationBarBackButtonHidden()
@@ -38,20 +39,19 @@ struct MainView: View {
         )
         .navigationTitle("Chords Database")
         .toolbar {
-            Text(model.instrument.label)
-            // ExportButton()
-            options.mirrorToggle
-            options.midiInstrumentPicker
+            Text(chordsDatabaseModel.instrument.label)
+            chordDisplayOptions.mirrorToggle
+            chordDisplayOptions.midiInstrumentPicker
             /// New Chord Button
             Button(action: {
-                if let newChord = ChordDefinition(definition: "C", instrument: model.instrument, status: .standard) {
-                    options.definition = newChord
-                    model.navigationStack.append(newChord)
+                if let newChord = ChordDefinition(definition: "C", instrument: chordsDatabaseModel.instrument, status: .standard) {
+                    chordDisplayOptions.definition = newChord
+                    chordsDatabaseModel.navigationStack.append(newChord)
                 }
             }, label: {
                 Label("New Chord", systemImage: "plus")
             })
-            .disabled(!model.navigationStack.isEmpty)
+            .disabled(!chordsDatabaseModel.navigationStack.isEmpty)
             .labelStyle(.iconOnly)
         }
     }

@@ -14,9 +14,9 @@ import UniformTypeIdentifiers
 /// SwiftUI `View` to export the database
 struct ExportButton: View {
     /// The SwiftUI model for the Chords Database
-    @EnvironmentObject var model: ChordsDatabaseModel
+    @Environment(ChordsDatabaseModel.self) private var chordsDatabaseModel
     /// Chord Display Options
-    @EnvironmentObject private var options: ChordDisplayOptions
+    @Environment(ChordDisplayOptions.self) private var chordDisplayOptions
     /// Bool to show the file exporter dialog
     @State private var showExport: Bool = false
     /// The body of the `View`

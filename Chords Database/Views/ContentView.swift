@@ -21,21 +21,21 @@ struct ContentView: View {
         mirrorDiagram: false
     )
     /// Chord Display Options
-    @StateObject private var options = ChordDisplayOptions(defaults: defaults)
+    @State private var chordDisplayOptions = ChordDisplayOptions(defaults: defaults)
     /// The SwiftUI model for the Chords Database
-    @StateObject var model = ChordsDatabaseModel()
+    @State var model = ChordsDatabaseModel()
     /// Chord Display Options
     /// The current document with the databse
     @Binding var document: ChordsDatabaseDocument
     /// The body of the `View`
     var body: some View {
         MainView()
-            .environmentObject(options)
-            .environmentObject(model)
+            .environment(chordDisplayOptions)
+            .environment(model)
             .sheet(
                 isPresented: $model.showTemplate,
                 onDismiss: {
-                    switch options.instrument {
+                    switch chordDisplayOptions.instrument {
                     case .guitarStandardETuning:
                         model.allChords = Chords.guitar
                     case .guitaleleStandardATuning:
@@ -43,12 +43,12 @@ struct ContentView: View {
                     case .ukuleleStandardGTuning:
                         model.allChords = Chords.ukulele
                     }
-                    model.instrument = options.instrument
+                    model.instrument = chordDisplayOptions.instrument
                     model.updateDocument.toggle()
                 },
                 content: {
                     TemplateView()
-                        .environmentObject(options)
+                        .environment(chordDisplayOptions)
                 }
             )
         /// Import the chords

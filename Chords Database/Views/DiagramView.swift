@@ -15,15 +15,15 @@ struct DiagramView: View {
     /// The width of the diagram
     let width: Double
     /// Chord Display Options
-    @EnvironmentObject private var options: ChordDisplayOptions
+    @Environment(ChordDisplayOptions.self) private var chordDisplayOptions
     /// The current color scheme
     @Environment(\.colorScheme) private var colorScheme
     /// The body of the `View`
     var body: some View {
-        ChordDefinitionView(chord: chord, width: width, options: options.displayOptions)
+        ChordDefinitionView(chord: chord, width: width, options: chordDisplayOptions.displayOptions)
             .frame(height: width * 1.6)
             .foregroundStyle(Color.primary, colorScheme == .dark ? .black : .white)
-            .animation(.default, value: options.displayOptions)
-            .animation(.default, value: options.definition)
+            .animation(.default, value: chordDisplayOptions.displayOptions)
+            .animation(.default, value: chordDisplayOptions.definition)
     }
 }

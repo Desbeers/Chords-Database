@@ -11,14 +11,15 @@ import SwiftlyChordUtilities
 /// SwiftUI `View` containing the quality picker in the sidebar
 struct QualityPickerView: View {
     /// The SwiftUI model for the Chords Database
-    @EnvironmentObject var model: ChordsDatabaseModel
+    @Environment(ChordsDatabaseModel.self) private var chordsDatabaseModel
     /// The body of the `View`
     var body: some View {
+        @Bindable var chordsDatabaseModel = chordsDatabaseModel
         VStack {
             Text("Quality")
                 .font(.title)
-            List(selection: $model.selection.quality) {
-                ForEach(model.qualityChords) { quality in
+            List(selection: $chordsDatabaseModel.selection.quality) {
+                ForEach(chordsDatabaseModel.qualityChords) { quality in
                     Text("\(quality.quality == .major ? "M" : quality.quality.display.symbolized)")
                         .font(.title3)
                     .tag(quality.quality)
@@ -26,15 +27,15 @@ struct QualityPickerView: View {
             }
         }
         .frame(width: 100)
-        .task(id: model.rootChords) {
+        .task(id: chordsDatabaseModel.rootChords) {
             filterQualities()
         }
-        .task(id: model.selection.quality) {
-            model.selection.bass = nil
+        .task(id: chordsDatabaseModel.selection.quality) {
+            chordsDatabaseModel.selection.bass = nil
         }
     }
     /// Filter the chords by quality
     private func filterQualities() {
-        model.qualityChords = model.rootChords.uniqued(by: \.quality).sorted(using: KeyPathComparator(\.quality))
+        chordsDatabaseModel.qualityChords = chordsDatabaseModel.rootChords.uniqued(by: \.quality).sorted(using: KeyPathComparator(\.quality))
     }
 }

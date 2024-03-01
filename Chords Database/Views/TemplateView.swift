@@ -11,7 +11,7 @@ import SwiftlyChordUtilities
 /// SwiftUI `View` to pick a template for a new file
 struct TemplateView: View {
     /// Chord Display Options
-    @EnvironmentObject private var options: ChordDisplayOptions
+    @Environment(ChordDisplayOptions.self) private var chordDisplayOptions
     /// The dismiss environment
     @Environment(\.dismiss) var dismiss
     /// The body of the `View`
@@ -19,7 +19,7 @@ struct TemplateView: View {
         VStack {
             Text("Choose a template for your new database")
                 .font(.largeTitle)
-            options.instrumentPicker
+            chordDisplayOptions.instrumentPicker
                 .pickerStyle(.segmented)
                 .labelsHidden()
             image
@@ -32,11 +32,11 @@ struct TemplateView: View {
             .padding()
         }
         .padding()
-        .animation(.default, value: options.instrument)
+        .animation(.default, value: chordDisplayOptions.instrument)
     }
     /// The instrument image
     var image: some View {
-        switch options.instrument {
+        switch chordDisplayOptions.instrument {
         case .guitarStandardETuning:
             Image(.guitar).resizable()
         case .guitaleleStandardATuning:

@@ -11,9 +11,9 @@ import SwiftlyChordUtilities
 /// SwiftUI `View` for the database
 struct DatabaseView: View {
     /// The SwiftUI model for the Chords Database
-    @EnvironmentObject var model: ChordsDatabaseModel
+    @Environment(ChordsDatabaseModel.self) private var chordsDatabaseModel
     /// Chord Display Options
-    @EnvironmentObject private var options: ChordDisplayOptions
+    @Environment(ChordDisplayOptions.self) private var chordDisplayOptions
     /// The conformation dialog to delete a chord
     @State private var showDeleteConfirmation = false
     /// The Chords to show in this View
@@ -28,14 +28,14 @@ struct DatabaseView: View {
     @State private var actionButton: ChordDefinition?
     /// The body of the `View`
     var body: some View {
-        let sharpFlat = sharpFlat(root: model.selection.root ?? .none)
+        let sharpFlat = sharpFlat(root: chordsDatabaseModel.selection.root ?? .none)
         if !haveChords && chords.isEmpty {
             // swiftlint:disable:next line_length
-            Text("No chords in the key of \(model.selection.root?.display.symbol ?? "") found in the \(model.instrument.label) Database")
+            Text("No chords in the key of \(chordsDatabaseModel.selection.root?.display.symbol ?? "") found in the \(chordsDatabaseModel.instrument.label) Database")
                 .font(.title)
                 .padding(.top)
         }
-        if model.instrument == .ukuleleStandardGTuning {
+        if chordsDatabaseModel.instrument == .ukuleleStandardGTuning {
             // swiftlint:disable:next line_length
             Label("For Ukulele chords, the first note is often not the base chord. With only 4 strings, I leave them as they are", systemImage: "info.circle.fill")
                 .padding()
@@ -66,16 +66,16 @@ struct DatabaseView: View {
                             .background(chord.validate.color.opacity(0.1))
                             .padding()
                         }
-                        if let root = model.selection.root, root != Chord.Root.none {
+                        if let root = chordsDatabaseModel.selection.root, root != Chord.Root.none {
                             Button(
                                 action: {
                                     if let newChord = ChordDefinition(
                                         definition: root.rawValue,
-                                        instrument: model.instrument,
+                                        instrument: chordsDatabaseModel.instrument,
                                         status: .standard
                                     ) {
-                                        options.definition = newChord
-                                        model.navigationStack.append(newChord)
+                                        chordDisplayOptions.definition = newChord
+                                        chordsDatabaseModel.navigationStack.append(newChord)
                                     }
                                 }, label: {
                                     Text("Add a new **\(root.display.symbol)** chord")
@@ -120,11 +120,11 @@ struct DatabaseView: View {
         }
         .buttonStyle(.bordered)
         .animation(.default, value: haveChords)
-        .id(model.selection)
-        .task(id: model.allChords) {
+        .id(chordsDatabaseModel.selection)
+        .task(id: chordsDatabaseModel.allChords) {
             filterChords()
         }
-        .task(id: model.selection) {
+        .task(id: chordsDatabaseModel.selection) {
             filterChords()
         }
         .navigationDestination(for: ChordDefinition.self) { chord in
@@ -135,15 +135,15 @@ struct DatabaseView: View {
     /// Filter the chords
     private func filterChords() {
         var allChords: [ChordDefinition] = []
-        if model.selection.root == Chord.Root.none {
-            allChords = model.allChords
+        if chordsDatabaseModel.selection.root == Chord.Root.none {
+            allChords = chordsDatabaseModel.allChords
         } else {
-            allChords = model.allChords.filter { $0.root == model.selection.root }
+            allChords = chordsDatabaseModel.allChords.filter { $0.root == chordsDatabaseModel.selection.root }
         }
-        if let quality = model.selection.quality {
+        if let quality = chordsDatabaseModel.selection.quality {
             allChords = allChords.filter { $0.quality == quality }
         }
-        if let bass = model.selection.bass {
+        if let bass = chordsDatabaseModel.selection.bass {
             allChords = allChords.filter { $0.bass == bass }
         }
         chords = allChords.sorted(using: [
@@ -152,12 +152,12 @@ struct DatabaseView: View {
         haveChords = chords.isEmpty ? false : true
 
         /// Sharp and Flats
-        if let sharpFlat = sharpFlat(root: model.selection.root ?? .none) {
-            allChords = model.allChords.filter { $0.root == sharpFlat }
-            if let quality = model.selection.quality {
+        if let sharpFlat = sharpFlat(root: chordsDatabaseModel.selection.root ?? .none) {
+            allChords = chordsDatabaseModel.allChords.filter { $0.root == sharpFlat }
+            if let quality = chordsDatabaseModel.selection.quality {
                 allChords = allChords.filter { $0.quality == quality }
             }
-            if let bass = model.selection.bass {
+            if let bass = chordsDatabaseModel.selection.bass {
                 allChords = allChords.filter { $0.bass == bass }
             }
             flatSharpChords = allChords.sorted(using: [
@@ -193,8 +193,8 @@ struct DatabaseView: View {
     private func editButton(chord: ChordDefinition) -> some View {
         Button(
             action: {
-                options.definition = chord
-                model.navigationStack.append(chord)
+                chordDisplayOptions.definition = chord
+                chordsDatabaseModel.navigationStack.append(chord)
             },
             label: {
                 Label("Edit", systemImage: "square.and.pencil")
@@ -208,8 +208,8 @@ struct DatabaseView: View {
             action: {
                 var duplicate = chord
                 duplicate.id = UUID()
-                options.definition = duplicate
-                model.navigationStack.append(duplicate)
+                chordDisplayOptions.definition = duplicate
+                chordsDatabaseModel.navigationStack.append(duplicate)
             },
             label: {
                 Label("Duplicate", systemImage: "doc.on.doc")
@@ -234,9 +234,9 @@ struct DatabaseView: View {
     private func deleteButton(chord: ChordDefinition?) -> some View {
         Button(
             action: {
-                if let chord, let chordIndex = model.allChords.firstIndex(where: { $0.id == chord.id }) {
-                    model.allChords.remove(at: chordIndex)
-                    model.updateDocument.toggle()
+                if let chord, let chordIndex = chordsDatabaseModel.allChords.firstIndex(where: { $0.id == chord.id }) {
+                    chordsDatabaseModel.allChords.remove(at: chordIndex)
+                    chordsDatabaseModel.updateDocument.toggle()
                 }
             },
             label: {

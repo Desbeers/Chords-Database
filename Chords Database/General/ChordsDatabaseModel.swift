@@ -11,26 +11,27 @@ import SwiftlyChordUtilities
 // MARK: The Chord Database model
 
 /// The SwiftUI model for the Chords Database
-class ChordsDatabaseModel: ObservableObject {
+@Observable
+class ChordsDatabaseModel {
     /// All chords in the current database
-    @Published var allChords: [ChordDefinition] = []
+    var allChords: [ChordDefinition] = []
     /// All chords filtered by root
-    @Published var rootChords: [ChordDefinition] = []
+    var rootChords: [ChordDefinition] = []
     /// All chords filtered by root and quality
-    @Published var qualityChords: [ChordDefinition] = []
+    var qualityChords: [ChordDefinition] = []
     /// The selction of root, quality and bass
-    @Published var selection = Selection()
+    var selection = Selection()
     /// Edit a chord
-    @Published var editChord: ChordDefinition?
+    var editChord: ChordDefinition?
     /// The *update document* toggle
     /// - Note: Toggled when a chord is new or changed
-    @Published var updateDocument: Bool = false
+    var updateDocument: Bool = false
     /// The current instrument
-    @Published var instrument: Instrument = .guitarStandardETuning
+    var instrument: Instrument = .guitarStandardETuning
     /// Template toggle
-    @Published public var showTemplate: Bool = false
+    var showTemplate: Bool = false
     /// The Navigation stack path
-    @Published var navigationStack: [ChordDefinition] = []
+    var navigationStack: [ChordDefinition] = []
 }
 
 extension ChordsDatabaseModel {

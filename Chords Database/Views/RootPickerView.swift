@@ -40,7 +40,9 @@ struct RootPickerView: View {
         if chordsDatabaseModel.selection.root == Chord.Root.none {
             chordsDatabaseModel.rootChords = chordsDatabaseModel.allChords
         } else {
-            chordsDatabaseModel.rootChords = chordsDatabaseModel.allChords.filter { $0.root == chordsDatabaseModel.selection.root }
+            chordsDatabaseModel.rootChords = chordsDatabaseModel
+                .allChords
+                .filter { $0.root == chordsDatabaseModel.selection.root }
         }
     }
     private func filterSelection() {

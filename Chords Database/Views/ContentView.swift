@@ -65,7 +65,7 @@ struct ContentView: View {
                 }
             }
         /// Store changes of chords in the document
-            .onChange(of: model.updateDocument ) { _ in
+            .onChange(of: model.updateDocument ) {
                 document.chords = Chords.exportDatabase(definitions: model.allChords)
             }
     }

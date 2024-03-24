@@ -44,7 +44,11 @@ struct MainView: View {
             chordDisplayOptions.midiInstrumentPicker
             /// New Chord Button
             Button(action: {
-                if let newChord = ChordDefinition(definition: "C", instrument: chordsDatabaseModel.instrument, status: .standard) {
+                if let newChord = ChordDefinition(
+                    definition: "C",
+                    instrument: chordsDatabaseModel.instrument,
+                    status: .standard
+                ) {
                     chordDisplayOptions.definition = newChord
                     chordsDatabaseModel.navigationStack.append(newChord)
                 }

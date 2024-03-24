@@ -36,6 +36,8 @@ struct QualityPickerView: View {
     }
     /// Filter the chords by quality
     private func filterQualities() {
-        chordsDatabaseModel.qualityChords = chordsDatabaseModel.rootChords.uniqued(by: \.quality).sorted(using: KeyPathComparator(\.quality))
+        chordsDatabaseModel.qualityChords = chordsDatabaseModel
+            .rootChords
+            .uniqued(by: \.quality).sorted(using: KeyPathComparator(\.quality))
     }
 }

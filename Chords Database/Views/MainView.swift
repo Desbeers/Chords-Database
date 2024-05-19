@@ -17,6 +17,7 @@ struct MainView: View {
     /// The body of the `View`
     var body: some View {
         @Bindable var chordsDatabaseModel = chordsDatabaseModel
+        @Bindable var chordDisplayOptions = chordDisplayOptions
         NavigationSplitView(
             sidebar: {
                 HStack(spacing: 0) {
@@ -40,14 +41,15 @@ struct MainView: View {
         .navigationTitle("Chords Database")
         .toolbar {
             Text(chordsDatabaseModel.instrument.label)
-            chordDisplayOptions.mirrorToggle
+            Toggle(isOn: $chordDisplayOptions.displayOptions.mirrorDiagram) {
+                Image(systemName: chordDisplayOptions.displayOptions.mirrorDiagram ? "hand.point.left.fill" : "hand.point.right.fill")
+            }
             chordDisplayOptions.midiInstrumentPicker
             /// New Chord Button
             Button(action: {
                 if let newChord = ChordDefinition(
-                    definition: "C",
-                    instrument: chordsDatabaseModel.instrument,
-                    status: .standard
+                    name: "C",
+                    instrument: chordsDatabaseModel.instrument
                 ) {
                     chordDisplayOptions.definition = newChord
                     chordsDatabaseModel.navigationStack.append(newChord)

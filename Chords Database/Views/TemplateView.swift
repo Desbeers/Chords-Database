@@ -32,11 +32,11 @@ struct TemplateView: View {
             .padding()
         }
         .padding()
-        .animation(.default, value: chordDisplayOptions.instrument)
+        .animation(.default, value: chordDisplayOptions.displayOptions.instrument)
     }
     /// The instrument image
     var image: some View {
-        switch chordDisplayOptions.instrument {
+        switch chordDisplayOptions.displayOptions.instrument {
         case .guitarStandardETuning:
             Image(.guitar).resizable()
         case .guitaleleStandardATuning:

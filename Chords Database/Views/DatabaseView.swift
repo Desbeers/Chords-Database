@@ -69,7 +69,7 @@ struct DatabaseView: View {
                         if let root = chordsDatabaseModel.selection.root, root != Chord.Root.none {
                             Button(
                                 action: {
-                                    if let newChord = ChordDefinition(
+                                    if let newChord = try? ChordDefinition(
                                         definition: root.rawValue,
                                         instrument: chordsDatabaseModel.instrument,
                                         status: .standard

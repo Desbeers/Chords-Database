@@ -35,7 +35,7 @@ struct ContentView: View {
             .sheet(
                 isPresented: $model.showTemplate,
                 onDismiss: {
-                    switch chordDisplayOptions.instrument {
+                    switch chordDisplayOptions.displayOptions.instrument {
                     case .guitarStandardETuning:
                         model.allChords = Chords.guitar
                     case .guitaleleStandardATuning:
@@ -43,7 +43,7 @@ struct ContentView: View {
                     case .ukuleleStandardGTuning:
                         model.allChords = Chords.ukulele
                     }
-                    model.instrument = chordDisplayOptions.instrument
+                    model.instrument = chordDisplayOptions.displayOptions.instrument
                     model.updateDocument.toggle()
                 },
                 content: {

@@ -42,7 +42,10 @@ struct MainView: View {
         .toolbar {
             Text(chordsDatabaseModel.instrument.label)
             Toggle(isOn: $chordDisplayOptions.displayOptions.mirrorDiagram) {
-                Image(systemName: chordDisplayOptions.displayOptions.mirrorDiagram ? "hand.point.left.fill" : "hand.point.right.fill")
+                Image(
+                    systemName: chordDisplayOptions.displayOptions.mirrorDiagram ?
+                    "hand.point.left.fill" : "hand.point.right.fill"
+                )
             }
             chordDisplayOptions.midiInstrumentPicker
             /// New Chord Button

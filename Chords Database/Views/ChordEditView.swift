@@ -30,9 +30,10 @@ struct ChordEditView: View {
 
     /// The body of the `View`
     var body: some View {
+        @Bindable var chordDisplayOptions = chordDisplayOptions
         ScrollView {
             VStack {
-                CreateChordView()
+                CreateChordView(chordDisplayOptions: $chordDisplayOptions)
                 Divider()
                     .padding(.top)
                 HStack {
@@ -47,7 +48,7 @@ struct ChordEditView: View {
                             quality: chordDisplayOptions.definition.quality,
                             bass: chordDisplayOptions.definition.bass,
                             instrument: chordDisplayOptions.definition.instrument,
-                            status: .standard
+                            status: .standardChord
                         )
                         switch status {
                         case .new:
@@ -60,8 +61,7 @@ struct ChordEditView: View {
                             if
                                 editSharpAndFlat,
                                 let index = sharpFlatchordID,
-                                let root = Chords_Database.sharpFlat(root: result.root)
-                            {
+                                let root = Chords_Database.sharpFlat(root: result.root) {
                                 let result = ChordDefinition(
                                     id: chordDisplayOptions.definition.id,
                                     name: chordDisplayOptions.definition.name,
@@ -72,7 +72,7 @@ struct ChordEditView: View {
                                     quality: chordDisplayOptions.definition.quality,
                                     bass: chordDisplayOptions.definition.bass,
                                     instrument: chordDisplayOptions.definition.instrument,
-                                    status: .standard
+                                    status: .standardChord
                                 )
                                 chordsDatabaseModel.allChords[index] = result
                             }

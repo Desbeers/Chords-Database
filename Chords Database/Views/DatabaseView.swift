@@ -18,10 +18,8 @@ struct DatabaseView: View {
     @State private var showDeleteConfirmation = false
     /// The Chords to show in this View
     @State var chords: [ChordDefinition] = []
-
     /// The Chords to show in this View
     @State var flatSharpChords: [ChordDefinition] = []
-
     /// Bool if we have chords or not
     @State var haveChords = true
     /// The chord for the 'delete' action
@@ -57,7 +55,7 @@ struct DatabaseView: View {
                                         actions(chord: chord)
                                     }
                                 }
-                                Text(chord.validate.label)
+                                Text(chord.validate.description)
                                     .font(.caption)
                                     .lineLimit(1)
                                     .minimumScaleFactor(0.2)
@@ -69,10 +67,9 @@ struct DatabaseView: View {
                         if let root = chordsDatabaseModel.selection.root, root != Chord.Root.none {
                             Button(
                                 action: {
-                                    if let newChord = try? ChordDefinition(
-                                        definition: root.rawValue,
-                                        instrument: chordsDatabaseModel.instrument,
-                                        status: .standard
+                                    if let newChord = ChordDefinition(
+                                        name: root.rawValue,
+                                        instrument: chordsDatabaseModel.instrument
                                     ) {
                                         chordDisplayOptions.definition = newChord
                                         chordsDatabaseModel.navigationStack.append(newChord)
@@ -100,7 +97,7 @@ struct DatabaseView: View {
                                             actions(chord: chord)
                                         }
                                     }
-                                    Text(chord.validate.label)
+                                    Text(chord.validate.description)
                                         .font(.caption)
                                         .lineLimit(1)
                                         .minimumScaleFactor(0.2)

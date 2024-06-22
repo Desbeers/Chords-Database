@@ -7,16 +7,7 @@
       "location" : "https://github.com/Desbeers/SwiftlyChordUtilities",
       "state" : {
         "branch" : "main",
-        "revision" : "ff1b0a62cc4fd6b7a993ca03ac26c4921d3a70b6"
-      }
-    },
-    {
-      "identity" : "swiftlystructcache",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/Desbeers/SwiftlyStructCache",
-      "state" : {
-        "branch" : "main",
-        "revision" : "96346529ca304eeed2412a8140ca2661f162115c"
+        "revision" : "2146e453878b68486e5addbaf688adf01316aa1b"
       }
     }
   ],

@@ -5,7 +5,7 @@
 For my [Chord Provider](https://github.com/Desbeers/Chord-Provider) application, I use my [SwiftlyChordUtilities](https://github.com/Desbeers/SwiftlyChordUtilities) package.
 It has a database with all the known chords for guitar, guitalele and ukule in a very simple JSON format.
 
-This macOS and iPadOS application shows all those chords in a document and you can change them to your liking.
+This macOS ~~and iPadOS~~ application shows all those chords in a document and you can change them to your liking.
 
 In the [SwiftlyChordUtilities](https://github.com/Desbeers/SwiftlyChordUtilities) package you can find them in the `Resources` folder with a `chordsdb` extension. This application can open them.
 
@@ -19,7 +19,7 @@ In the [SwiftlyChordUtilities](https://github.com/Desbeers/SwiftlyChordUtilities
 
 ## Limitations
 
-- It will wil try to validate your chord but it is not always correct.
+- It will try to validate your chord but it is not always correct.
 
 ## Contribute
 

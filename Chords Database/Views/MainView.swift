@@ -41,9 +41,9 @@ struct MainView: View {
         .navigationTitle("Chords Database")
         .toolbar {
             Text(chordsDatabaseModel.instrument.label)
-            Toggle(isOn: $chordDisplayOptions.displayOptions.mirrorDiagram) {
+            Toggle(isOn: $chordDisplayOptions.displayOptions.general.mirrorDiagram) {
                 Image(
-                    systemName: chordDisplayOptions.displayOptions.mirrorDiagram ?
+                    systemName: chordDisplayOptions.displayOptions.general.mirrorDiagram ?
                     "hand.point.left.fill" : "hand.point.right.fill"
                 )
             }

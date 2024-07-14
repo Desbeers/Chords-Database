@@ -39,24 +39,24 @@ struct ExportButton: View {
     }
 
     private var exportChords: String {
-        return ""
+        //return ""
 
-//        let definitions = model.allChords.map(\.define).sorted()
-//        let export = Database(
-//            instrument: options.displayOptions.instrument,
-//            definitions: definitions
-//        )
-//        let encoder = JSONEncoder()
-//        encoder.outputFormatting = .prettyPrinted
-//        do {
-//            let encodedData = try encoder.encode(export)
-//            let jsonString = String(
-//                data: encodedData,
-//                encoding: .utf8
-//            )
-//            return jsonString ?? "error"
-//        } catch {
-//            return "error"
-//        }
+        let definitions = chordsDatabaseModel.allChords.map(\.define).sorted()
+        let export = Database(
+            instrument: chordDisplayOptions.displayOptions.instrument,
+            definitions: definitions
+        )
+        let encoder = JSONEncoder()
+        encoder.outputFormatting = .prettyPrinted
+        do {
+            let encodedData = try encoder.encode(export)
+            let jsonString = String(
+                data: encodedData,
+                encoding: .utf8
+            )
+            return jsonString ?? "error"
+        } catch {
+            return "error"
+        }
     }
 }

@@ -21,14 +21,14 @@ struct ExportButton: View {
     @State private var showExport: Bool = false
     /// The body of the `View`
     var body: some View {
-        Button("Export new database version") {
+        Button("Export to **ChordPro** format") {
             showExport.toggle()
         }
         .fileExporter(
             isPresented: $showExport,
-            document: ChordsDatabaseDocument(chords: exportChords),
-            contentType: .chordsdb,
-            defaultFilename: "New Database"
+            document: JSONDocument(string: exportChords),
+            contentTypes: [.json, .chordsdb],
+            defaultFilename: "ChordPro Guitar Chords"
         ) { result in
             if case .success = result {
                 print("Success")
@@ -39,22 +39,55 @@ struct ExportButton: View {
     }
 
     private var exportChords: String {
-        //return ""
+        /// Only export basic chords
+        let definitions = chordsDatabaseModel.allChords.uniqued(by: \.name).filter {$0.root.accidental != .flat }
 
-        let definitions = chordsDatabaseModel.allChords.map(\.define).sorted()
-        let export = Database(
-            instrument: chordDisplayOptions.displayOptions.instrument,
-            definitions: definitions
+        var chords = definitions.map { chord in
+            ChordProChordDefinition.Chord(
+                name: chord.name,
+                base: chord.baseFret,
+                frets: chord.frets,
+                fingers: chord.fingers,
+                copy: nil
+            )
+        }
+
+        for root in Chord.Root.allCases where root.accidental == .flat {
+            for copy in definitions.filter({ $0.root.copy == root }) {
+
+                var name = root.rawValue
+                name += copy.quality.rawValue
+                if let bass = copy.bass {
+                    name += "/\(bass.rawValue)"
+                }
+
+                chords.append(
+                    .init(
+                        name: name,
+                        base: nil,
+                        frets: nil,
+                        fingers: nil,
+                        copy: copy.name
+                    )
+                )
+            }
+        }
+
+        let export = ChordProChordDefinition(
+            instrument: .init(
+                description: "Guitar, 6 strings, standard tuning",
+                type: "guitar"
+            ),
+            tuning: ["E2", "A2", "D3", "G3", "B3", "E4"],
+            chords: chords,
+            pdf: .init(diagrams: .init(vcells: 6))
         )
+
         let encoder = JSONEncoder()
         encoder.outputFormatting = .prettyPrinted
         do {
             let encodedData = try encoder.encode(export)
-            let jsonString = String(
-                data: encodedData,
-                encoding: .utf8
-            )
-            return jsonString ?? "error"
+            return String(decoding: encodedData, as: UTF8.self)
         } catch {
             return "error"
         }

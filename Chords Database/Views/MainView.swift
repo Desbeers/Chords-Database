@@ -40,6 +40,7 @@ struct MainView: View {
         )
         .navigationTitle("Chords Database")
         .toolbar {
+            ExportButton()
             Text(chordsDatabaseModel.instrument.label)
             Toggle(isOn: $chordDisplayOptions.displayOptions.general.mirrorDiagram) {
                 Image(

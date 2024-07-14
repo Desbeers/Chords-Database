@@ -9,10 +9,10 @@ import SwiftUI
 import UniformTypeIdentifiers
 import SwiftlyChordUtilities
 
-// MARK: The Chord Databse document
+// MARK: The Chord Database document
 
 extension UTType {
-    /// Add the UIType for the Chord Databse document
+    /// Add the UIType for the Chord Database document
     static var chordsdb: UTType {
         UTType(exportedAs: "nl.desbeers.chordsdb")
     }

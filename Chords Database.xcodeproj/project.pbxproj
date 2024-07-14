@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		D706D0112ABC3CDE00EDE2D9 /* TemplateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D706D0102ABC3CDE00EDE2D9 /* TemplateView.swift */; };
 		D7622B432ABEC3B4008CAC63 /* ChordEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7622B422ABEC3B4008CAC63 /* ChordEditView.swift */; };
+		D7B381452C439F5000272C00 /* Strictures.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B381442C439F5000272C00 /* Strictures.swift */; };
+		D7B381472C439F5900272C00 /* ChordProChordDefinition.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B381462C439F5900272C00 /* ChordProChordDefinition.swift */; };
+		D7B381492C43AA1E00272C00 /* JSONDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B381482C43AA1E00272C00 /* JSONDocument.swift */; };
 		D7CB66092A9F37AF000F5724 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D7CB66082A9F37AF000F5724 /* Assets.xcassets */; };
 		D7CB660E2A9F37AF000F5724 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D7CB660D2A9F37AF000F5724 /* Preview Assets.xcassets */; };
 		D7CB66152A9F391F000F5724 /* ChordsDatabaseApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7CB66142A9F391F000F5724 /* ChordsDatabaseApp.swift */; };
@@ -29,6 +32,9 @@
 /* Begin PBXFileReference section */
 		D706D0102ABC3CDE00EDE2D9 /* TemplateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateView.swift; sourceTree = "<group>"; };
 		D7622B422ABEC3B4008CAC63 /* ChordEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChordEditView.swift; sourceTree = "<group>"; };
+		D7B381442C439F5000272C00 /* Strictures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strictures.swift; sourceTree = "<group>"; };
+		D7B381462C439F5900272C00 /* ChordProChordDefinition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChordProChordDefinition.swift; sourceTree = "<group>"; };
+		D7B381482C43AA1E00272C00 /* JSONDocument.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONDocument.swift; sourceTree = "<group>"; };
 		D7CB65FF2A9F37AC000F5724 /* Chords Database.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Chords Database.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7CB66082A9F37AF000F5724 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D7CB660A2A9F37AF000F5724 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -86,6 +92,8 @@
 				D7CB660A2A9F37AF000F5724 /* Info.plist */,
 				D7CB660B2A9F37AF000F5724 /* ChordsDatabase.entitlements */,
 				D7CB660C2A9F37AF000F5724 /* Preview Content */,
+				D7B381442C439F5000272C00 /* Strictures.swift */,
+				D7B381462C439F5900272C00 /* ChordProChordDefinition.swift */,
 			);
 			path = "Chords Database";
 			sourceTree = "<group>";
@@ -117,6 +125,7 @@
 		D7CB661D2A9F3933000F5724 /* General */ = {
 			isa = PBXGroup;
 			children = (
+				D7B381482C43AA1E00272C00 /* JSONDocument.swift */,
 				D7CB661E2A9F3933000F5724 /* ChordsDatabaseModel.swift */,
 				D7CB661F2A9F3933000F5724 /* ChordsDatabaseDocument.swift */,
 				D7EC194C2AAA281D001973BA /* ExportDatabase.swift */,
@@ -227,10 +236,13 @@
 			files = (
 				D7622B432ABEC3B4008CAC63 /* ChordEditView.swift in Sources */,
 				D7CB66252A9F3933000F5724 /* DatabaseView.swift in Sources */,
+				D7B381472C439F5900272C00 /* ChordProChordDefinition.swift in Sources */,
 				D7CB66272A9F3933000F5724 /* ChordsDatabaseDocument.swift in Sources */,
 				D7CB66152A9F391F000F5724 /* ChordsDatabaseApp.swift in Sources */,
 				D7CB66222A9F3933000F5724 /* RootPickerView.swift in Sources */,
+				D7B381492C43AA1E00272C00 /* JSONDocument.swift in Sources */,
 				D7CB66242A9F3933000F5724 /* ContentView.swift in Sources */,
+				D7B381452C439F5000272C00 /* Strictures.swift in Sources */,
 				D7EC194D2AAA281D001973BA /* ExportDatabase.swift in Sources */,
 				D7CB66262A9F3933000F5724 /* ChordsDatabaseModel.swift in Sources */,
 				D706D0112ABC3CDE00EDE2D9 /* TemplateView.swift in Sources */,
